@@ -20,7 +20,7 @@ import time
 from typing import List, Dict, Any, Optional
 
 from recommender import RecommendationEngine
-from market_data import MarketDataService, init_angel_session
+from market_data import MarketDataService, init_angel_session, get_angel_diagnostic
 from broker_integrations import (
     ZerodhaClient, UpstoxClient, AngelOneClient,
     CSVPortfolioParser, GrowwParser,
@@ -521,6 +521,11 @@ async def configure_angel(payload: Dict[str, str]):
     if not ok:
         raise HTTPException(400, "Failed to authenticate with Angel One SmartAPI. Check your API Key, Client ID, PIN, or TOTP.")
     return {"status": "success", "message": "Angel One SmartAPI live feed connected successfully!"}
+ 
+ 
+@app.get("/api/market/status")
+async def market_status():
+    return get_angel_diagnostic()
 
 
 # --- CSV Upload (Groww / Generic) ---
