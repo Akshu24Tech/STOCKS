@@ -56,9 +56,11 @@ async def tick_broadcaster():
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    task = asyncio.create_task(tick_broadcaster())
+    refresher = asyncio.create_task(market_service.start_background_refresher())
+    broadcaster = asyncio.create_task(tick_broadcaster())
     yield
-    task.cancel()
+    refresher.cancel()
+    broadcaster.cancel()
 
 
 app = FastAPI(title="IndiaStocks AI", version="2.0.0", lifespan=lifespan)

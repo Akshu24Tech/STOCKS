@@ -530,7 +530,7 @@ class RecommendationEngine:
             return hist, info
 
         try:
-            hist, info = await asyncio.wait_for(loop.run_in_executor(executor, _fetch), timeout=3.5)
+            hist, info = await asyncio.wait_for(loop.run_in_executor(executor, _fetch), timeout=2.0)
         except Exception as e:
             logger.debug(f"Yahoo 5y fetch timed out or failed for {symbol}: {e}")
             hist, info = pd.DataFrame(), {}
@@ -656,19 +656,23 @@ class RecommendationEngine:
             if portfolio_sectors.get(sec, 0) < target - 0.04
         }
 
-        # ── Analyze Candidates ─────────────────────────────────────────────────
-        tasks = []
+        # ── Analyze Candidates in Parallel ─────────────────────────────────────
+        candidate_items = []
+        coros = []
         for cand in candidates:
             sym_clean = cand["symbol"].replace(".NS", "").replace(".BO", "")
             if sym_clean in held_symbols:
                 continue
-            tasks.append((cand, self.analyze_stock(sym_clean)))
+            candidate_items.append(cand)
+            coros.append(self.analyze_stock(sym_clean))
+
+        results = await asyncio.gather(*coros, return_exceptions=True)
 
         analyses = []
-        for cand, coro in tasks:
-            analysis = await coro
-            if not analysis or "error" in analysis:
+        for cand, res in zip(candidate_items, results):
+            if isinstance(res, Exception) or not res or "error" in res:
                 continue
+            analysis = res
 
             analysis["name"] = cand.get("name", analysis.get("name", cand["symbol"]))
             analysis["type"] = cand.get("type", "Stock")
