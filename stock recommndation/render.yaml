@@ -1,0 +1,13 @@
+services:
+  # Full-Stack Web Service (Backend + Frontend in 1 Docker Container)
+  - type: web
+    name: indiastocks-ai
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    region: singapore # or oregon / frankfurt
+    envVars:
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health
+    autoDeploy: true
