@@ -15,8 +15,8 @@ RUN npm install
 
 # Copy frontend source and build
 COPY ["stock recommndation/index.html", "stock recommndation/vite.config.js", "stock recommndation/tsconfig.json", "./"]
-COPY "stock recommndation/public" ./public
-COPY "stock recommndation/src" ./src
+COPY ["stock recommndation/public", "./public"]
+COPY ["stock recommndation/src", "./src"]
 
 RUN npm run build
 
@@ -38,11 +38,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python requirements
-COPY "stock recommndation/backend/requirements.txt" ./backend/
+COPY ["stock recommndation/backend/requirements.txt", "./backend/"]
 RUN pip install --no-cache-dir -r backend/requirements.txt
 
 # Copy backend code
-COPY "stock recommndation/backend" ./backend
+COPY ["stock recommndation/backend", "./backend"]
 
 # Copy built frontend assets from Stage 1 into /app/dist
 COPY --from=frontend-builder /app/dist ./dist
