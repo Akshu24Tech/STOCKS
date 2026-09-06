@@ -10,8 +10,8 @@ FROM node:20-alpine AS frontend-builder
 WORKDIR /app
 
 # Install dependencies
-COPY package*.json .npmrc* ./
-RUN npm install --legacy-peer-deps
+COPY package*.json ./
+RUN npm install
 
 # Copy frontend source and build
 COPY index.html vite.config.js tsconfig.json ./
@@ -25,17 +25,17 @@ FROM python:3.11-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1 \
-    PYTHONUNBUFFERED=1 \
-    PORT=8000
+  PYTHONUNBUFFERED=1 \
+  PORT=8000
 
 WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    gcc \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+  curl \
+  gcc \
+  build-essential \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install Python requirements
 COPY backend/requirements.txt ./backend/

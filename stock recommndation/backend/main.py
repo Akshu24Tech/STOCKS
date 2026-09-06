@@ -20,7 +20,7 @@ import time
 from typing import List, Dict, Any, Optional
 
 from recommender import RecommendationEngine
-from market_data import MarketDataService
+from market_data import MarketDataService, init_angel_session
 from broker_integrations import (
     ZerodhaClient, UpstoxClient, AngelOneClient,
     CSVPortfolioParser, GrowwParser,
@@ -497,12 +497,30 @@ async def angel_real_connect(payload: Dict[str, str]):
             raise HTTPException(400, "Missing required fields: api_key, client_code, pin, and totp are all required")
 
         result = AngelOneClient.connect_and_fetch_holdings(api_key, client_code, pin, totp)
+        try:
+            init_angel_session(api_key, client_code, pin, totp)
+        except Exception as ex:
+            logger.warning(f"Could not hook Angel One into live feed: {ex}")
         return result
     except ValueError as e:
         raise HTTPException(400, str(e))
     except Exception as e:
         logger.error(f"Angel One SmartAPI error: {e}", exc_info=True)
         raise HTTPException(500, f"Angel One SmartAPI error: {str(e)}")
+
+
+@app.post("/api/market/configure-angel")
+async def configure_angel(payload: Dict[str, str]):
+    api_key = payload.get("api_key", "").strip()
+    client_code = payload.get("client_code", "").strip()
+    pin = payload.get("pin", "").strip()
+    totp = payload.get("totp", "").strip()
+    if not api_key or not client_code or not pin or not totp:
+        raise HTTPException(400, "Missing required fields: api_key, client_code, pin, and totp are all required")
+    ok = init_angel_session(api_key, client_code, pin, totp)
+    if not ok:
+        raise HTTPException(400, "Failed to authenticate with Angel One SmartAPI. Check your API Key, Client ID, PIN, or TOTP.")
+    return {"status": "success", "message": "Angel One SmartAPI live feed connected successfully!"}
 
 
 # --- CSV Upload (Groww / Generic) ---
