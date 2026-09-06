@@ -243,21 +243,23 @@ class NSEDirectEngine:
                 sym = meta.get('symbol')
                 if not sym:
                     continue
-                price = float(meta.get('lastPrice', 0) or meta.get('iep', 0) or meta.get('previousClose', 0) or 0)
-                prev = float(meta.get('previousClose', 0) or price)
-                chg = round(float(meta.get('change', 0) or (price - prev)), 2)
+                open_p = float(meta.get('lastPrice', 0) or meta.get('iep', 0) or meta.get('previousClose', 0) or 0)
+                prev = float(meta.get('previousClose', 0) or open_p)
+                chg = round(float(meta.get('change', 0) or (open_p - prev)), 2)
                 pct = round(float(meta.get('pChange', 0) or 0), 2)
                 vol = int(meta.get('finalQuantity', 0) or 0)
                 tick = {
                     "symbol": sym,
                     "full_symbol": f"{sym}.NS",
-                    "price": price,
+                    "price": open_p,
+                    "open_price": open_p,
                     "prev_close": prev,
                     "change": chg,
                     "change_pct": pct,
                     "volume": vol,
                     "ts": now_ts,
-                    "source": "NSE Official Website",
+                    "source": "NSE Pre-Open Auction",
+                    "is_preopen": True,
                 }
                 self.universe_cache[sym] = tick
                 self.universe_cache[f"{sym}.NS"] = tick
@@ -287,6 +289,7 @@ class NSEDirectEngine:
                 "volume": v.get("volume", 0),
                 "ts": now_ts,
                 "source": "NSE Exchange Close",
+                "is_preopen": True,
             }
             stock_map[k] = t_obj
             stock_map[clean] = t_obj
@@ -319,6 +322,7 @@ class NSEDirectEngine:
                     "volume": vol,
                     "ts": now_ts,
                     "source": "NSE Official Website",
+                    "is_live_continuous": True,
                 }
 
                 if idx_name == "NIFTY 50":
@@ -353,6 +357,7 @@ class NSEDirectEngine:
             "volume": sensex_base.get("volume", 0),
             "ts": now_ts,
             "source": "BSE Exchange Live",
+            "is_live_continuous": True,
         }
         stock_map["^BSESN"] = sensex_obj
         stock_map["BSESN"] = sensex_obj
@@ -361,77 +366,83 @@ class NSEDirectEngine:
         else:
             indices_list.append(sensex_obj)
 
-        # 2. Official Gainers (/api/live-analysis-variations?index=gainers)
+        # 2. Official Gainers with Continuous Live LTP (/api/live-analysis-variations?index=gainers)
         gainers_data = self._get_api('/api/live-analysis-variations?index=gainers')
         if gainers_data and isinstance(gainers_data, dict):
-            for grp in ['NIFTY', 'BANKNIFTY', 'NIFTYNEXT50', 'FOSec', 'allSec']:
+            for grp in ['NIFTY', 'BANKNIFTY', 'NIFTYNEXT50', 'SecGtr20', 'SecLwr20', 'FOSec', 'allSec']:
                 for item in gainers_data.get(grp, {}).get('data', []):
                     sym = item.get('symbol')
                     if not sym:
                         continue
                     price = float(item.get('ltp', 0) or 0)
                     prev_close = float(item.get('prev_price', price) or price)
-                    chg = round(float(item.get('net_price', 0) or (price - prev_close)), 2)
-                    pct = round(float(item.get('perChange', 0) or 0), 2)
+                    chg = round(price - prev_close, 2)
+                    pct = round(float(item.get('perChange', 0) or ((chg / prev_close * 100) if prev_close else 0.0)), 2)
                     vol = int(item.get('trade_quantity', 0) or 0)
                     tick = {
                         "symbol": sym,
                         "full_symbol": f"{sym}.NS",
                         "price": price,
+                        "open_price": float(item.get('open_price', 0) or 0),
+                        "high_price": float(item.get('high_price', 0) or 0),
+                        "low_price": float(item.get('low_price', 0) or 0),
                         "prev_close": prev_close,
                         "change": chg,
                         "change_pct": pct,
                         "volume": vol,
                         "ts": now_ts,
-                        "source": "NSE Official Website",
+                        "source": "NSE Live Variations",
+                        "is_live_continuous": True,
                     }
-                    if sym not in stock_map:
-                        stock_map[sym] = tick
-                        stock_map[f"{sym}.NS"] = tick
+                    stock_map[sym] = tick
+                    stock_map[f"{sym}.NS"] = tick
                     if grp == 'NIFTY' or not gainers_list:
                         gainers_list.append(tick)
 
-        # 3. Official Losers (/api/live-analysis-variations?index=loosers)
+        # 3. Official Losers with Continuous Live LTP (/api/live-analysis-variations?index=loosers)
         losers_data = self._get_api('/api/live-analysis-variations?index=loosers')
         if losers_data and isinstance(losers_data, dict):
-            for grp in ['NIFTY', 'BANKNIFTY', 'NIFTYNEXT50', 'FOSec', 'allSec']:
+            for grp in ['NIFTY', 'BANKNIFTY', 'NIFTYNEXT50', 'SecGtr20', 'SecLwr20', 'FOSec', 'allSec']:
                 for item in losers_data.get(grp, {}).get('data', []):
                     sym = item.get('symbol')
                     if not sym:
                         continue
                     price = float(item.get('ltp', 0) or 0)
                     prev_close = float(item.get('prev_price', price) or price)
-                    chg = round(float(item.get('net_price', 0) or (price - prev_close)), 2)
-                    pct = round(float(item.get('perChange', 0) or 0), 2)
+                    chg = round(price - prev_close, 2)
+                    pct = round(float(item.get('perChange', 0) or ((chg / prev_close * 100) if prev_close else 0.0)), 2)
                     vol = int(item.get('trade_quantity', 0) or 0)
                     tick = {
                         "symbol": sym,
                         "full_symbol": f"{sym}.NS",
                         "price": price,
+                        "open_price": float(item.get('open_price', 0) or 0),
+                        "high_price": float(item.get('high_price', 0) or 0),
+                        "low_price": float(item.get('low_price', 0) or 0),
                         "prev_close": prev_close,
                         "change": chg,
                         "change_pct": pct,
                         "volume": vol,
                         "ts": now_ts,
-                        "source": "NSE Official Website",
+                        "source": "NSE Live Variations",
+                        "is_live_continuous": True,
                     }
-                    if sym not in stock_map:
-                        stock_map[sym] = tick
-                        stock_map[f"{sym}.NS"] = tick
+                    stock_map[sym] = tick
+                    stock_map[f"{sym}.NS"] = tick
                     if grp == 'NIFTY' or not losers_list:
                         losers_list.append(tick)
 
-        # 4. Volume Shakers (/api/live-analysis-most-active-securities?index=volume)
-        vol_data = self._get_api('/api/live-analysis-most-active-securities?index=volume')
-        if vol_data and isinstance(vol_data, dict) and 'data' in vol_data:
-            for item in vol_data['data']:
+        # 4. Most Active by Value (Heavyweights: RELIANCE, HDFCBANK, TCS, INFY, SBIN, etc.)
+        val_data = self._get_api('/api/live-analysis-most-active-securities?index=value')
+        if val_data and isinstance(val_data, dict) and 'data' in val_data:
+            for item in val_data['data']:
                 sym = item.get('symbol')
                 if not sym:
                     continue
                 price = float(item.get('lastPrice', 0) or 0)
                 prev_close = float(item.get('previousClose', price) or price)
-                chg = round(float(item.get('change', 0) or (price - prev_close)), 2)
-                pct = round(float(item.get('pChange', 0) or 0), 2)
+                chg = round(price - prev_close, 2)
+                pct = round(float(item.get('pChange', 0) or ((chg / prev_close * 100) if prev_close else 0.0)), 2)
                 vol = int(item.get('totalTradedVolume', 0) or item.get('quantityTraded', 0) or 0)
                 tick = {
                     "symbol": sym,
@@ -442,14 +453,41 @@ class NSEDirectEngine:
                     "change_pct": pct,
                     "volume": vol,
                     "ts": now_ts,
-                    "source": "NSE Official Website",
+                    "source": "NSE Most Active Value",
+                    "is_live_continuous": True,
                 }
-                if sym not in stock_map:
-                    stock_map[sym] = tick
-                    stock_map[f"{sym}.NS"] = tick
+                stock_map[sym] = tick
+                stock_map[f"{sym}.NS"] = tick
+
+        # 5. Volume Shakers (/api/live-analysis-most-active-securities?index=volume)
+        vol_data = self._get_api('/api/live-analysis-most-active-securities?index=volume')
+        if vol_data and isinstance(vol_data, dict) and 'data' in vol_data:
+            for item in vol_data['data']:
+                sym = item.get('symbol')
+                if not sym:
+                    continue
+                price = float(item.get('lastPrice', 0) or 0)
+                prev_close = float(item.get('previousClose', price) or price)
+                chg = round(price - prev_close, 2)
+                pct = round(float(item.get('pChange', 0) or ((chg / prev_close * 100) if prev_close else 0.0)), 2)
+                vol = int(item.get('totalTradedVolume', 0) or item.get('quantityTraded', 0) or 0)
+                tick = {
+                    "symbol": sym,
+                    "full_symbol": f"{sym}.NS",
+                    "price": price,
+                    "prev_close": prev_close,
+                    "change": chg,
+                    "change_pct": pct,
+                    "volume": vol,
+                    "ts": now_ts,
+                    "source": "NSE Most Active Volume",
+                    "is_live_continuous": True,
+                }
+                stock_map[sym] = tick
+                stock_map[f"{sym}.NS"] = tick
                 volume_list.append(tick)
 
-        # 5. ETFs (/api/etf)
+        # 6. ETFs (/api/etf)
         etf_data = self._get_api('/api/etf')
         if etf_data and isinstance(etf_data, dict) and 'data' in etf_data:
             for item in etf_data['data']:
@@ -458,8 +496,8 @@ class NSEDirectEngine:
                     continue
                 price = float(item.get('ltP', 0) or 0)
                 prev_close = float(item.get('prevClose', price) or price)
-                chg = round(float(item.get('chn', 0) or (price - prev_close)), 2)
-                pct = round(float(item.get('per', 0) or 0), 2)
+                chg = round(price - prev_close, 2)
+                pct = round(float(item.get('per', 0) or ((chg / prev_close * 100) if prev_close else 0.0)), 2)
                 vol = int(item.get('qty', 0) or 0)
                 tick = {
                     "symbol": sym,
@@ -470,11 +508,11 @@ class NSEDirectEngine:
                     "change_pct": pct,
                     "volume": vol,
                     "ts": now_ts,
-                    "source": "NSE Official Website",
+                    "source": "NSE ETF Live",
+                    "is_live_continuous": True,
                 }
-                if sym not in stock_map:
-                    stock_map[sym] = tick
-                    stock_map[f"{sym}.NS"] = tick
+                stock_map[sym] = tick
+                stock_map[f"{sym}.NS"] = tick
 
         if stock_map:
             self.cache = {
@@ -587,6 +625,7 @@ def _fetch_angel_ticks_sync(symbols: List[str]) -> List[Dict]:
                         "volume": 0,
                         "ts": now_ts,
                         "source": "AngelOne SmartAPI",
+                        "is_live_continuous": True,
                     })
             except Exception as e:
                 logger.debug(f"Angel LTP error for {sym}: {e}")
@@ -598,52 +637,89 @@ def _fetch_angel_ticks_sync(symbols: List[str]) -> List[Dict]:
 
 
 def _download_yahoo_ticks_sync(symbols: List[str]) -> List[Dict]:
-    """Fetch live quotes via Yahoo Finance."""
+    """Fetch live quotes via Yahoo Finance with fast single-stock resolution."""
     if not symbols:
         return []
 
     results = []
+
+    # If single symbol, try instantaneous fast_info first
+    if len(symbols) == 1:
+        sym = symbols[0]
+        full_sym = sym if ("." in sym or "^" in sym) else f"{sym}.NS"
+        clean_sym = sym.replace("^", "").replace(".NS", "").replace(".BO", "")
+        try:
+            t = yf.Ticker(full_sym)
+            fi = getattr(t, 'fast_info', None)
+            if fi:
+                lp = getattr(fi, 'last_price', None)
+                if lp and float(lp) > 0:
+                    lp = round(float(lp), 2)
+                    pc = round(float(getattr(fi, 'previous_close', lp) or lp), 2)
+                    ch = round(lp - pc, 2)
+                    pct = round((ch / pc * 100), 2) if pc else 0.0
+                    vol = int(getattr(fi, 'last_volume', 0) or getattr(fi, 'three_month_average_volume', 0) or 0)
+                    return [{
+                        "symbol": clean_sym,
+                        "full_symbol": full_sym,
+                        "price": lp,
+                        "prev_close": pc,
+                        "change": ch,
+                        "change_pct": pct,
+                        "volume": vol,
+                        "ts": int(time.time() * 1000),
+                        "source": "Yahoo Finance Realtime",
+                        "is_live_continuous": True,
+                    }]
+        except Exception as e:
+            logger.debug(f"fast_info lookup failed for {sym}: {e}")
+
+    ns_map = {
+        (s if ("." in s or "^" in s) else f"{s}.NS"): s
+        for s in symbols
+    }
+    yf_symbols = list(ns_map.keys())
+
     try:
-        df = yf.download(symbols, period="5d", progress=False, timeout=5)
-        if df is None or df.empty:
-            return []
+        df = yf.download(yf_symbols, period="5d", progress=False, timeout=5)
+        if df is not None and not df.empty:
+            now_ts = int(time.time() * 1000)
 
-        now_ts = int(time.time() * 1000)
+            for full_s, orig_s in ns_map.items():
+                try:
+                    if isinstance(df.columns, pd.MultiIndex):
+                        if "Close" not in df or full_s not in df["Close"]:
+                            continue
+                        c_series = df["Close"][full_s].dropna()
+                        v_series = df["Volume"][full_s].dropna() if "Volume" in df and full_s in df["Volume"] else None
+                    else:
+                        c_series = df["Close"].dropna()
+                        v_series = df["Volume"].dropna() if "Volume" in df else None
 
-        for sym in symbols:
-            try:
-                if isinstance(df.columns, pd.MultiIndex):
-                    if "Close" not in df or sym not in df["Close"]:
+                    if c_series.empty:
                         continue
-                    c_series = df["Close"][sym].dropna()
-                    v_series = df["Volume"][sym].dropna() if "Volume" in df and sym in df["Volume"] else None
-                else:
-                    c_series = df["Close"].dropna()
-                    v_series = df["Volume"].dropna() if "Volume" in df else None
 
-                if c_series.empty:
+                    price = round(float(c_series.iloc[-1]), 2)
+                    prev_close = round(float(c_series.iloc[-2]), 2) if len(c_series) >= 2 else price
+                    change = round(price - prev_close, 2)
+                    change_pct = round((change / prev_close * 100), 2) if prev_close else 0.0
+                    volume = int(v_series.iloc[-1]) if v_series is not None and not v_series.empty else 0
+                    clean_sym = orig_s.replace("^", "").replace(".NS", "").replace(".BO", "")
+
+                    results.append({
+                        "symbol": clean_sym,
+                        "full_symbol": full_s,
+                        "price": price,
+                        "prev_close": prev_close,
+                        "change": change,
+                        "change_pct": change_pct,
+                        "volume": volume,
+                        "ts": now_ts,
+                        "source": "Yahoo Finance",
+                        "is_live_continuous": True,
+                    })
+                except Exception:
                     continue
-
-                price = round(float(c_series.iloc[-1]), 2)
-                prev_close = round(float(c_series.iloc[-2]), 2) if len(c_series) >= 2 else price
-                change = round(price - prev_close, 2)
-                change_pct = round((change / prev_close * 100), 2) if prev_close else 0.0
-                volume = int(v_series.iloc[-1]) if v_series is not None and not v_series.empty else 0
-                clean_sym = sym.replace("^", "").replace(".NS", "").replace(".BO", "")
-
-                results.append({
-                    "symbol": clean_sym,
-                    "full_symbol": sym,
-                    "price": price,
-                    "prev_close": prev_close,
-                    "change": change,
-                    "change_pct": change_pct,
-                    "volume": volume,
-                    "ts": now_ts,
-                    "source": "Yahoo Finance",
-                })
-            except Exception:
-                continue
     except Exception as e:
         logger.error(f"Yahoo Finance batch download error: {e}")
 
@@ -652,21 +728,22 @@ def _download_yahoo_ticks_sync(symbols: List[str]) -> List[Dict]:
 
 def _fetch_ticks_combined_sync(symbols: List[str]) -> List[Dict]:
     """
-    Tier 1: Direct Official NSE India Website API (Fastest, zero blocks, real exchange data)
-    Tier 2: Angel One SmartAPI (if authenticated)
-    Tier 3: Yahoo Finance (yfinance parallel batch — strictly preserved)
-    Tier 4: Authentic Real Exchange Market Close Data (Guarantees zero-blank UI)
+    Tier 1: Direct Official NSE India Website API (Continuous Live Feed: Gainers/Losers/Most Active Value & Volume/ETFs)
+    Tier 2: Angel One SmartAPI (Tick-by-tick real-time continuous exchange LTP)
+    Tier 3: Yahoo Finance (Real-time fast_info / batch download — strictly preserved)
+    Tier 4: NSE Pre-Open Auction / Authentic Exchange Close Fallback
     """
     results_map: Dict[str, Dict] = {}
 
-    # 1. Fetch from Direct NSE Website Engine (Official Exchange Data)
+    # 1. Fetch from Direct NSE Website Engine (Official Continuous Live Exchange Data)
     try:
         nse_data = nse_direct_engine.fetch_all_nse_live()
         cached_stocks = nse_data.get("stocks", {})
         for s in symbols:
             clean = s.replace("^", "").replace(".NS", "").replace(".BO", "")
             match = cached_stocks.get(s) or cached_stocks.get(clean) or cached_stocks.get(f"{clean}.NS") or cached_stocks.get(f"^{clean}")
-            if match:
+            # ONLY accept match if it is genuine continuous live exchange data, NOT pre-open auction price!
+            if match and match.get("is_live_continuous"):
                 results_map[s] = match
     except Exception as e:
         logger.debug(f"NSE direct fetch skipped: {e}")
@@ -677,44 +754,64 @@ def _fetch_ticks_combined_sync(symbols: List[str]) -> List[Dict]:
         try:
             angel_ticks = _fetch_angel_ticks_sync(missing_symbols)
             for t in angel_ticks:
-                results_map[t["full_symbol"]] = t
+                if t.get("price", 0) > 0:
+                    results_map[t["full_symbol"]] = t
+                    clean = t.get("symbol", "")
+                    if clean:
+                        results_map[clean] = t
         except Exception as e:
             logger.debug(f"Angel One fetch skipped: {e}")
 
-    # 3. Fetch missing symbols via Yahoo Finance (preserved as fallback)
+    # 3. Fetch missing symbols via Yahoo Finance (fast_info / batch)
     missing_symbols = [s for s in symbols if s not in results_map]
     if missing_symbols:
         try:
             yahoo_ticks = _download_yahoo_ticks_sync(missing_symbols)
             for t in yahoo_ticks:
-                results_map[t["full_symbol"]] = t
+                if t.get("price", 0) > 0:
+                    results_map[t["full_symbol"]] = t
+                    clean = t.get("symbol", "")
+                    if clean:
+                        results_map[clean] = t
         except Exception as e:
             logger.debug(f"Yahoo Finance fallback skipped: {e}")
 
-    # 4. Reliable Exchange Fallback (Prevents blank tables when Render IP blocked / weekend)
+    # 4. Reliable Exchange Fallback (if outside trading hours or network fails, use cached preopen or static close)
     now_ts = int(time.time() * 1000)
     for s in symbols:
         if s not in results_map:
-            base = REAL_EXCHANGE_PRICES.get(s) or REAL_EXCHANGE_PRICES.get(f"{s}.NS")
-            if base:
-                price = base["price"]
-                prev = base["prev_close"]
-                chg = round(price - prev, 2)
-                pct = round((chg / prev * 100), 2) if prev else 0.0
-                clean = s.replace("^", "").replace(".NS", "").replace(".BO", "")
-                results_map[s] = {
-                    "symbol": clean,
-                    "full_symbol": s,
-                    "price": price,
-                    "prev_close": prev,
-                    "change": chg,
-                    "change_pct": pct,
-                    "volume": base.get("volume", 0),
-                    "ts": now_ts,
-                    "source": "NSE Exchange Close",
-                }
+            clean = s.replace("^", "").replace(".NS", "").replace(".BO", "")
+            cached_match = cached_stocks.get(s) or cached_stocks.get(clean) or cached_stocks.get(f"{clean}.NS")
+            if cached_match and cached_match.get("price", 0) > 0:
+                results_map[s] = cached_match
+            else:
+                base = REAL_EXCHANGE_PRICES.get(s) or REAL_EXCHANGE_PRICES.get(f"{clean}.NS")
+                if base:
+                    price = base["price"]
+                    prev = base["prev_close"]
+                    chg = round(price - prev, 2)
+                    pct = round((chg / prev * 100), 2) if prev else 0.0
+                    results_map[s] = {
+                        "symbol": clean,
+                        "full_symbol": s,
+                        "price": price,
+                        "prev_close": prev,
+                        "change": chg,
+                        "change_pct": pct,
+                        "volume": base.get("volume", 0),
+                        "ts": now_ts,
+                        "source": "NSE Exchange Close",
+                    }
 
-    return list(results_map.values())
+    seen_symbols = set()
+    unique_results = []
+    for t in results_map.values():
+        sym = t.get("symbol")
+        if sym and sym not in seen_symbols:
+            seen_symbols.add(sym)
+            unique_results.append(t)
+
+    return unique_results
 
 
 def _fetch_historical_sync(symbol: str, period: str) -> List[Dict]:

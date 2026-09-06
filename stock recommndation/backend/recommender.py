@@ -702,13 +702,19 @@ class RecommendationEngine:
             if cagr_5y > 0:
                 reasons.append(f"5-Year Track Record: **+{cagr_5y}% 5Y CAGR** analyzed over 5 years of historical data")
 
-            pos_ta = [s for s in analysis.get("technical", {}).get("signals", []) if s.get("impact") == "+"]
+            raw_ta = analysis.get("technical", {}).get("signals", [])
+            pos_ta = [s for s in raw_ta if (isinstance(s, dict) and s.get("impact") == "+") or isinstance(s, str)]
             if pos_ta:
-                reasons.append(f"Technical: {pos_ta[0]['label']} ({pos_ta[0]['value']})")
+                first = pos_ta[0]
+                ta_str = f"{first.get('label', '')} ({first.get('value', '')})" if isinstance(first, dict) else str(first)
+                reasons.append(f"Technical: {ta_str}")
 
-            pos_fa = [s for s in analysis.get("fundamental", {}).get("signals", []) if s.get("impact") == "+"]
+            raw_fa = analysis.get("fundamental", {}).get("signals", [])
+            pos_fa = [s for s in raw_fa if (isinstance(s, dict) and s.get("impact") == "+") or isinstance(s, str)]
             if pos_fa:
-                reasons.append(f"Fundamental: {pos_fa[0]['label']} ({pos_fa[0]['value']})")
+                first = pos_fa[0]
+                fa_str = f"{first.get('label', '')} ({first.get('value', '')})" if isinstance(first, dict) else str(first)
+                reasons.append(f"Fundamental: {fa_str}")
 
             if gap_reason:
                 reasons.append(gap_reason)
