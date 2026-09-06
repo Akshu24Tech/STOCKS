@@ -226,6 +226,7 @@ export default function App() {
       {selectedStock && (
         <TickertapeStockModal
           symbol={selectedStock}
+          ticks={ticks}
           onClose={() => setSelectedStock(null)}
         />
       )}
