@@ -1,0 +1,15 @@
+services:
+  # Full-Stack Web Service (Backend + Frontend in 1 Docker Container)
+  - type: web
+    name: indiastocks-ai
+    runtime: docker
+    rootDir: stock recommndation
+    dockerfilePath: Dockerfile
+    dockerContext: .
+    plan: free
+    region: singapore
+    envVars:
+      - key: PORT
+        value: 10000
+    healthCheckPath: /health
+    autoDeploy: true
