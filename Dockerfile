@@ -10,8 +10,8 @@ FROM node:20-alpine AS frontend-builder
 WORKDIR /app
 
 # Install dependencies
-COPY ["stock recommndation/package*.json", "./"]
-RUN npm install
+COPY ["stock recommndation/package*.json", "stock recommndation/.npmrc*", "./"]
+RUN npm install --legacy-peer-deps
 
 # Copy frontend source and build
 COPY ["stock recommndation/index.html", "stock recommndation/vite.config.js", "stock recommndation/tsconfig.json", "./"]
