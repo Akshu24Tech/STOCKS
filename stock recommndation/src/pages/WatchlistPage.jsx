@@ -20,7 +20,7 @@ const QUICK_SUGGESTIONS = [
 ]
 
 export default function WatchlistPage() {
-  const { ticks } = useApp()
+  const { ticks, openStockModal } = useApp()
   const navigate = useNavigate()
 
   const [watchlist, setWatchlist] = useState(() => {
@@ -269,7 +269,11 @@ export default function WatchlistPage() {
                   )
 
                   return (
-                    <tr key={item.symbol}>
+                    <tr
+                      key={item.symbol}
+                      style={{ cursor: 'pointer' }}
+                      onClick={() => openStockModal(item.symbol)}
+                    >
                       <td>
                         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
                           <div>

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "nse-mcp": {
+      "command": "c:\\Users\\HP\\OneDrive\\Documents\\GitHub\\STOCKS\\.venv\\Scripts\\nse-mcp.exe",
+      "args": []
+    }
+  }
+}

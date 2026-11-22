@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IndiaStocks AI — Daily Report 2026-09-25</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0d1117; color: #e6edf3; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #161b22 0%, #0d1117 100%); padding: 36px 40px; border-bottom: 1px solid #30363d; }
+  .header h1 { font-size: 2em; font-weight: 800; color: #58a6ff; }
+  .header p { color: #8b949e; margin-top: 4px; }
+  .container { max-width: 1400px; margin: 0 auto; padding: 30px 20px; }
+  .section { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 24px; margin-bottom: 28px; }
+  .section h2 { font-size: 1.2em; font-weight: 700; color: #58a6ff; border-bottom: 1px solid #30363d; padding-bottom: 10px; margin-bottom: 18px; }
+  .stat-row { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+  .stat-card { background: #0d1117; border: 1px solid #30363d; border-radius: 10px; padding: 18px 24px; flex: 1; min-width: 140px; text-align: center; }
+  .stat-val { font-size: 2em; font-weight: 800; color: #e6edf3; }
+  .stat-label { font-size: 0.8em; color: #8b949e; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .mood-badge { display: inline-block; padding: 6px 20px; border-radius: 20px; font-size: 1.1em; font-weight: 700; margin-top: 8px; background: #FFD74022; color: #FFD740; border: 1px solid #FFD74055; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.88em; }
+  .data-table th { background: #0d1117; color: #8b949e; padding: 10px 12px; text-align: left; border-bottom: 1px solid #30363d; font-weight: 600; font-size: 0.82em; text-transform: uppercase; position: sticky; top: 0; }
+  .data-table td { padding: 9px 12px; border-bottom: 1px solid #21262d; vertical-align: middle; }
+  .data-table tr:hover { background: #1c2128; }
+  .table-wrapper { overflow-x: auto; }
+  .sector-table { width: 100%; border-collapse: collapse; font-size: 0.9em; }
+  .sector-table td, .sector-table th { padding: 8px 14px; border-bottom: 1px solid #21262d; }
+  .sector-table th { color: #8b949e; font-size: 0.8em; text-transform: uppercase; }
+  ul.action-list { list-style: none; padding: 0; }
+  ul.action-list li { padding: 10px 16px; border-left: 3px solid #30363d; margin-bottom: 8px; background: #0d1117; border-radius: 0 8px 8px 0; }
+  .footer { text-align: center; color: #8b949e; font-size: 0.82em; padding: 24px; border-top: 1px solid #30363d; margin-top: 20px; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>📊 IndiaStocks AI — Daily Analysis Report</h1>
+  <p>Generated: 2026-09-25 11:03:44 IST &nbsp;|&nbsp; Universe: 50 stocks (NIFTY 100 subset) &nbsp;|&nbsp; Data source: Yahoo Finance (yfinance)</p>
+</div>
+<div class="container">
+
+  <!-- Market Overview -->
+  <div class="section">
+    <h2>Market Overview</h2>
+    <div class="stat-row">
+      <div class="stat-card"><div class="stat-val">50</div><div class="stat-label">Stocks Analyzed</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:#00E676">0</div><div class="stat-label">Strong Buy</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:#69F0AE">1</div><div class="stat-label">Buy</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:#FFD740">33</div><div class="stat-label">Hold</div></div>
+      <div class="stat-card"><div class="stat-val" style="color:#FF5252">16</div><div class="stat-label">Sell</div></div>
+      <div class="stat-card"><div class="stat-val">45.1</div><div class="stat-label">Avg Technical Score</div></div>
+    </div>
+    <div>Market Mood: <span class="mood-badge">Neutral</span></div>
+  </div>
+
+  <!-- Yesterday's Signal Performance -->
+  <div class="section">
+    <h2>Yesterday's Signal Performance (Live Tracking)</h2>
+    <p style='color:#888'>No previous day signals to evaluate yet.</p>
+  </div>
+
+  
+
+  <!-- Today's Action List -->
+  <div class="section">
+    <h2>Today's Actionable Signals</h2>
+    <ul class="action-list"><li><b>HINDUNILVR</b> (FMCG) — <span style="background:#69F0AE;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Buy</span> | Score: 60.5 | RSI: 41.44 | Price: Rs 1924.4</li><li><b>SBIN</b> (Banking) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 39.84 | Price: Rs 980.0</li><li><b>KOTAKBANK</b> (Banking) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 37.5 | RSI: 32.91 | Price: Rs 405.95</li><li><b>SHRIRAMFIN</b> (NBFC) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 34.91 | Price: Rs 993.6</li><li><b>TECHM</b> (IT) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 35.5 | RSI: 46.29 | Price: Rs 1547.6</li><li><b>PERSISTENT</b> (IT) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 33.18 | Price: Rs 5348.0</li><li><b>BRITANNIA</b> (FMCG) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 35.77 | Price: Rs 4910.0</li><li><b>DIVISLAB</b> (Pharma) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 27.5 | RSI: 60.84 | Price: Rs 9594.5</li><li><b>NTPC</b> (Energy) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 38.89 | Price: Rs 325.4</li><li><b>JSWSTEEL</b> (Metals) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 39.12 | Price: Rs 1275.0</li><li><b>HINDALCO</b> (Metals) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 35.5 | RSI: 42.65 | Price: Rs 978.6</li><li><b>LT</b> (Engineering) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 36.1 | Price: Rs 3850.4</li><li><b>HAL</b> (Defence) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 35.5 | RSI: 45.46 | Price: Rs 4784.6</li><li><b>BEL</b> (Defence) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 39.74 | Price: Rs 391.45</li><li><b>TITAN</b> (Consumer) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 35.5 | RSI: 38.07 | Price: Rs 4849.0</li><li><b>GRASIM</b> (Cement) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 30.5 | RSI: 32.66 | Price: Rs 3177.8</li><li><b>ADANIENT</b> (Conglomerate) — <span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span> | Score: 35.5 | RSI: 47.93 | Price: Rs 2924.0</li></ul>
+  </div>
+
+  <!-- Sector Summary -->
+  <div class="section">
+    <h2>Sector Summary (Avg Technical Score)</h2>
+    <table class="sector-table">
+      <thead><tr><th>Sector</th><th>Stocks</th><th>Avg Score</th></tr></thead>
+      <tbody><tr><td>Utilities</td><td>1</td><td><b style='color:#FFD740'>55.5</b></td></tr><tr><td>Auto</td><td>5</td><td><b style='color:#FFD740'>53.5</b></td></tr><tr><td>Healthcare</td><td>1</td><td><b style='color:#FFD740'>52.5</b></td></tr><tr><td>Mining</td><td>1</td><td><b style='color:#FFD740'>52.5</b></td></tr><tr><td>FMCG</td><td>7</td><td><b style='color:#FFD740'>49.8</b></td></tr><tr><td>IT</td><td>6</td><td><b style='color:#FFD740'>45.5</b></td></tr><tr><td>Conglomerate</td><td>2</td><td><b style='color:#FFD740'>45.5</b></td></tr><tr><td>Energy</td><td>3</td><td><b style='color:#FFD740'>45.5</b></td></tr><tr><td>Pharma</td><td>4</td><td><b style='color:#FFD740'>44.0</b></td></tr><tr><td>Banking</td><td>5</td><td><b style='color:#FFD740'>43.3</b></td></tr><tr><td>Cement</td><td>2</td><td><b style='color:#FFD740'>43.0</b></td></tr><tr><td>NBFC</td><td>3</td><td><b style='color:#FFD740'>42.2</b></td></tr><tr><td>Consumer</td><td>2</td><td><b style='color:#FFD740'>40.5</b></td></tr><tr><td>Retail</td><td>1</td><td><b style='color:#FFD740'>40.5</b></td></tr><tr><td>Telecom</td><td>1</td><td><b style='color:#FFD740'>40.5</b></td></tr><tr><td>Metals</td><td>3</td><td><b style='color:#FFD740'>37.8</b></td></tr><tr><td>Defence</td><td>2</td><td><b style='color:#FFD740'>33.0</b></td></tr><tr><td>Engineering</td><td>1</td><td><b style='color:#FFD740'>30.5</b></td></tr></tbody>
+    </table>
+  </div>
+
+  <!-- Full Stock Data -->
+  <div class="section">
+    <h2>Full NIFTY 100 Stock Scores (2026-09-25)</h2>
+    <p style="color:#8b949e;font-size:0.85em;margin-bottom:14px;">
+      <b>Data evaluated per stock:</b> Daily Close (RSI/MACD/BB/MA), High+Low (ATR trailing stop), Volume (surge signal) &nbsp;|&nbsp;
+      <b>Score = Baseline 50 + RSI ± MACD ± BB ± MA trend ± Volume</b>
+    </p>
+    <div class="table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Symbol</th><th>Sector</th><th>Price</th><th>Day %</th>
+            <th>Score</th><th>Rating</th><th>RSI (14)</th>
+            <th>MACD</th><th>BB Pos%</th>
+            <th>Above MA200</th><th>Golden Cross</th>
+            <th>ATR(14)</th><th>1Y CAGR</th>
+          </tr>
+        </thead>
+        <tbody><tr>
+            <td><b>HINDUNILVR</b></td>
+            <td><span style='color:#888;font-size:0.85em'>FMCG</span></td>
+            <td>Rs 1924.4</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.47%</span></td>
+            <td><b>60.5</b></td>
+            <td><span style="background:#69F0AE;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Buy</span></td>
+            <td style='color:#aaa'>41.44 (Neutral)</td>
+            <td>🟢 +3.28</td>
+            <td>17%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>26.79</td>
+            <td>-16.7%</td>
+        </tr><tr>
+            <td><b>ICICIBANK</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Banking</span></td>
+            <td>Rs 1328.2</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.47%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>11.54 (Oversold)</td>
+            <td>🔴 -5.01</td>
+            <td>18%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>17.7</td>
+            <td>+12.7%</td>
+        </tr><tr>
+            <td><b>BAJAJFINSV</b></td>
+            <td><span style='color:#888;font-size:0.85em'>NBFC</span></td>
+            <td>Rs 1761.9</td>
+            <td><span style="color:#FF5252;font-weight:600;">-4.58%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>18.05 (Oversold)</td>
+            <td>🔴 -13.82</td>
+            <td>0%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>36.15</td>
+            <td>+1.9%</td>
+        </tr><tr>
+            <td><b>TCS</b></td>
+            <td><span style='color:#888;font-size:0.85em'>IT</span></td>
+            <td>Rs 2081.1</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.28%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>22.15 (Oversold)</td>
+            <td>🔴 -14.38</td>
+            <td>16%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>57.72</td>
+            <td>-20.0%</td>
+        </tr><tr>
+            <td><b>INFY</b></td>
+            <td><span style='color:#888;font-size:0.85em'>IT</span></td>
+            <td>Rs 1001.9</td>
+            <td><span style="color:#FF5252;font-weight:600;">-1.24%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>24.76 (Oversold)</td>
+            <td>🔴 -5.22</td>
+            <td>15%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>24.05</td>
+            <td>-35.3%</td>
+        </tr><tr>
+            <td><b>ITC</b></td>
+            <td><span style='color:#888;font-size:0.85em'>FMCG</span></td>
+            <td>Rs 267.6</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.15%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>56.51 (Neutral)</td>
+            <td>🟢 +1.42</td>
+            <td>77%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>4.2</td>
+            <td>-13.3%</td>
+        </tr><tr>
+            <td><b>DABUR</b></td>
+            <td><span style='color:#888;font-size:0.85em'>FMCG</span></td>
+            <td>Rs 384.35</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.35%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>59.25 (Neutral)</td>
+            <td>🟢 +1.99</td>
+            <td>61%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>6.84</td>
+            <td>-18.0%</td>
+        </tr><tr>
+            <td><b>BAJAJ-AUTO</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Auto</span></td>
+            <td>Rs 11264.0</td>
+            <td><span style="color:#FF5252;font-weight:600;">-1.19%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>25.17 (Oversold)</td>
+            <td>🔴 -73.70</td>
+            <td>12%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>169.71</td>
+            <td>+58.2%</td>
+        </tr><tr>
+            <td><b>EICHERMOT</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Auto</span></td>
+            <td>Rs 7338.0</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.01%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>26.51 (Oversold)</td>
+            <td>🔴 -25.83</td>
+            <td>13%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>97.75</td>
+            <td>+12.1%</td>
+        </tr><tr>
+            <td><b>HEROMOTOCO</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Auto</span></td>
+            <td>Rs 5337.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.77%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>53.75 (Neutral)</td>
+            <td>🟢 +8.79</td>
+            <td>56%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>96.64</td>
+            <td>+4.7%</td>
+        </tr><tr>
+            <td><b>M&M</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Auto</span></td>
+            <td>Rs 2992.9</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.34%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>21.0 (Oversold)</td>
+            <td>🔴 -8.15</td>
+            <td>14%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>51.73</td>
+            <td>-6.4%</td>
+        </tr><tr>
+            <td><b>CIPLA</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Pharma</span></td>
+            <td>Rs 1408.9</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.71%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>54.78 (Neutral)</td>
+            <td>🟢 +5.36</td>
+            <td>80%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>23.56</td>
+            <td>+29.8%</td>
+        </tr><tr>
+            <td><b>RELIANCE</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Conglomerate</span></td>
+            <td>Rs 1219.8</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.05%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>22.87 (Oversold)</td>
+            <td>🔴 -3.71</td>
+            <td>16%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>18.14</td>
+            <td>-24.3%</td>
+        </tr><tr>
+            <td><b>ONGC</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Energy</span></td>
+            <td>Rs 236.05</td>
+            <td><span style="color:#FF5252;font-weight:600;">-1.23%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>53.85 (Neutral)</td>
+            <td>🟢 +0.59</td>
+            <td>63%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>4.23</td>
+            <td>-22.6%</td>
+        </tr><tr>
+            <td><b>POWERGRID</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Utilities</span></td>
+            <td>Rs 268.3</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.71%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>52.47 (Neutral)</td>
+            <td>🟢 +0.61</td>
+            <td>67%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>4.34</td>
+            <td>-16.2%</td>
+        </tr><tr>
+            <td><b>ULTRACEMCO</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Cement</span></td>
+            <td>Rs 11120.0</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.31%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>41.02 (Neutral)</td>
+            <td>🟢 +33.18</td>
+            <td>51%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>190.21</td>
+            <td>+2.5%</td>
+        </tr><tr>
+            <td><b>TATACONSUM</b></td>
+            <td><span style='color:#888;font-size:0.85em'>FMCG</span></td>
+            <td>Rs 983.9</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.24%</span></td>
+            <td><b>55.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>36.58 (Neutral)</td>
+            <td>🟢 +1.06</td>
+            <td>18%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>15.26</td>
+            <td>-11.5%</td>
+        </tr><tr>
+            <td><b>HDFCBANK</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Banking</span></td>
+            <td>Rs 731.45</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.35%</span></td>
+            <td><b>52.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>59.89 (Neutral)</td>
+            <td>🟢 +4.12</td>
+            <td>77%</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>13.07</td>
+            <td>-9.4%</td>
+        </tr><tr>
+            <td><b>APOLLOHOSP</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Healthcare</span></td>
+            <td>Rs 8873.5</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.17%</span></td>
+            <td><b>52.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>54.49 (Neutral)</td>
+            <td>🟢 +11.62</td>
+            <td>61%</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>146.86</td>
+            <td>+36.3%</td>
+        </tr><tr>
+            <td><b>COALINDIA</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Mining</span></td>
+            <td>Rs 424.9</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.69%</span></td>
+            <td><b>52.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>54.43 (Neutral)</td>
+            <td>🟢 +0.26</td>
+            <td>66%</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>7.81</td>
+            <td>-3.4%</td>
+        </tr><tr>
+            <td><b>HCLTECH</b></td>
+            <td><span style='color:#888;font-size:0.85em'>IT</span></td>
+            <td>Rs 1262.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+1.48%</span></td>
+            <td><b>50.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>45.41 (Neutral)</td>
+            <td>🟢 +1.14</td>
+            <td>47%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>34.86</td>
+            <td>-11.3%</td>
+        </tr><tr>
+            <td><b>MARICO</b></td>
+            <td><span style='color:#888;font-size:0.85em'>FMCG</span></td>
+            <td>Rs 812.2</td>
+            <td><span style="color:#FF5252;font-weight:600;">-1.50%</span></td>
+            <td><b>50.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>52.25 (Neutral)</td>
+            <td>🟢 +2.61</td>
+            <td>42%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>15.21</td>
+            <td>+16.7%</td>
+        </tr><tr>
+            <td><b>BPCL</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Energy</span></td>
+            <td>Rs 309.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.62%</span></td>
+            <td><b>50.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>45.89 (Neutral)</td>
+            <td>🟢 +0.49</td>
+            <td>45%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>6.63</td>
+            <td>+17.5%</td>
+        </tr><tr>
+            <td><b>DRREDDY</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Pharma</span></td>
+            <td>Rs 1201.2</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.07%</span></td>
+            <td><b>47.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>69.57 (Neutral)</td>
+            <td>🟢 +7.11</td>
+            <td>84%</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>22.26</td>
+            <td>-13.3%</td>
+        </tr><tr>
+            <td><b>TATASTEEL</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Metals</span></td>
+            <td>Rs 189.02</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.53%</span></td>
+            <td><b>47.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>55.24 (Neutral)</td>
+            <td>🟢 +0.58</td>
+            <td>86%</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>4.08</td>
+            <td>-3.7%</td>
+        </tr><tr>
+            <td><b>WIPRO</b></td>
+            <td><span style='color:#888;font-size:0.85em'>IT</span></td>
+            <td>Rs 163.67</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.02%</span></td>
+            <td><b>45.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>27.57 (Oversold)</td>
+            <td>🔴 -0.31</td>
+            <td>24%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>3.07</td>
+            <td>-22.9%</td>
+        </tr><tr>
+            <td><b>MARUTI</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Auto</span></td>
+            <td>Rs 12045.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.46%</span></td>
+            <td><b>45.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#00E676'>24.88 (Oversold)</td>
+            <td>🔴 -7.70</td>
+            <td>21%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>182.36</td>
+            <td>-8.2%</td>
+        </tr><tr>
+            <td><b>SUNPHARMA</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Pharma</span></td>
+            <td>Rs 1851.3</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.08%</span></td>
+            <td><b>45.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>39.67 (Neutral)</td>
+            <td>🟢 +0.40</td>
+            <td>34%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>28.07</td>
+            <td>+6.7%</td>
+        </tr><tr>
+            <td><b>ASIANPAINT</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Consumer</span></td>
+            <td>Rs 2424.6</td>
+            <td><span style="color:#00E676;font-weight:600;">+1.33%</span></td>
+            <td><b>45.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>37.49 (Neutral)</td>
+            <td>🟢 +1.27</td>
+            <td>27%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>37.49</td>
+            <td>+15.7%</td>
+        </tr><tr>
+            <td><b>AXISBANK</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Banking</span></td>
+            <td>Rs 1208.6</td>
+            <td><span style="color:#00E676;font-weight:600;">+1.86%</span></td>
+            <td><b>40.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>34.72 (Neutral)</td>
+            <td>🔴 -4.34</td>
+            <td>10%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>23.46</td>
+            <td>-2.0%</td>
+        </tr><tr>
+            <td><b>BAJFINANCE</b></td>
+            <td><span style='color:#888;font-size:0.85em'>NBFC</span></td>
+            <td>Rs 986.7</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.48%</span></td>
+            <td><b>40.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>33.93 (Neutral)</td>
+            <td>🔴 -3.98</td>
+            <td>2%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>23.13</td>
+            <td>+25.8%</td>
+        </tr><tr>
+            <td><b>NESTLEIND</b></td>
+            <td><span style='color:#888;font-size:0.85em'>FMCG</span></td>
+            <td>Rs 1352.4</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.10%</span></td>
+            <td><b>40.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>36.88 (Neutral)</td>
+            <td>🔴 -1.03</td>
+            <td>20%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>26.59</td>
+            <td>+26.6%</td>
+        </tr><tr>
+            <td><b>TRENT</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Retail</span></td>
+            <td>Rs 2692.3</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.29%</span></td>
+            <td><b>40.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>33.17 (Neutral)</td>
+            <td>🔴 -4.96</td>
+            <td>0%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>53.44</td>
+            <td>+34.2%</td>
+        </tr><tr>
+            <td><b>BHARTIARTL</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Telecom</span></td>
+            <td>Rs 1797.8</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.11%</span></td>
+            <td><b>40.5</b></td>
+            <td><span style="background:#FFD740;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Hold</span></td>
+            <td style='color:#aaa'>39.46 (Neutral)</td>
+            <td>🔴 -1.86</td>
+            <td>10%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>28.16</td>
+            <td>-1.5%</td>
+        </tr><tr>
+            <td><b>KOTAKBANK</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Banking</span></td>
+            <td>Rs 405.95</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.23%</span></td>
+            <td><b>37.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>32.91 (Neutral)</td>
+            <td>🔴 -2.24</td>
+            <td>4%</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>6.25</td>
+            <td>+19.6%</td>
+        </tr><tr>
+            <td><b>TECHM</b></td>
+            <td><span style='color:#888;font-size:0.85em'>IT</span></td>
+            <td>Rs 1547.6</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.30%</span></td>
+            <td><b>35.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>46.29 (Neutral)</td>
+            <td>🔴 -0.88</td>
+            <td>37%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>36.89</td>
+            <td>+26.4%</td>
+        </tr><tr>
+            <td><b>HINDALCO</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Metals</span></td>
+            <td>Rs 978.6</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.35%</span></td>
+            <td><b>35.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>42.65 (Neutral)</td>
+            <td>🔴 -0.94</td>
+            <td>29%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>20.67</td>
+            <td>+27.5%</td>
+        </tr><tr>
+            <td><b>HAL</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Defence</span></td>
+            <td>Rs 4784.6</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.22%</span></td>
+            <td><b>35.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>45.46 (Neutral)</td>
+            <td>🔴 -12.45</td>
+            <td>36%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>105.96</td>
+            <td>+68.6%</td>
+        </tr><tr>
+            <td><b>TITAN</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Consumer</span></td>
+            <td>Rs 4849.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.34%</span></td>
+            <td><b>35.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>38.07 (Neutral)</td>
+            <td>🔴 -18.64</td>
+            <td>21%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>75.36</td>
+            <td>+43.8%</td>
+        </tr><tr>
+            <td><b>ADANIENT</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Conglomerate</span></td>
+            <td>Rs 2924.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.83%</span></td>
+            <td><b>35.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>47.93 (Neutral)</td>
+            <td>🔴 -5.26</td>
+            <td>37%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>74.39</td>
+            <td>+135.6%</td>
+        </tr><tr>
+            <td><b>SBIN</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Banking</span></td>
+            <td>Rs 980.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.15%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>39.84 (Neutral)</td>
+            <td>🔴 -0.73</td>
+            <td>23%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>14.41</td>
+            <td>-11.3%</td>
+        </tr><tr>
+            <td><b>SHRIRAMFIN</b></td>
+            <td><span style='color:#888;font-size:0.85em'>NBFC</span></td>
+            <td>Rs 993.6</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.36%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>34.91 (Neutral)</td>
+            <td>🔴 -1.37</td>
+            <td>26%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>21.8</td>
+            <td>+9.0%</td>
+        </tr><tr>
+            <td><b>PERSISTENT</b></td>
+            <td><span style='color:#888;font-size:0.85em'>IT</span></td>
+            <td>Rs 5348.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+2.06%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>33.18 (Neutral)</td>
+            <td>🔴 -35.01</td>
+            <td>21%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>132.93</td>
+            <td>+18.2%</td>
+        </tr><tr>
+            <td><b>BRITANNIA</b></td>
+            <td><span style='color:#888;font-size:0.85em'>FMCG</span></td>
+            <td>Rs 4910.0</td>
+            <td><span style="color:#00E676;font-weight:600;">+0.31%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>35.77 (Neutral)</td>
+            <td>🔴 -1.29</td>
+            <td>20%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>69.11</td>
+            <td>-21.4%</td>
+        </tr><tr>
+            <td><b>NTPC</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Energy</span></td>
+            <td>Rs 325.4</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.37%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>38.89 (Neutral)</td>
+            <td>🔴 -0.10</td>
+            <td>25%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>4.25</td>
+            <td>-23.9%</td>
+        </tr><tr>
+            <td><b>JSWSTEEL</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Metals</span></td>
+            <td>Rs 1275.0</td>
+            <td><span style="color:#FF5252;font-weight:600;">-1.76%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>39.12 (Neutral)</td>
+            <td>🔴 -0.92</td>
+            <td>39%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>23.81</td>
+            <td>+22.6%</td>
+        </tr><tr>
+            <td><b>LT</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Engineering</span></td>
+            <td>Rs 3850.4</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.21%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>36.1 (Neutral)</td>
+            <td>🔴 -3.84</td>
+            <td>22%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>63.96</td>
+            <td>+13.2%</td>
+        </tr><tr>
+            <td><b>BEL</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Defence</span></td>
+            <td>Rs 391.45</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.14%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>39.74 (Neutral)</td>
+            <td>🔴 -0.78</td>
+            <td>23%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>7.24</td>
+            <td>-9.9%</td>
+        </tr><tr>
+            <td><b>GRASIM</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Cement</span></td>
+            <td>Rs 3177.8</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.34%</span></td>
+            <td><b>30.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>32.66 (Neutral)</td>
+            <td>🔴 -14.63</td>
+            <td>23%</td>
+            <td>❌</td>
+            <td>✅</td>
+            <td>46.61</td>
+            <td>+44.1%</td>
+        </tr><tr>
+            <td><b>DIVISLAB</b></td>
+            <td><span style='color:#888;font-size:0.85em'>Pharma</span></td>
+            <td>Rs 9594.5</td>
+            <td><span style="color:#FF5252;font-weight:600;">-0.08%</span></td>
+            <td><b>27.5</b></td>
+            <td><span style="background:#FF5252;color:#111;padding:2px 10px;border-radius:12px;font-weight:700;font-size:0.8em;">Sell</span></td>
+            <td style='color:#aaa'>60.84 (Neutral)</td>
+            <td>🔴 -20.81</td>
+            <td>86%</td>
+            <td>❌</td>
+            <td>❌</td>
+            <td>190.14</td>
+            <td>+152.8%</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Methodology Note -->
+  <div class="section">
+    <h2>Evaluation Methodology</h2>
+    <table class="sector-table">
+      <thead><tr><th>Indicator</th><th>Formula / Source</th><th>Score Impact</th></tr></thead>
+      <tbody>
+        <tr><td>RSI (14)</td><td>100 - [100/(1+AvgGain/AvgLoss)] over 14 days</td><td>+15 if &lt;30, -10 if &gt;70, +5 if neutral</td></tr>
+        <tr><td>MACD (12,26,9)</td><td>EMA(12)-EMA(26), Signal=EMA(9) of MACD</td><td>+10 if histogram&gt;0, -5 if &lt;0</td></tr>
+        <tr><td>Bollinger Bands (20,2)</td><td>Price position as % of band width</td><td>+10 if &lt;20%, -5 if &gt;80%</td></tr>
+        <tr><td>MA20/50/200</td><td>Simple rolling mean</td><td>+3 each if price above; +8 for Golden Cross</td></tr>
+        <tr><td>Trend Filter (MA200)</td><td>Price below 200-day MA</td><td><b>-15 pts penalty</b> (anti-falling-knife)</td></tr>
+        <tr><td>Volume Surge</td><td>5-day avg / 20-day avg &gt; 1.2</td><td>+5 if confirmed</td></tr>
+        <tr><td>ATR Trailing Stop</td><td>Highest Price - 2.5 × 14-day ATR</td><td>Used in live tracking exit logic</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+<div class="footer">
+  IndiaStocks AI Daily Analysis Engine &nbsp;|&nbsp; Report for 2026-09-25 &nbsp;|&nbsp;
+  Data from Yahoo Finance &nbsp;|&nbsp; NOT financial advice
+</div>
+</body>
+</html>

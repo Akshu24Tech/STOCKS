@@ -1,0 +1,425 @@
+[
+  {
+    "symbol": "RELIANCE",
+    "initial_capital": 100000.0,
+    "final_capital": 104982.7890625,
+    "strategy_return_pct": 4.9827890625,
+    "buy_hold_return_pct": -5.168054041500226,
+    "alpha": 10.150843104000227,
+    "trades_count": 18
+  },
+  {
+    "symbol": "TCS",
+    "initial_capital": 100000.0,
+    "final_capital": 90877.99047851562,
+    "strategy_return_pct": -9.122009521484376,
+    "buy_hold_return_pct": -49.932570593619005,
+    "alpha": 40.81056107213463,
+    "trades_count": 24
+  },
+  {
+    "symbol": "HDFCBANK",
+    "initial_capital": 100000.0,
+    "final_capital": 102629.244140625,
+    "strategy_return_pct": 2.629244140625,
+    "buy_hold_return_pct": -19.40675556325549,
+    "alpha": 22.035999703880492,
+    "trades_count": 12
+  },
+  {
+    "symbol": "INFY",
+    "initial_capital": 100000.0,
+    "final_capital": 78506.81628417969,
+    "strategy_return_pct": -21.49318371582031,
+    "buy_hold_return_pct": -45.37352131584017,
+    "alpha": 23.88033760001986,
+    "trades_count": 18
+  },
+  {
+    "symbol": "ICICIBANK",
+    "initial_capital": 100000.0,
+    "final_capital": 89368.40539550781,
+    "strategy_return_pct": -10.631594604492188,
+    "buy_hold_return_pct": 2.05921980765655,
+    "alpha": -12.690814412148738,
+    "trades_count": 32
+  },
+  {
+    "symbol": "SBIN",
+    "initial_capital": 100000.0,
+    "final_capital": 122155.77587890625,
+    "strategy_return_pct": 22.15577587890625,
+    "buy_hold_return_pct": 18.521101457959745,
+    "alpha": 3.6346744209465065,
+    "trades_count": 22
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "initial_capital": 100000.0,
+    "final_capital": 98825.66064453125,
+    "strategy_return_pct": -1.17433935546875,
+    "buy_hold_return_pct": 14.494242864596021,
+    "alpha": -15.66858222006477,
+    "trades_count": 16
+  },
+  {
+    "symbol": "ITC",
+    "initial_capital": 100000.0,
+    "final_capital": 104207.1494140625,
+    "strategy_return_pct": 4.2071494140625,
+    "buy_hold_return_pct": -35.18732056673179,
+    "alpha": 39.39446998079429,
+    "trades_count": 14
+  },
+  {
+    "symbol": "HINDUNILVR",
+    "initial_capital": 100000.0,
+    "final_capital": 100663.83325195312,
+    "strategy_return_pct": 0.663833251953125,
+    "buy_hold_return_pct": -17.497340975921997,
+    "alpha": 18.161174227875122,
+    "trades_count": 24
+  },
+  {
+    "symbol": "LT",
+    "initial_capital": 100000.0,
+    "final_capital": 98434.62670898438,
+    "strategy_return_pct": -1.5653732910156248,
+    "buy_hold_return_pct": -0.7254757026028698,
+    "alpha": -0.8398975884127551,
+    "trades_count": 26
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "initial_capital": 100000.0,
+    "final_capital": 96046.46215820312,
+    "strategy_return_pct": -3.953537841796875,
+    "buy_hold_return_pct": 45.301302780682065,
+    "alpha": -49.25484062247894,
+    "trades_count": 20
+  },
+  {
+    "symbol": "AXISBANK",
+    "initial_capital": 100000.0,
+    "final_capital": 114079.30346679688,
+    "strategy_return_pct": 14.079303466796874,
+    "buy_hold_return_pct": 3.792021941861928,
+    "alpha": 10.287281524934947,
+    "trades_count": 26
+  },
+  {
+    "symbol": "KOTAKBANK",
+    "initial_capital": 100000.0,
+    "final_capital": 86197.8410949707,
+    "strategy_return_pct": -13.802158905029296,
+    "buy_hold_return_pct": 13.818963593365222,
+    "alpha": -27.62112249839452,
+    "trades_count": 20
+  },
+  {
+    "symbol": "MARUTI",
+    "initial_capital": 100000.0,
+    "final_capital": 107729.5966796875,
+    "strategy_return_pct": 7.7295966796875,
+    "buy_hold_return_pct": 8.851636302629693,
+    "alpha": -1.122039622942193,
+    "trades_count": 16
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "initial_capital": 100000.0,
+    "final_capital": 109520.62487792969,
+    "strategy_return_pct": 9.520624877929688,
+    "buy_hold_return_pct": 4.1869714669853915,
+    "alpha": 5.333653410944296,
+    "trades_count": 20
+  },
+  {
+    "symbol": "M&M",
+    "initial_capital": 100000.0,
+    "final_capital": 91078.14208984375,
+    "strategy_return_pct": -8.92185791015625,
+    "buy_hold_return_pct": -0.2995974640454925,
+    "alpha": -8.622260446110758,
+    "trades_count": 24
+  },
+  {
+    "symbol": "ASIANPAINT",
+    "initial_capital": 100000.0,
+    "final_capital": 95949.38696289062,
+    "strategy_return_pct": -4.0506130371093745,
+    "buy_hold_return_pct": 3.3403295798235018,
+    "alpha": -7.390942616932876,
+    "trades_count": 36
+  },
+  {
+    "symbol": "TITAN",
+    "initial_capital": 100000.0,
+    "final_capital": 145318.177734375,
+    "strategy_return_pct": 45.318177734375,
+    "buy_hold_return_pct": 40.27335652933292,
+    "alpha": 5.044821205042076,
+    "trades_count": 24
+  },
+  {
+    "symbol": "NTPC",
+    "initial_capital": 100000.0,
+    "final_capital": 86680.97436523438,
+    "strategy_return_pct": -13.319025634765625,
+    "buy_hold_return_pct": -8.023077508410385,
+    "alpha": -5.29594812635524,
+    "trades_count": 24
+  },
+  {
+    "symbol": "ULTRACEMCO",
+    "initial_capital": 100000.0,
+    "final_capital": 76966.330078125,
+    "strategy_return_pct": -23.033669921875,
+    "buy_hold_return_pct": -3.515996505418121,
+    "alpha": -19.51767341645688,
+    "trades_count": 28
+  },
+  {
+    "symbol": "POWERGRID",
+    "initial_capital": 100000.0,
+    "final_capital": 85483.10873413086,
+    "strategy_return_pct": -14.516891265869141,
+    "buy_hold_return_pct": -14.364753918853811,
+    "alpha": -0.15213734701533,
+    "trades_count": 22
+  },
+  {
+    "symbol": "BAJAJFINSV",
+    "initial_capital": 100000.0,
+    "final_capital": 95037.74353027344,
+    "strategy_return_pct": -4.9622564697265625,
+    "buy_hold_return_pct": 7.624040012678497,
+    "alpha": -12.58629648240506,
+    "trades_count": 20
+  },
+  {
+    "symbol": "TATASTEEL",
+    "initial_capital": 100000.0,
+    "final_capital": 125598.3395690918,
+    "strategy_return_pct": 25.5983395690918,
+    "buy_hold_return_pct": 31.514671808472688,
+    "alpha": -5.916332239380889,
+    "trades_count": 28
+  },
+  {
+    "symbol": "ADANIENT",
+    "initial_capital": 100000.0,
+    "final_capital": 83864.927734375,
+    "strategy_return_pct": -16.135072265625,
+    "buy_hold_return_pct": 17.048398324940738,
+    "alpha": -33.18347059056573,
+    "trades_count": 24
+  },
+  {
+    "symbol": "COALINDIA",
+    "initial_capital": 100000.0,
+    "final_capital": 119182.45324707031,
+    "strategy_return_pct": 19.182453247070313,
+    "buy_hold_return_pct": 14.334621284133227,
+    "alpha": 4.847831962937086,
+    "trades_count": 32
+  },
+  {
+    "symbol": "ONGC",
+    "initial_capital": 100000.0,
+    "final_capital": 106248.75157165527,
+    "strategy_return_pct": 6.248751571655274,
+    "buy_hold_return_pct": -1.57305002376072,
+    "alpha": 7.821801595415994,
+    "trades_count": 16
+  },
+  {
+    "symbol": "WIPRO",
+    "initial_capital": 100000.0,
+    "final_capital": 101323.87120056152,
+    "strategy_return_pct": 1.3238712005615234,
+    "buy_hold_return_pct": -42.04680268179796,
+    "alpha": 43.37067388235948,
+    "trades_count": 12
+  },
+  {
+    "symbol": "HCLTECH",
+    "initial_capital": 100000.0,
+    "final_capital": 79362.03295898438,
+    "strategy_return_pct": -20.637967041015624,
+    "buy_hold_return_pct": -29.11466378293111,
+    "alpha": 8.476696741915486,
+    "trades_count": 18
+  },
+  {
+    "symbol": "NESTLEIND",
+    "initial_capital": 100000.0,
+    "final_capital": 114152.16064453125,
+    "strategy_return_pct": 14.15216064453125,
+    "buy_hold_return_pct": 23.84465148196046,
+    "alpha": -9.692490837429212,
+    "trades_count": 22
+  },
+  {
+    "symbol": "GRASIM",
+    "initial_capital": 100000.0,
+    "final_capital": 113208.47534179688,
+    "strategy_return_pct": 13.208475341796873,
+    "buy_hold_return_pct": 19.325663917829498,
+    "alpha": -6.117188576032625,
+    "trades_count": 24
+  },
+  {
+    "symbol": "TECHM",
+    "initial_capital": 100000.0,
+    "final_capital": 79572.13842773438,
+    "strategy_return_pct": -20.427861572265623,
+    "buy_hold_return_pct": -8.318576732560235,
+    "alpha": -12.109284839705388,
+    "trades_count": 30
+  },
+  {
+    "symbol": "JSWSTEEL",
+    "initial_capital": 100000.0,
+    "final_capital": 142245.98760986328,
+    "strategy_return_pct": 42.245987609863285,
+    "buy_hold_return_pct": 27.095480144026634,
+    "alpha": 15.15050746583665,
+    "trades_count": 26
+  },
+  {
+    "symbol": "HINDALCO",
+    "initial_capital": 100000.0,
+    "final_capital": 158943.21899414062,
+    "strategy_return_pct": 58.94321899414062,
+    "buy_hold_return_pct": 47.44339047585007,
+    "alpha": 11.499828518290549,
+    "trades_count": 28
+  },
+  {
+    "symbol": "DRREDDY",
+    "initial_capital": 100000.0,
+    "final_capital": 77207.38012695312,
+    "strategy_return_pct": -22.792619873046874,
+    "buy_hold_return_pct": -3.3710522267207277,
+    "alpha": -19.421567646326146,
+    "trades_count": 32
+  },
+  {
+    "symbol": "BAJAJ-AUTO",
+    "initial_capital": 100000.0,
+    "final_capital": 130017.42626953125,
+    "strategy_return_pct": 30.01742626953125,
+    "buy_hold_return_pct": 28.851353618785335,
+    "alpha": 1.1660726507459138,
+    "trades_count": 28
+  },
+  {
+    "symbol": "CIPLA",
+    "initial_capital": 100000.0,
+    "final_capital": 84350.86730957031,
+    "strategy_return_pct": -15.649132690429687,
+    "buy_hold_return_pct": -2.2198101437676185,
+    "alpha": -13.429322546662068,
+    "trades_count": 24
+  },
+  {
+    "symbol": "APOLLOHOSP",
+    "initial_capital": 100000.0,
+    "final_capital": 103450.37060546875,
+    "strategy_return_pct": 3.45037060546875,
+    "buy_hold_return_pct": 23.912506409121473,
+    "alpha": -20.46213580365272,
+    "trades_count": 22
+  },
+  {
+    "symbol": "TATACONSUM",
+    "initial_capital": 100000.0,
+    "final_capital": 95982.73327636719,
+    "strategy_return_pct": -4.017266723632813,
+    "buy_hold_return_pct": 7.027061479642393,
+    "alpha": -11.044328203275207,
+    "trades_count": 24
+  },
+  {
+    "symbol": "BRITANNIA",
+    "initial_capital": 100000.0,
+    "final_capital": 100612.54345703125,
+    "strategy_return_pct": 0.61254345703125,
+    "buy_hold_return_pct": 5.597959196950043,
+    "alpha": -4.9854157399187935,
+    "trades_count": 16
+  },
+  {
+    "symbol": "EICHERMOT",
+    "initial_capital": 100000.0,
+    "final_capital": 116127.28369140625,
+    "strategy_return_pct": 16.127283691406248,
+    "buy_hold_return_pct": 54.90699074103224,
+    "alpha": -38.77970704962599,
+    "trades_count": 24
+  },
+  {
+    "symbol": "DIVISLAB",
+    "initial_capital": 100000.0,
+    "final_capital": 111426.3876953125,
+    "strategy_return_pct": 11.4263876953125,
+    "buy_hold_return_pct": 61.98474365011584,
+    "alpha": -50.55835595480334,
+    "trades_count": 18
+  },
+  {
+    "symbol": "BPCL",
+    "initial_capital": 100000.0,
+    "final_capital": 93198.10693359375,
+    "strategy_return_pct": -6.801893066406251,
+    "buy_hold_return_pct": 10.1317590313633,
+    "alpha": -16.933652097769553,
+    "trades_count": 24
+  },
+  {
+    "symbol": "HEROMOTOCO",
+    "initial_capital": 100000.0,
+    "final_capital": 94116.61791992188,
+    "strategy_return_pct": -5.883382080078125,
+    "buy_hold_return_pct": 24.75899483473768,
+    "alpha": -30.642376914815806,
+    "trades_count": 32
+  },
+  {
+    "symbol": "SHRIRAMFIN",
+    "initial_capital": 100000.0,
+    "final_capital": 142599.3091430664,
+    "strategy_return_pct": 42.59930914306641,
+    "buy_hold_return_pct": 63.13916344471022,
+    "alpha": -20.539854301643814,
+    "trades_count": 32
+  },
+  {
+    "symbol": "TRENT",
+    "initial_capital": 100000.0,
+    "final_capital": 112112.54809570312,
+    "strategy_return_pct": 12.112548095703126,
+    "buy_hold_return_pct": -61.27139077868263,
+    "alpha": 73.38393887438576,
+    "trades_count": 16
+  },
+  {
+    "symbol": "BEL",
+    "initial_capital": 100000.0,
+    "final_capital": 79048.3935546875,
+    "strategy_return_pct": -20.9516064453125,
+    "buy_hold_return_pct": 25.999347565503005,
+    "alpha": -46.95095401081551,
+    "trades_count": 24
+  },
+  {
+    "symbol": "HAL",
+    "initial_capital": 100000.0,
+    "final_capital": 69900.30078125,
+    "strategy_return_pct": -30.099699218749997,
+    "buy_hold_return_pct": 5.696749283770771,
+    "alpha": -35.79644850252077,
+    "trades_count": 26
+  }
+]

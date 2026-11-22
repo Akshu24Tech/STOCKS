@@ -7,6 +7,7 @@ import LiveFeedPage from './pages/LiveFeedPage'
 import HomePage from './pages/HomePage'
 import WatchlistPage from './pages/WatchlistPage'
 import TickertapeStockModal from './components/TickertapeStockModal'
+import AIConfigModal from './components/AIConfigModal'
 import { getWsUrl } from './config'
 
 // ─── Global Context ──────────────────────────────────────────────────────────
@@ -17,13 +18,17 @@ export function useApp() { return useContext(AppContext) }
 // ─── WebSocket Tick Store ─────────────────────────────────────────────────────
 function useTickFeed() {
   const [ticks, setTicks] = useState({})
+  const [wsStatus, setWsStatus] = useState('connecting') // 'connected' | 'connecting' | 'disconnected'
   const wsRef = useRef(null)
   const reconnectTimer = useRef(null)
 
   function connect() {
+    setWsStatus('connecting')
     try {
       const ws = new WebSocket(getWsUrl())
       wsRef.current = ws
+
+      ws.onopen = () => setWsStatus('connected')
 
       ws.onmessage = (e) => {
         const msg = JSON.parse(e.data)
@@ -37,11 +42,12 @@ function useTickFeed() {
       }
 
       ws.onclose = () => {
+        setWsStatus('disconnected')
         reconnectTimer.current = setTimeout(connect, 3000)
       }
 
       ws.onerror = () => ws.close()
-    } catch (_) {}
+    } catch (_) { setWsStatus('disconnected') }
   }
 
   useEffect(() => {
@@ -52,7 +58,7 @@ function useTickFeed() {
     }
   }, [])
 
-  return ticks
+  return { ticks, wsStatus }
 }
 
 // ─── Sidebar ──────────────────────────────────────────────────────────────────
@@ -68,6 +74,7 @@ const NAV_ITEMS = [
 function Sidebar({ ticks }) {
   const navigate = useNavigate()
   const { pathname } = useLocation()
+  const { openStockModal } = useApp() || {}
   const tickArr = Object.values(ticks).slice(0, 10)
 
   return (
@@ -110,8 +117,10 @@ function Sidebar({ ticks }) {
             {tickArr.map(t => (
               <div
                 key={t.symbol}
-                style={{ padding: '5px 10px', fontSize: 12, display: 'flex', justifyContent: 'space-between', cursor: 'pointer' }}
-                onClick={() => navigate('/watchlist')}
+                style={{ padding: '5px 10px', fontSize: 12, display: 'flex', justifyContent: 'space-between', cursor: 'pointer', borderRadius: 'var(--r-sm)', transition: 'background 0.15s' }}
+                onClick={() => openStockModal(t.symbol)}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(99,102,241,0.08)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
               >
                 <span style={{ fontWeight: 600, color: 'var(--clr-text-2)', fontFamily: 'var(--font-mono)' }}>{t.symbol}</span>
                 <span className={t.change_pct >= 0 ? 'badge badge-green' : 'badge badge-red'} style={{ fontSize: 10, padding: '1px 6px' }}>
@@ -133,42 +142,59 @@ function Sidebar({ ticks }) {
   )
 }
 
-// ─── Ticker Tape ──────────────────────────────────────────────────────────────
-function TickerTape({ ticks, onSelectStock }) {
+// ─── Ticker Tape & Top Bar ───────────────────────────────────────────────────
+function TickerTape({ ticks, wsStatus, onSelectStock, onOpenAiConfig }) {
   const items = Object.values(ticks)
-  if (!items.length) return null
-
-  const doubled = [...items, ...items] // infinite scroll trick
+  const doubled = items.length ? [...items, ...items] : []
+  const statusLabel = { connected: '● Live', connecting: '◌ Connecting', disconnected: '○ Offline' }
 
   return (
     <div className="top-bar">
       <div className="ticker-wrap">
-        <div className="ticker-track">
-          {doubled.map((t, i) => (
-            <span
-              key={`${t.symbol}-${i}`}
-              className="ticker-item"
-              style={{ cursor: 'pointer' }}
-              onClick={() => onSelectStock && onSelectStock(t.symbol)}
-              title="Click to view Tickertape Scorecard & Forecasts"
-            >
-              <span className="ticker-sym">{t.symbol}</span>
-              <span className="ticker-price">₹{t.price?.toFixed(2)}</span>
-              <span className={`ticker-chg ${t.change_pct >= 0 ? 'up' : 'dn'}`}>
-                {t.change_pct >= 0 ? '▲' : '▼'}{Math.abs(t.change_pct).toFixed(2)}%
+        {doubled.length > 0 ? (
+          <div className="ticker-track">
+            {doubled.map((t, i) => (
+              <span
+                key={`${t.symbol}-${i}`}
+                className="ticker-item"
+                onClick={() => onSelectStock && onSelectStock(t.symbol)}
+                title="Click to view Scorecard & Forecasts"
+              >
+                <span className="ticker-sym">{t.symbol}</span>
+                <span className="ticker-price">₹{t.price?.toFixed(2)}</span>
+                <span className={`ticker-chg ${t.change_pct >= 0 ? 'up' : 'dn'}`}>
+                  {t.change_pct >= 0 ? '▲' : '▼'}{Math.abs(t.change_pct).toFixed(2)}%
+                </span>
               </span>
-            </span>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div style={{ fontSize: 12, color: 'var(--clr-text-3)', paddingLeft: 8 }}>
+            Waiting for live data — start the backend to see real-time NSE ticks
+          </div>
+        )}
       </div>
+      <div className={`ws-status ${wsStatus}`}>
+        <div className="live-dot" style={{ width: 6, height: 6 }} />
+        {statusLabel[wsStatus] || 'Offline'}
+      </div>
+      <button
+        onClick={onOpenAiConfig}
+        className="ai-settings-btn"
+        title="Configure TradingAgents LLM Provider"
+      >
+        <span className="pulse-dot"></span>
+        <span>🤖 TradingAgents AI</span>
+      </button>
     </div>
   )
 }
 
 // ─── App ──────────────────────────────────────────────────────────────────────
 export default function App() {
-  const ticks = useTickFeed()
+  const { ticks, wsStatus } = useTickFeed()
   const [selectedStock, setSelectedStock] = useState(null)
+  const [showAiConfig, setShowAiConfig] = useState(false)
   const [riskScore, setRiskScore] = useState(() => {
     const s = localStorage.getItem('risk_score')
     return s ? parseInt(s) : null
@@ -209,7 +235,12 @@ export default function App() {
       <div className="app-layout">
         <Sidebar ticks={ticks} />
         <div className="main-content">
-          <TickerTape ticks={ticks} onSelectStock={openStockModal} />
+          <TickerTape
+            ticks={ticks}
+            wsStatus={wsStatus}
+            onSelectStock={openStockModal}
+            onOpenAiConfig={() => setShowAiConfig(true)}
+          />
           <div className="page-container">
             <Routes>
               <Route path="/" element={<HomePage />} />
@@ -230,6 +261,11 @@ export default function App() {
           onClose={() => setSelectedStock(null)}
         />
       )}
+
+      <AIConfigModal
+        isOpen={showAiConfig}
+        onClose={() => setShowAiConfig(false)}
+      />
     </AppContext.Provider>
   )
 }

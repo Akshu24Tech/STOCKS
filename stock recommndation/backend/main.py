@@ -1,14 +1,17 @@
 """
 IndiaStocks AI — FastAPI Backend
 Features:
-  - Tick-by-tick live data via yfinance WebSocket stream
+  - Tick-by-tick live data via Groww Trading API + Angel One SmartAPI
   - Technical analysis (RSI, MACD, Bollinger Bands, MAs)
   - Fundamental analysis (P/E, ROE, EPS growth, D/E ratio)
   - AI recommendation scoring engine
   - Risk profile quiz scoring
   - Portfolio risk analyzer
-  - Broker integrations: Zerodha, Upstox, Angel One, CSV upload
+  - Broker integrations: Zerodha, Upstox, Angel One, Groww, CSV upload
 """
+
+from dotenv import load_dotenv
+load_dotenv()
 
 from fastapi import FastAPI, WebSocket, WebSocketDisconnect, UploadFile, File, Form, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -20,11 +23,12 @@ import time
 from typing import List, Dict, Any, Optional
 
 from recommender import RecommendationEngine
-from market_data import MarketDataService, init_angel_session, get_angel_diagnostic
+from market_data import MarketDataService, init_angel_session, init_groww_session, get_angel_diagnostic
 from broker_integrations import (
     ZerodhaClient, UpstoxClient, AngelOneClient,
     CSVPortfolioParser, GrowwParser,
 )
+from trading_agents_service import TradingAgentsService
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -521,7 +525,18 @@ async def configure_angel(payload: Dict[str, str]):
     if not ok:
         raise HTTPException(400, "Failed to authenticate with Angel One SmartAPI. Check your API Key, Client ID, PIN, or TOTP.")
     return {"status": "success", "message": "Angel One SmartAPI live feed connected successfully!"}
- 
+
+
+@app.post("/api/market/configure-groww")
+async def configure_groww(payload: Dict[str, str]):
+    auth_token = payload.get("auth_token", "").strip()
+    if not auth_token:
+        raise HTTPException(400, "Missing required field: auth_token")
+    ok = init_groww_session(auth_token)
+    if not ok:
+        raise HTTPException(400, "Failed to authenticate with Groww Trading API. Check your auth token.")
+    return {"status": "success", "message": "Groww Trading API live feed connected successfully!"}
+
  
 @app.get("/api/market/status")
 async def market_status():
@@ -545,6 +560,32 @@ async def upload_csv(
         raise HTTPException(400, str(e))
     except Exception as e:
         raise HTTPException(500, f"CSV parse error: {str(e)}")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# TradingAgents LLM & Dataflow Endpoints
+# ─────────────────────────────────────────────────────────────────────────────
+@app.get("/api/stock/{symbol}/sentiment")
+async def get_stock_sentiment(symbol: str):
+    return TradingAgentsService.get_stocktwits_sentiment(symbol)
+
+
+@app.get("/api/stock/{symbol}/news")
+async def get_stock_news(symbol: str):
+    return TradingAgentsService.get_news_sentiment(symbol)
+
+
+@app.get("/api/stock/{symbol}/indicators/extended")
+async def get_stock_extended_indicators(symbol: str):
+    return TradingAgentsService.get_extended_indicators(symbol)
+
+
+@app.post("/api/stock/{symbol}/ai-analysis")
+async def run_ai_analysis(symbol: str, payload: Optional[Dict[str, Any]] = None):
+    p = payload or {}
+    provider = p.get("provider", "openai")
+    api_key = p.get("api_key", None)
+    return await TradingAgentsService.run_ai_agent_analysis(symbol, provider=provider, api_key=api_key)
 
 
 @app.get("/health")

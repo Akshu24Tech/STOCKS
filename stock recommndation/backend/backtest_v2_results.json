@@ -1,0 +1,4279 @@
+[
+  {
+    "symbol": "RELIANCE",
+    "sector": "Conglomerate",
+    "initial_capital": 100000.0,
+    "final_capital": 88210.96,
+    "strategy_return": -11.79,
+    "bh_return": -5.03,
+    "alpha": -6.76,
+    "trades_count": 15,
+    "sharpe": -1.351,
+    "sortino": -1.735,
+    "max_drawdown": -15.9,
+    "win_rate": 53.3,
+    "profit_factor": 0.83,
+    "winning_trades": 8,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-02-03",
+        "type": "BUY",
+        "price": 1430.49,
+        "shares": 52,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-02-25",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1392.06,
+        "shares": 52,
+        "pnl_pct": -2.69,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-02-27",
+        "type": "BUY",
+        "price": 1387.48,
+        "shares": 57,
+        "score": 63.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-03-05",
+        "type": "Sell (Technical)",
+        "price": 1383.01,
+        "shares": 57,
+        "pnl_pct": -0.32,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-03-27",
+        "type": "BUY",
+        "price": 1341.9,
+        "shares": 56,
+        "score": 61.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-04-01",
+        "type": "Sell (Technical)",
+        "price": 1362.9,
+        "shares": 56,
+        "pnl_pct": 1.57,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-05-06",
+        "type": "BUY",
+        "price": 1431.28,
+        "shares": 54,
+        "score": 61.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-05-11",
+        "type": "Sell (Technical)",
+        "price": 1381.81,
+        "shares": 54,
+        "pnl_pct": -3.46,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "TCS",
+    "sector": "IT",
+    "initial_capital": 100000.0,
+    "final_capital": 66468.65,
+    "strategy_return": -33.53,
+    "bh_return": -49.81,
+    "alpha": 16.28,
+    "trades_count": 17,
+    "sharpe": -3.056,
+    "sortino": -3.385,
+    "max_drawdown": -34.5,
+    "win_rate": 23.5,
+    "profit_factor": 0.15,
+    "winning_trades": 4,
+    "losing_trades": 13,
+    "recent_trades": [
+      {
+        "date": "2026-02-02",
+        "type": "BUY",
+        "price": 3110.15,
+        "shares": 20,
+        "score": 66.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-02-04",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 2942.84,
+        "shares": 20,
+        "pnl_pct": -5.38,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-02-05",
+        "type": "BUY",
+        "price": 2935.39,
+        "shares": 20,
+        "score": 60.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-02-12",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 2698.51,
+        "shares": 20,
+        "pnl_pct": -8.07,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-02-13",
+        "type": "BUY",
+        "price": 2641.7,
+        "shares": 20,
+        "score": 68.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-02-19",
+        "type": "Sell (Technical)",
+        "price": 2627.67,
+        "shares": 20,
+        "pnl_pct": -0.53,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-03-20",
+        "type": "BUY",
+        "price": 2345.76,
+        "shares": 22,
+        "score": 67.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-04-01",
+        "type": "Sell (Technical)",
+        "price": 2363.03,
+        "shares": 22,
+        "pnl_pct": 0.74,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "HDFCBANK",
+    "sector": "Banking",
+    "initial_capital": 100000.0,
+    "final_capital": 90129.03,
+    "strategy_return": -9.87,
+    "bh_return": -19.32,
+    "alpha": 9.45,
+    "trades_count": 10,
+    "sharpe": -1.72,
+    "sortino": -2.286,
+    "max_drawdown": -10.72,
+    "win_rate": 40.0,
+    "profit_factor": 0.62,
+    "winning_trades": 4,
+    "losing_trades": 6,
+    "recent_trades": [
+      {
+        "date": "2026-01-06",
+        "type": "BUY",
+        "price": 946.54,
+        "shares": 82,
+        "score": 60.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-01-15",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 910.39,
+        "shares": 82,
+        "pnl_pct": -3.82,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-01-16",
+        "type": "BUY",
+        "price": 915.95,
+        "shares": 79,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-01-30",
+        "type": "Sell (Technical)",
+        "price": 914.13,
+        "shares": 79,
+        "pnl_pct": -0.2,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-27",
+        "type": "BUY",
+        "price": 711.0,
+        "shares": 104,
+        "score": 64.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-08-28",
+        "type": "Sell (Technical)",
+        "price": 720.3,
+        "shares": 104,
+        "pnl_pct": 1.31,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-31",
+        "type": "BUY",
+        "price": 709.0,
+        "shares": 107,
+        "score": 61.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-07",
+        "type": "Sell (Technical)",
+        "price": 710.5,
+        "shares": 107,
+        "pnl_pct": 0.21,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "INFY",
+    "sector": "IT",
+    "initial_capital": 100000.0,
+    "final_capital": 73928.37,
+    "strategy_return": -26.07,
+    "bh_return": -45.31,
+    "alpha": 19.24,
+    "trades_count": 15,
+    "sharpe": -1.996,
+    "sortino": -2.364,
+    "max_drawdown": -29.88,
+    "win_rate": 53.3,
+    "profit_factor": 0.45,
+    "winning_trades": 8,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-02-06",
+        "type": "BUY",
+        "price": 1475.18,
+        "shares": 46,
+        "score": 71.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-02-12",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 1356.64,
+        "shares": 46,
+        "pnl_pct": -8.04,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-02-13",
+        "type": "BUY",
+        "price": 1340.1,
+        "shares": 47,
+        "score": 71.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-02-24",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 1248.48,
+        "shares": 47,
+        "pnl_pct": -6.84,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-02-26",
+        "type": "BUY",
+        "price": 1261.8,
+        "shares": 46,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-03-04",
+        "type": "Sell (Technical)",
+        "price": 1279.71,
+        "shares": 46,
+        "pnl_pct": 1.42,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-03-13",
+        "type": "BUY",
+        "price": 1221.86,
+        "shares": 48,
+        "score": 60.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-03-18",
+        "type": "Sell (Technical)",
+        "price": 1240.26,
+        "shares": 48,
+        "pnl_pct": 1.51,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "ICICIBANK",
+    "sector": "Banking",
+    "initial_capital": 100000.0,
+    "final_capital": 76686.59,
+    "strategy_return": -23.31,
+    "bh_return": 2.12,
+    "alpha": -25.43,
+    "trades_count": 20,
+    "sharpe": -2.604,
+    "sortino": -3.293,
+    "max_drawdown": -23.54,
+    "win_rate": 35.0,
+    "profit_factor": 0.31,
+    "winning_trades": 7,
+    "losing_trades": 13,
+    "recent_trades": [
+      {
+        "date": "2026-07-22",
+        "type": "BUY",
+        "price": 1428.66,
+        "shares": 52,
+        "score": 66.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-08-19",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1402.0,
+        "shares": 52,
+        "pnl_pct": -1.87,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-08-21",
+        "type": "BUY",
+        "price": 1420.0,
+        "shares": 48,
+        "score": 60.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1399.4,
+        "shares": 48,
+        "pnl_pct": -1.45,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-09",
+        "type": "BUY",
+        "price": 1389.1,
+        "shares": 48,
+        "score": 72.5,
+        "confidence": 57.0,
+        "rating": "Buy",
+        "allocation": 82.8
+      },
+      {
+        "date": "2026-09-18",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1338.9,
+        "shares": 48,
+        "pnl_pct": -3.61,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-21",
+        "type": "BUY",
+        "price": 1345.0,
+        "shares": 46,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 1328.8,
+        "shares": 46,
+        "pnl_pct": -1.2,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "SBIN",
+    "sector": "Banking",
+    "initial_capital": 100000.0,
+    "final_capital": 94656.75,
+    "strategy_return": -5.34,
+    "bh_return": 18.74,
+    "alpha": -24.08,
+    "trades_count": 18,
+    "sharpe": -0.553,
+    "sortino": -0.747,
+    "max_drawdown": -25.45,
+    "win_rate": 44.4,
+    "profit_factor": 1.24,
+    "winning_trades": 8,
+    "losing_trades": 10,
+    "recent_trades": [
+      {
+        "date": "2026-05-11",
+        "type": "BUY",
+        "price": 956.36,
+        "shares": 80,
+        "score": 86.5,
+        "confidence": 60.0,
+        "rating": "Strong Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-08-24",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1039.5,
+        "shares": 80,
+        "pnl_pct": 8.69,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-08-25",
+        "type": "BUY",
+        "price": 1048.0,
+        "shares": 86,
+        "score": 83.5,
+        "confidence": 83.0,
+        "rating": "Strong Buy",
+        "allocation": 93.2
+      },
+      {
+        "date": "2026-09-04",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1016.1,
+        "shares": 86,
+        "pnl_pct": -3.04,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-07",
+        "type": "BUY",
+        "price": 1005.9,
+        "shares": 74,
+        "score": 68.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-10",
+        "type": "Sell (Technical)",
+        "price": 1009.7,
+        "shares": 74,
+        "pnl_pct": 0.38,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-15",
+        "type": "BUY",
+        "price": 968.0,
+        "shares": 77,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-17",
+        "type": "Sell (Technical)",
+        "price": 988.7,
+        "shares": 77,
+        "pnl_pct": 2.14,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "BHARTIARTL",
+    "sector": "Telecom",
+    "initial_capital": 100000.0,
+    "final_capital": 93720.66,
+    "strategy_return": -6.28,
+    "bh_return": 14.53,
+    "alpha": -20.81,
+    "trades_count": 12,
+    "sharpe": -1.028,
+    "sortino": -1.402,
+    "max_drawdown": -15.59,
+    "win_rate": 50.0,
+    "profit_factor": 1.07,
+    "winning_trades": 6,
+    "losing_trades": 5,
+    "recent_trades": [
+      {
+        "date": "2026-03-12",
+        "type": "BUY",
+        "price": 1778.91,
+        "shares": 44,
+        "score": 67.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-17",
+        "type": "Sell (Technical)",
+        "price": 1804.29,
+        "shares": 44,
+        "pnl_pct": 1.43,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-03-30",
+        "type": "BUY",
+        "price": 1760.25,
+        "shares": 47,
+        "score": 60.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-04-06",
+        "type": "Sell (Technical)",
+        "price": 1770.52,
+        "shares": 47,
+        "pnl_pct": 0.58,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-07",
+        "type": "BUY",
+        "price": 1959.9,
+        "shares": 43,
+        "score": 66.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-08-11",
+        "type": "Sell (Technical)",
+        "price": 1915.2,
+        "shares": 43,
+        "pnl_pct": -2.28,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-25",
+        "type": "BUY",
+        "price": 1797.6,
+        "shares": 45,
+        "score": 63.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 1797.6,
+        "shares": 45,
+        "pnl_pct": 0.0,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "ITC",
+    "sector": "FMCG",
+    "initial_capital": 100000.0,
+    "final_capital": 93946.54,
+    "strategy_return": -6.05,
+    "bh_return": -35.21,
+    "alpha": 29.16,
+    "trades_count": 10,
+    "sharpe": -1.976,
+    "sortino": -2.652,
+    "max_drawdown": -9.75,
+    "win_rate": 70.0,
+    "profit_factor": 1.02,
+    "winning_trades": 7,
+    "losing_trades": 3,
+    "recent_trades": [
+      {
+        "date": "2025-07-08",
+        "type": "BUY",
+        "price": 397.8,
+        "shares": 193,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2025-07-15",
+        "type": "Sell (Technical)",
+        "price": 402.47,
+        "shares": 193,
+        "pnl_pct": 1.17,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-01-28",
+        "type": "BUY",
+        "price": 306.22,
+        "shares": 260,
+        "score": 60.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-01-30",
+        "type": "Sell (Technical)",
+        "price": 307.17,
+        "shares": 260,
+        "pnl_pct": 0.31,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-05-19",
+        "type": "BUY",
+        "price": 302.07,
+        "shares": 282,
+        "score": 61.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-05-20",
+        "type": "Sell (Technical)",
+        "price": 299.39,
+        "shares": 282,
+        "pnl_pct": -0.89,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-07-10",
+        "type": "BUY",
+        "price": 281.75,
+        "shares": 270,
+        "score": 61.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-07-16",
+        "type": "Sell (Technical)",
+        "price": 279.35,
+        "shares": 270,
+        "pnl_pct": -0.85,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "HINDUNILVR",
+    "sector": "FMCG",
+    "initial_capital": 100000.0,
+    "final_capital": 96455.72,
+    "strategy_return": -3.54,
+    "bh_return": -17.56,
+    "alpha": 14.01,
+    "trades_count": 12,
+    "sharpe": -0.906,
+    "sortino": -1.262,
+    "max_drawdown": -14.38,
+    "win_rate": 50.0,
+    "profit_factor": 1.33,
+    "winning_trades": 6,
+    "losing_trades": 6,
+    "recent_trades": [
+      {
+        "date": "2025-09-18",
+        "type": "BUY",
+        "price": 2540.78,
+        "shares": 40,
+        "score": 93.5,
+        "confidence": 88.0,
+        "rating": "Strong Buy",
+        "allocation": 95.2
+      },
+      {
+        "date": "2025-10-29",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 2443.84,
+        "shares": 40,
+        "pnl_pct": -3.82,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2025-10-30",
+        "type": "BUY",
+        "price": 2425.67,
+        "shares": 35,
+        "score": 71.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2025-12-05",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 2315.05,
+        "shares": 35,
+        "pnl_pct": -4.56,
+        "rating": "Hold"
+      },
+      {
+        "date": "2025-12-08",
+        "type": "BUY",
+        "price": 2290.7,
+        "shares": 35,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2025-12-15",
+        "type": "Sell (Technical)",
+        "price": 2270.41,
+        "shares": 35,
+        "pnl_pct": -0.89,
+        "rating": "Sell"
+      },
+      {
+        "date": "2025-12-16",
+        "type": "BUY",
+        "price": 2258.13,
+        "shares": 34,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2025-12-29",
+        "type": "Sell (Technical)",
+        "price": 2270.21,
+        "shares": 34,
+        "pnl_pct": 0.53,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "LT",
+    "sector": "Engineering",
+    "initial_capital": 100000.0,
+    "final_capital": 104974.55,
+    "strategy_return": 4.97,
+    "bh_return": -0.57,
+    "alpha": 5.54,
+    "trades_count": 18,
+    "sharpe": -0.16,
+    "sortino": -0.229,
+    "max_drawdown": -19.17,
+    "win_rate": 77.8,
+    "profit_factor": 2.0,
+    "winning_trades": 14,
+    "losing_trades": 4,
+    "recent_trades": [
+      {
+        "date": "2026-07-15",
+        "type": "BUY",
+        "price": 3783.9,
+        "shares": 23,
+        "score": 67.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-07-20",
+        "type": "Sell (Technical)",
+        "price": 3838.8,
+        "shares": 23,
+        "pnl_pct": 1.45,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-03",
+        "type": "BUY",
+        "price": 4025.0,
+        "shares": 22,
+        "score": 64.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-01",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 3980.1,
+        "shares": 22,
+        "pnl_pct": -1.12,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-02",
+        "type": "BUY",
+        "price": 3981.0,
+        "shares": 22,
+        "score": 80.5,
+        "confidence": 62.0,
+        "rating": "Strong Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-09-15",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 3850.7,
+        "shares": 22,
+        "pnl_pct": -3.27,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-16",
+        "type": "BUY",
+        "price": 3807.7,
+        "shares": 21,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-18",
+        "type": "Sell (Technical)",
+        "price": 3885.0,
+        "shares": 21,
+        "pnl_pct": 2.03,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "BAJFINANCE",
+    "sector": "NBFC",
+    "initial_capital": 100000.0,
+    "final_capital": 88185.54,
+    "strategy_return": -11.81,
+    "bh_return": 45.37,
+    "alpha": -57.19,
+    "trades_count": 14,
+    "sharpe": -0.754,
+    "sortino": -1.015,
+    "max_drawdown": -25.04,
+    "win_rate": 35.7,
+    "profit_factor": 0.89,
+    "winning_trades": 5,
+    "losing_trades": 8,
+    "recent_trades": [
+      {
+        "date": "2026-07-28",
+        "type": "BUY",
+        "price": 1048.4,
+        "shares": 85,
+        "score": 73.5,
+        "confidence": 83.0,
+        "rating": "Buy",
+        "allocation": 93.2
+      },
+      {
+        "date": "2026-08-19",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1080.2,
+        "shares": 85,
+        "pnl_pct": 3.03,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-08-20",
+        "type": "BUY",
+        "price": 1095.0,
+        "shares": 76,
+        "score": 70.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-09-09",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1039.3,
+        "shares": 76,
+        "pnl_pct": -5.09,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-10",
+        "type": "BUY",
+        "price": 1043.5,
+        "shares": 73,
+        "score": 78.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-24",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 982.0,
+        "shares": 73,
+        "pnl_pct": -5.89,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-25",
+        "type": "BUY",
+        "price": 986.3,
+        "shares": 74,
+        "score": 76.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 986.3,
+        "shares": 74,
+        "pnl_pct": 0.0,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "AXISBANK",
+    "sector": "Banking",
+    "initial_capital": 100000.0,
+    "final_capital": 103070.76,
+    "strategy_return": 3.07,
+    "bh_return": 4.15,
+    "alpha": -1.07,
+    "trades_count": 18,
+    "sharpe": -0.243,
+    "sortino": -0.339,
+    "max_drawdown": -11.25,
+    "win_rate": 61.1,
+    "profit_factor": 1.87,
+    "winning_trades": 11,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-04-30",
+        "type": "BUY",
+        "price": 1267.32,
+        "shares": 68,
+        "score": 68.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-07-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1308.49,
+        "shares": 68,
+        "pnl_pct": 3.25,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-07-09",
+        "type": "BUY",
+        "price": 1296.6,
+        "shares": 68,
+        "score": 76.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-07-22",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1238.4,
+        "shares": 68,
+        "pnl_pct": -4.49,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-07-23",
+        "type": "BUY",
+        "price": 1223.0,
+        "shares": 69,
+        "score": 70.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-08-13",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1221.8,
+        "shares": 69,
+        "pnl_pct": -0.1,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-08-14",
+        "type": "BUY",
+        "price": 1217.4,
+        "shares": 71,
+        "score": 67.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-08-25",
+        "type": "Sell (Technical)",
+        "price": 1235.0,
+        "shares": 71,
+        "pnl_pct": 1.45,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "KOTAKBANK",
+    "sector": "Banking",
+    "initial_capital": 100000.0,
+    "final_capital": 75773.03,
+    "strategy_return": -24.23,
+    "bh_return": 14.02,
+    "alpha": -38.24,
+    "trades_count": 14,
+    "sharpe": -1.992,
+    "sortino": -2.367,
+    "max_drawdown": -27.04,
+    "win_rate": 42.9,
+    "profit_factor": 0.4,
+    "winning_trades": 6,
+    "losing_trades": 8,
+    "recent_trades": [
+      {
+        "date": "2026-03-05",
+        "type": "BUY",
+        "price": 406.6,
+        "shares": 158,
+        "score": 61.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-03-11",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 382.54,
+        "shares": 158,
+        "pnl_pct": -5.92,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-03-12",
+        "type": "BUY",
+        "price": 374.65,
+        "shares": 167,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-20",
+        "type": "Sell (Technical)",
+        "price": 366.12,
+        "shares": 167,
+        "pnl_pct": -2.28,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-24",
+        "type": "BUY",
+        "price": 401.45,
+        "shares": 161,
+        "score": 61.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-03",
+        "type": "Sell (Technical)",
+        "price": 421.15,
+        "shares": 161,
+        "pnl_pct": 4.91,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-18",
+        "type": "BUY",
+        "price": 412.5,
+        "shares": 162,
+        "score": 65.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 406.15,
+        "shares": 162,
+        "pnl_pct": -1.54,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "MARUTI",
+    "sector": "Auto",
+    "initial_capital": 100000.0,
+    "final_capital": 100647.98,
+    "strategy_return": 0.65,
+    "bh_return": 9.09,
+    "alpha": -8.44,
+    "trades_count": 11,
+    "sharpe": -0.454,
+    "sortino": -0.682,
+    "max_drawdown": -22.15,
+    "win_rate": 36.4,
+    "profit_factor": 1.25,
+    "winning_trades": 4,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-03-09",
+        "type": "BUY",
+        "price": 13373.69,
+        "shares": 6,
+        "score": 66.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-13",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 12465.81,
+        "shares": 6,
+        "pnl_pct": -6.79,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-03-16",
+        "type": "BUY",
+        "price": 12630.15,
+        "shares": 6,
+        "score": 71.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-30",
+        "type": "Sell (Technical)",
+        "price": 12183.64,
+        "shares": 6,
+        "pnl_pct": -3.54,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-04-01",
+        "type": "BUY",
+        "price": 12384.62,
+        "shares": 6,
+        "score": 72.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-04-06",
+        "type": "Sell (Technical)",
+        "price": 12561.84,
+        "shares": 6,
+        "pnl_pct": 1.43,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-05-27",
+        "type": "BUY",
+        "price": 13231.12,
+        "shares": 6,
+        "score": 61.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-05-29",
+        "type": "Sell (Technical)",
+        "price": 12996.48,
+        "shares": 6,
+        "pnl_pct": -1.77,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "SUNPHARMA",
+    "sector": "Pharma",
+    "initial_capital": 100000.0,
+    "final_capital": 101722.96,
+    "strategy_return": 1.72,
+    "bh_return": 4.56,
+    "alpha": -2.84,
+    "trades_count": 18,
+    "sharpe": -0.415,
+    "sortino": -0.574,
+    "max_drawdown": -12.4,
+    "win_rate": 66.7,
+    "profit_factor": 1.86,
+    "winning_trades": 12,
+    "losing_trades": 6,
+    "recent_trades": [
+      {
+        "date": "2026-04-27",
+        "type": "BUY",
+        "price": 1728.97,
+        "shares": 55,
+        "score": 97.5,
+        "confidence": 100.0,
+        "rating": "Strong Buy",
+        "allocation": 100.0
+      },
+      {
+        "date": "2026-05-29",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1794.5,
+        "shares": 55,
+        "pnl_pct": 3.79,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-01",
+        "type": "BUY",
+        "price": 1791.8,
+        "shares": 48,
+        "score": 81.5,
+        "confidence": 67.0,
+        "rating": "Strong Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-08-17",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1882.0,
+        "shares": 48,
+        "pnl_pct": 5.03,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-08-18",
+        "type": "BUY",
+        "price": 1875.1,
+        "shares": 45,
+        "score": 83.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-07",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1895.0,
+        "shares": 45,
+        "pnl_pct": 1.06,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-09-08",
+        "type": "BUY",
+        "price": 1885.9,
+        "shares": 43,
+        "score": 65.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 1854.7,
+        "shares": 43,
+        "pnl_pct": -1.65,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "M&M",
+    "sector": "Auto",
+    "initial_capital": 100000.0,
+    "final_capital": 99219.79,
+    "strategy_return": -0.78,
+    "bh_return": 0.09,
+    "alpha": -0.87,
+    "trades_count": 17,
+    "sharpe": -0.496,
+    "sortino": -0.704,
+    "max_drawdown": -19.35,
+    "win_rate": 64.7,
+    "profit_factor": 1.57,
+    "winning_trades": 11,
+    "losing_trades": 6,
+    "recent_trades": [
+      {
+        "date": "2026-03-09",
+        "type": "BUY",
+        "price": 3154.47,
+        "shares": 26,
+        "score": 67.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-10",
+        "type": "Sell (Technical)",
+        "price": 3259.47,
+        "shares": 26,
+        "pnl_pct": 3.33,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-03-12",
+        "type": "BUY",
+        "price": 2999.7,
+        "shares": 28,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-17",
+        "type": "Sell (Technical)",
+        "price": 3096.38,
+        "shares": 28,
+        "pnl_pct": 3.22,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-06",
+        "type": "BUY",
+        "price": 3406.0,
+        "shares": 26,
+        "score": 61.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-08-27",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 3330.0,
+        "shares": 26,
+        "pnl_pct": -2.23,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-08-28",
+        "type": "BUY",
+        "price": 3334.0,
+        "shares": 28,
+        "score": 87.5,
+        "confidence": 75.0,
+        "rating": "Strong Buy",
+        "allocation": 90.0
+      },
+      {
+        "date": "2026-09-03",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 3150.0,
+        "shares": 28,
+        "pnl_pct": -5.52,
+        "rating": "Hold"
+      }
+    ]
+  },
+  {
+    "symbol": "ASIANPAINT",
+    "sector": "Consumer",
+    "initial_capital": 100000.0,
+    "final_capital": 87041.71,
+    "strategy_return": -12.96,
+    "bh_return": 3.69,
+    "alpha": -16.65,
+    "trades_count": 22,
+    "sharpe": -0.905,
+    "sortino": -1.302,
+    "max_drawdown": -26.74,
+    "win_rate": 45.5,
+    "profit_factor": 1.05,
+    "winning_trades": 10,
+    "losing_trades": 12,
+    "recent_trades": [
+      {
+        "date": "2026-05-07",
+        "type": "BUY",
+        "price": 2508.83,
+        "shares": 34,
+        "score": 73.5,
+        "confidence": 80.0,
+        "rating": "Buy",
+        "allocation": 92.0
+      },
+      {
+        "date": "2026-06-01",
+        "type": "Sell (Technical)",
+        "price": 2609.76,
+        "shares": 34,
+        "pnl_pct": 4.02,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-06-16",
+        "type": "BUY",
+        "price": 2724.46,
+        "shares": 29,
+        "score": 66.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-08-18",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 2628.4,
+        "shares": 29,
+        "pnl_pct": -3.53,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-08-19",
+        "type": "BUY",
+        "price": 2630.8,
+        "shares": 28,
+        "score": 81.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-04",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 2527.3,
+        "shares": 28,
+        "pnl_pct": -3.93,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-07",
+        "type": "BUY",
+        "price": 2500.9,
+        "shares": 28,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-17",
+        "type": "Sell (Technical)",
+        "price": 2454.0,
+        "shares": 28,
+        "pnl_pct": -1.88,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "TITAN",
+    "sector": "Consumer",
+    "initial_capital": 100000.0,
+    "final_capital": 123926.43,
+    "strategy_return": 23.93,
+    "bh_return": 40.69,
+    "alpha": -16.77,
+    "trades_count": 16,
+    "sharpe": 0.43,
+    "sortino": 0.627,
+    "max_drawdown": -11.57,
+    "win_rate": 62.5,
+    "profit_factor": 3.05,
+    "winning_trades": 10,
+    "losing_trades": 6,
+    "recent_trades": [
+      {
+        "date": "2026-03-16",
+        "type": "BUY",
+        "price": 4077.42,
+        "shares": 22,
+        "score": 67.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-05-07",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 4293.41,
+        "shares": 22,
+        "pnl_pct": 5.3,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-05-08",
+        "type": "BUY",
+        "price": 4494.25,
+        "shares": 24,
+        "score": 81.5,
+        "confidence": 83.0,
+        "rating": "Strong Buy",
+        "allocation": 93.2
+      },
+      {
+        "date": "2026-05-11",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 4191.85,
+        "shares": 24,
+        "pnl_pct": -6.73,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-05-12",
+        "type": "BUY",
+        "price": 4042.04,
+        "shares": 22,
+        "score": 86.5,
+        "confidence": 60.0,
+        "rating": "Strong Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-15",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 4856.0,
+        "shares": 22,
+        "pnl_pct": 20.14,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-16",
+        "type": "BUY",
+        "price": 4908.5,
+        "shares": 21,
+        "score": 88.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 4849.0,
+        "shares": 21,
+        "pnl_pct": -1.21,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "NTPC",
+    "sector": "Energy",
+    "initial_capital": 100000.0,
+    "final_capital": 80184.91,
+    "strategy_return": -19.82,
+    "bh_return": -7.99,
+    "alpha": -11.82,
+    "trades_count": 21,
+    "sharpe": -1.354,
+    "sortino": -1.906,
+    "max_drawdown": -19.93,
+    "win_rate": 38.1,
+    "profit_factor": 0.75,
+    "winning_trades": 8,
+    "losing_trades": 13,
+    "recent_trades": [
+      {
+        "date": "2026-04-02",
+        "type": "BUY",
+        "price": 355.81,
+        "shares": 195,
+        "score": 81.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-05-18",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 384.15,
+        "shares": 195,
+        "pnl_pct": 7.97,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-05-19",
+        "type": "BUY",
+        "price": 385.24,
+        "shares": 201,
+        "score": 67.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 363.47,
+        "shares": 201,
+        "pnl_pct": -5.65,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-03",
+        "type": "BUY",
+        "price": 362.88,
+        "shares": 195,
+        "score": 87.5,
+        "confidence": 60.0,
+        "rating": "Strong Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-07-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 344.97,
+        "shares": 195,
+        "pnl_pct": -4.93,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-07-09",
+        "type": "BUY",
+        "price": 340.03,
+        "shares": 195,
+        "score": 67.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-08-04",
+        "type": "Sell (Technical)",
+        "price": 339.98,
+        "shares": 195,
+        "pnl_pct": -0.01,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "ULTRACEMCO",
+    "sector": "Cement",
+    "initial_capital": 100000.0,
+    "final_capital": 76991.88,
+    "strategy_return": -23.01,
+    "bh_return": -3.3,
+    "alpha": -19.71,
+    "trades_count": 21,
+    "sharpe": -1.876,
+    "sortino": -2.436,
+    "max_drawdown": -29.91,
+    "win_rate": 42.9,
+    "profit_factor": 0.63,
+    "winning_trades": 9,
+    "losing_trades": 12,
+    "recent_trades": [
+      {
+        "date": "2026-08-10",
+        "type": "BUY",
+        "price": 12038.0,
+        "shares": 6,
+        "score": 70.5,
+        "confidence": 83.0,
+        "rating": "Buy",
+        "allocation": 93.2
+      },
+      {
+        "date": "2026-08-18",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 11499.0,
+        "shares": 6,
+        "pnl_pct": -4.48,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-08-28",
+        "type": "BUY",
+        "price": 11589.0,
+        "shares": 5,
+        "score": 60.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-04",
+        "type": "Sell (Technical)",
+        "price": 11408.0,
+        "shares": 5,
+        "pnl_pct": -1.56,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-07",
+        "type": "BUY",
+        "price": 11175.0,
+        "shares": 5,
+        "score": 60.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-11",
+        "type": "Sell (Technical)",
+        "price": 11000.0,
+        "shares": 5,
+        "pnl_pct": -1.57,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-15",
+        "type": "BUY",
+        "price": 10697.0,
+        "shares": 5,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-18",
+        "type": "Sell (Technical)",
+        "price": 11014.0,
+        "shares": 5,
+        "pnl_pct": 2.96,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "POWERGRID",
+    "sector": "Utilities",
+    "initial_capital": 100000.0,
+    "final_capital": 76937.46,
+    "strategy_return": -23.06,
+    "bh_return": -14.49,
+    "alpha": -8.57,
+    "trades_count": 21,
+    "sharpe": -1.766,
+    "sortino": -2.392,
+    "max_drawdown": -23.3,
+    "win_rate": 38.1,
+    "profit_factor": 0.6,
+    "winning_trades": 8,
+    "losing_trades": 13,
+    "recent_trades": [
+      {
+        "date": "2026-05-13",
+        "type": "BUY",
+        "price": 300.1,
+        "shares": 236,
+        "score": 88.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-06-01",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 284.82,
+        "shares": 236,
+        "pnl_pct": -5.09,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-02",
+        "type": "BUY",
+        "price": 280.84,
+        "shares": 239,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-07-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 278.4,
+        "shares": 239,
+        "pnl_pct": -0.87,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-07-09",
+        "type": "BUY",
+        "price": 280.04,
+        "shares": 251,
+        "score": 75.5,
+        "confidence": 67.0,
+        "rating": "Strong Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-08-06",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 269.49,
+        "shares": 251,
+        "pnl_pct": -3.77,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-08-07",
+        "type": "BUY",
+        "price": 270.34,
+        "shares": 230,
+        "score": 68.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-08-18",
+        "type": "Sell (Technical)",
+        "price": 268.0,
+        "shares": 230,
+        "pnl_pct": -0.87,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "BAJAJFINSV",
+    "sector": "NBFC",
+    "initial_capital": 100000.0,
+    "final_capital": 83239.54,
+    "strategy_return": -16.76,
+    "bh_return": 7.96,
+    "alpha": -24.72,
+    "trades_count": 17,
+    "sharpe": -1.36,
+    "sortino": -1.927,
+    "max_drawdown": -23.94,
+    "win_rate": 41.2,
+    "profit_factor": 0.73,
+    "winning_trades": 7,
+    "losing_trades": 10,
+    "recent_trades": [
+      {
+        "date": "2026-08-07",
+        "type": "BUY",
+        "price": 2008.9,
+        "shares": 41,
+        "score": 66.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-08-17",
+        "type": "Sell (Technical)",
+        "price": 2005.0,
+        "shares": 41,
+        "pnl_pct": -0.19,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-24",
+        "type": "BUY",
+        "price": 2001.7,
+        "shares": 42,
+        "score": 85.5,
+        "confidence": 75.0,
+        "rating": "Strong Buy",
+        "allocation": 90.0
+      },
+      {
+        "date": "2026-09-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1938.1,
+        "shares": 42,
+        "pnl_pct": -3.18,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-09",
+        "type": "BUY",
+        "price": 1927.0,
+        "shares": 38,
+        "score": 88.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-16",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1837.0,
+        "shares": 38,
+        "pnl_pct": -4.67,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-17",
+        "type": "BUY",
+        "price": 1859.2,
+        "shares": 37,
+        "score": 68.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1765.0,
+        "shares": 37,
+        "pnl_pct": -5.07,
+        "rating": "Hold"
+      }
+    ]
+  },
+  {
+    "symbol": "TATASTEEL",
+    "sector": "Metals",
+    "initial_capital": 100000.0,
+    "final_capital": 99671.68,
+    "strategy_return": -0.33,
+    "bh_return": 31.61,
+    "alpha": -31.94,
+    "trades_count": 19,
+    "sharpe": -0.275,
+    "sortino": -0.381,
+    "max_drawdown": -16.99,
+    "win_rate": 47.4,
+    "profit_factor": 1.4,
+    "winning_trades": 9,
+    "losing_trades": 10,
+    "recent_trades": [
+      {
+        "date": "2026-05-21",
+        "type": "BUY",
+        "price": 204.37,
+        "shares": 451,
+        "score": 64.5,
+        "confidence": 57.0,
+        "rating": "Buy",
+        "allocation": 82.8
+      },
+      {
+        "date": "2026-06-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 198.62,
+        "shares": 451,
+        "pnl_pct": -2.81,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-09",
+        "type": "BUY",
+        "price": 199.07,
+        "shares": 435,
+        "score": 73.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-06-25",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 188.71,
+        "shares": 435,
+        "pnl_pct": -5.21,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-26",
+        "type": "BUY",
+        "price": 188.71,
+        "shares": 450,
+        "score": 81.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-07-24",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 182.67,
+        "shares": 450,
+        "pnl_pct": -3.2,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-07-28",
+        "type": "BUY",
+        "price": 182.63,
+        "shares": 474,
+        "score": 75.5,
+        "confidence": 67.0,
+        "rating": "Strong Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-08-14",
+        "type": "Sell (Technical)",
+        "price": 183.5,
+        "shares": 474,
+        "pnl_pct": 0.48,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "ADANIENT",
+    "sector": "Conglomerate",
+    "initial_capital": 100000.0,
+    "final_capital": 74426.05,
+    "strategy_return": -25.57,
+    "bh_return": 17.47,
+    "alpha": -43.05,
+    "trades_count": 19,
+    "sharpe": -1.221,
+    "sortino": -1.609,
+    "max_drawdown": -33.67,
+    "win_rate": 47.4,
+    "profit_factor": 0.59,
+    "winning_trades": 9,
+    "losing_trades": 9,
+    "recent_trades": [
+      {
+        "date": "2026-06-01",
+        "type": "BUY",
+        "price": 2908.1,
+        "shares": 22,
+        "score": 64.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-07-23",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 3010.0,
+        "shares": 22,
+        "pnl_pct": 3.5,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-07-24",
+        "type": "BUY",
+        "price": 3026.4,
+        "shares": 23,
+        "score": 84.5,
+        "confidence": 78.0,
+        "rating": "Strong Buy",
+        "allocation": 91.2
+      },
+      {
+        "date": "2026-08-31",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 2859.1,
+        "shares": 23,
+        "pnl_pct": -5.53,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-01",
+        "type": "BUY",
+        "price": 2863.9,
+        "shares": 21,
+        "score": 75.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-24",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 2900.0,
+        "shares": 21,
+        "pnl_pct": 1.26,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-25",
+        "type": "BUY",
+        "price": 2929.2,
+        "shares": 20,
+        "score": 66.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 2929.2,
+        "shares": 20,
+        "pnl_pct": 0.0,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "COALINDIA",
+    "sector": "Mining",
+    "initial_capital": 100000.0,
+    "final_capital": 102476.19,
+    "strategy_return": 2.48,
+    "bh_return": 14.42,
+    "alpha": -11.94,
+    "trades_count": 21,
+    "sharpe": -0.251,
+    "sortino": -0.367,
+    "max_drawdown": -16.03,
+    "win_rate": 66.7,
+    "profit_factor": 1.99,
+    "winning_trades": 14,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-07-07",
+        "type": "BUY",
+        "price": 418.0,
+        "shares": 212,
+        "score": 88.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-07-28",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 399.68,
+        "shares": 212,
+        "pnl_pct": -4.38,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-07-29",
+        "type": "BUY",
+        "price": 399.59,
+        "shares": 212,
+        "score": 67.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-08-19",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 395.0,
+        "shares": 212,
+        "pnl_pct": -1.15,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-08-24",
+        "type": "BUY",
+        "price": 401.81,
+        "shares": 220,
+        "score": 65.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-02",
+        "type": "Sell (Technical)",
+        "price": 412.63,
+        "shares": 220,
+        "pnl_pct": 2.69,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-22",
+        "type": "BUY",
+        "price": 428.0,
+        "shares": 210,
+        "score": 69.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 425.0,
+        "shares": 210,
+        "pnl_pct": -0.7,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "ONGC",
+    "sector": "Energy",
+    "initial_capital": 100000.0,
+    "final_capital": 101546.28,
+    "strategy_return": 1.55,
+    "bh_return": -1.51,
+    "alpha": 3.06,
+    "trades_count": 18,
+    "sharpe": -0.27,
+    "sortino": -0.399,
+    "max_drawdown": -22.57,
+    "win_rate": 55.6,
+    "profit_factor": 1.42,
+    "winning_trades": 10,
+    "losing_trades": 8,
+    "recent_trades": [
+      {
+        "date": "2026-05-07",
+        "type": "BUY",
+        "price": 282.7,
+        "shares": 385,
+        "score": 78.5,
+        "confidence": 83.0,
+        "rating": "Strong Buy",
+        "allocation": 93.2
+      },
+      {
+        "date": "2026-05-27",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 272.89,
+        "shares": 385,
+        "pnl_pct": -3.47,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-05-28",
+        "type": "BUY",
+        "price": 272.89,
+        "shares": 329,
+        "score": 69.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-06-10",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 250.83,
+        "shares": 329,
+        "pnl_pct": -8.08,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-06-11",
+        "type": "BUY",
+        "price": 251.53,
+        "shares": 332,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-06-25",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 232.11,
+        "shares": 332,
+        "pnl_pct": -7.72,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-06-26",
+        "type": "BUY",
+        "price": 232.11,
+        "shares": 335,
+        "score": 68.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-07-15",
+        "type": "Sell (Technical)",
+        "price": 246.13,
+        "shares": 335,
+        "pnl_pct": 6.04,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "WIPRO",
+    "sector": "IT",
+    "initial_capital": 100000.0,
+    "final_capital": 91786.72,
+    "strategy_return": -8.21,
+    "bh_return": -41.97,
+    "alpha": 33.75,
+    "trades_count": 13,
+    "sharpe": -0.99,
+    "sortino": -1.266,
+    "max_drawdown": -15.25,
+    "win_rate": 61.5,
+    "profit_factor": 1.0,
+    "winning_trades": 8,
+    "losing_trades": 5,
+    "recent_trades": [
+      {
+        "date": "2025-12-24",
+        "type": "BUY",
+        "price": 258.36,
+        "shares": 345,
+        "score": 65.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-01-19",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 237.05,
+        "shares": 345,
+        "pnl_pct": -8.25,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-01-21",
+        "type": "BUY",
+        "price": 230.88,
+        "shares": 336,
+        "score": 66.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-01-29",
+        "type": "Sell (Technical)",
+        "price": 237.09,
+        "shares": 336,
+        "pnl_pct": 2.69,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-02-16",
+        "type": "BUY",
+        "price": 210.85,
+        "shares": 365,
+        "score": 64.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-02-24",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 197.88,
+        "shares": 365,
+        "pnl_pct": -6.15,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-03-19",
+        "type": "BUY",
+        "price": 186.28,
+        "shares": 410,
+        "score": 61.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-03-27",
+        "type": "Sell (Technical)",
+        "price": 189.44,
+        "shares": 410,
+        "pnl_pct": 1.69,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "HCLTECH",
+    "sector": "IT",
+    "initial_capital": 100000.0,
+    "final_capital": 72330.63,
+    "strategy_return": -27.67,
+    "bh_return": -29.02,
+    "alpha": 1.35,
+    "trades_count": 12,
+    "sharpe": -2.282,
+    "sortino": -2.814,
+    "max_drawdown": -28.81,
+    "win_rate": 41.7,
+    "profit_factor": 0.29,
+    "winning_trades": 5,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2025-12-31",
+        "type": "BUY",
+        "price": 1565.37,
+        "shares": 50,
+        "score": 90.5,
+        "confidence": 75.0,
+        "rating": "Strong Buy",
+        "allocation": 90.0
+      },
+      {
+        "date": "2026-02-04",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1575.25,
+        "shares": 50,
+        "pnl_pct": 0.63,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-02-05",
+        "type": "BUY",
+        "price": 1563.79,
+        "shares": 46,
+        "score": 72.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-02-12",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 1433.73,
+        "shares": 46,
+        "pnl_pct": -8.32,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-02-13",
+        "type": "BUY",
+        "price": 1413.43,
+        "shares": 46,
+        "score": 68.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-02-24",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 1300.76,
+        "shares": 46,
+        "pnl_pct": -7.97,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-02-25",
+        "type": "BUY",
+        "price": 1338.64,
+        "shares": 46,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-17",
+        "type": "Sell (Technical)",
+        "price": 1283.18,
+        "shares": 46,
+        "pnl_pct": -4.14,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "NESTLEIND",
+    "sector": "FMCG",
+    "initial_capital": 100000.0,
+    "final_capital": 106219.44,
+    "strategy_return": 6.22,
+    "bh_return": 23.78,
+    "alpha": -17.56,
+    "trades_count": 15,
+    "sharpe": -0.139,
+    "sortino": -0.208,
+    "max_drawdown": -12.18,
+    "win_rate": 60.0,
+    "profit_factor": 2.02,
+    "winning_trades": 9,
+    "losing_trades": 6,
+    "recent_trades": [
+      {
+        "date": "2026-04-02",
+        "type": "BUY",
+        "price": 1185.6,
+        "shares": 67,
+        "score": 61.5,
+        "confidence": 57.0,
+        "rating": "Buy",
+        "allocation": 82.8
+      },
+      {
+        "date": "2026-05-20",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1413.31,
+        "shares": 67,
+        "pnl_pct": 19.21,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-05-21",
+        "type": "BUY",
+        "price": 1399.77,
+        "shares": 69,
+        "score": 88.5,
+        "confidence": 67.0,
+        "rating": "Strong Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-08-20",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1458.0,
+        "shares": 69,
+        "pnl_pct": 4.16,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-08-25",
+        "type": "BUY",
+        "price": 1479.0,
+        "shares": 65,
+        "score": 60.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-04",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1410.5,
+        "shares": 65,
+        "pnl_pct": -4.63,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-07",
+        "type": "BUY",
+        "price": 1398.0,
+        "shares": 64,
+        "score": 76.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 1351.1,
+        "shares": 64,
+        "pnl_pct": -3.35,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "GRASIM",
+    "sector": "Cement",
+    "initial_capital": 100000.0,
+    "final_capital": 115106.56,
+    "strategy_return": 15.11,
+    "bh_return": 19.43,
+    "alpha": -4.32,
+    "trades_count": 16,
+    "sharpe": 0.168,
+    "sortino": 0.253,
+    "max_drawdown": -8.64,
+    "win_rate": 62.5,
+    "profit_factor": 7.7,
+    "winning_trades": 10,
+    "losing_trades": 6,
+    "recent_trades": [
+      {
+        "date": "2026-03-13",
+        "type": "BUY",
+        "price": 2560.62,
+        "shares": 33,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-17",
+        "type": "Sell (Technical)",
+        "price": 2674.97,
+        "shares": 33,
+        "pnl_pct": 4.47,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-04-29",
+        "type": "BUY",
+        "price": 2794.49,
+        "shares": 35,
+        "score": 70.5,
+        "confidence": 83.0,
+        "rating": "Buy",
+        "allocation": 93.2
+      },
+      {
+        "date": "2026-05-04",
+        "type": "Sell (Technical)",
+        "price": 2847.13,
+        "shares": 35,
+        "pnl_pct": 1.88,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-05-12",
+        "type": "BUY",
+        "price": 2893.98,
+        "shares": 32,
+        "score": 66.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-09-15",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 3171.0,
+        "shares": 32,
+        "pnl_pct": 9.57,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-16",
+        "type": "BUY",
+        "price": 3187.0,
+        "shares": 30,
+        "score": 76.5,
+        "confidence": 62.0,
+        "rating": "Strong Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 3180.8,
+        "shares": 30,
+        "pnl_pct": -0.19,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "TECHM",
+    "sector": "IT",
+    "initial_capital": 100000.0,
+    "final_capital": 58814.46,
+    "strategy_return": -41.19,
+    "bh_return": -8.19,
+    "alpha": -33.0,
+    "trades_count": 22,
+    "sharpe": -2.496,
+    "sortino": -3.051,
+    "max_drawdown": -41.78,
+    "win_rate": 40.9,
+    "profit_factor": 0.31,
+    "winning_trades": 9,
+    "losing_trades": 13,
+    "recent_trades": [
+      {
+        "date": "2026-07-22",
+        "type": "BUY",
+        "price": 1560.6,
+        "shares": 34,
+        "score": 61.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-07-29",
+        "type": "Sell (Technical)",
+        "price": 1644.2,
+        "shares": 34,
+        "pnl_pct": 5.36,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-07-30",
+        "type": "BUY",
+        "price": 1669.0,
+        "shares": 32,
+        "score": 60.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-08-21",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1584.0,
+        "shares": 32,
+        "pnl_pct": -5.09,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-08-24",
+        "type": "BUY",
+        "price": 1584.0,
+        "shares": 33,
+        "score": 88.5,
+        "confidence": 67.0,
+        "rating": "Strong Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-09",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1508.0,
+        "shares": 33,
+        "pnl_pct": -4.8,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-10",
+        "type": "BUY",
+        "price": 1525.8,
+        "shares": 31,
+        "score": 81.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 1546.2,
+        "shares": 31,
+        "pnl_pct": 1.34,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "JSWSTEEL",
+    "sector": "Metals",
+    "initial_capital": 100000.0,
+    "final_capital": 124549.36,
+    "strategy_return": 24.55,
+    "bh_return": 27.03,
+    "alpha": -2.48,
+    "trades_count": 14,
+    "sharpe": 0.445,
+    "sortino": 0.624,
+    "max_drawdown": -13.22,
+    "win_rate": 71.4,
+    "profit_factor": 5.07,
+    "winning_trades": 10,
+    "losing_trades": 4,
+    "recent_trades": [
+      {
+        "date": "2026-03-05",
+        "type": "BUY",
+        "price": 1240.97,
+        "shares": 90,
+        "score": 74.5,
+        "confidence": 80.0,
+        "rating": "Buy",
+        "allocation": 92.0
+      },
+      {
+        "date": "2026-03-12",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 1165.9,
+        "shares": 90,
+        "pnl_pct": -6.05,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-03-16",
+        "type": "BUY",
+        "price": 1139.06,
+        "shares": 84,
+        "score": 81.5,
+        "confidence": 60.0,
+        "rating": "Strong Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-06-23",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1235.11,
+        "shares": 84,
+        "pnl_pct": 8.43,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-24",
+        "type": "BUY",
+        "price": 1224.17,
+        "shares": 82,
+        "score": 76.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-11",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1265.0,
+        "shares": 82,
+        "pnl_pct": 3.34,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-14",
+        "type": "BUY",
+        "price": 1265.0,
+        "shares": 81,
+        "score": 76.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 1274.6,
+        "shares": 81,
+        "pnl_pct": 0.76,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "HINDALCO",
+    "sector": "Metals",
+    "initial_capital": 100000.0,
+    "final_capital": 135580.78,
+    "strategy_return": 35.58,
+    "bh_return": 47.61,
+    "alpha": -12.03,
+    "trades_count": 15,
+    "sharpe": 0.624,
+    "sortino": 0.861,
+    "max_drawdown": -16.98,
+    "win_rate": 46.7,
+    "profit_factor": 2.77,
+    "winning_trades": 7,
+    "losing_trades": 8,
+    "recent_trades": [
+      {
+        "date": "2026-06-10",
+        "type": "BUY",
+        "price": 1033.91,
+        "shares": 115,
+        "score": 72.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-06-24",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 971.53,
+        "shares": 115,
+        "pnl_pct": -6.03,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-25",
+        "type": "BUY",
+        "price": 948.25,
+        "shares": 119,
+        "score": 78.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-01",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1014.4,
+        "shares": 119,
+        "pnl_pct": 6.98,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-02",
+        "type": "BUY",
+        "price": 1009.7,
+        "shares": 128,
+        "score": 90.5,
+        "confidence": 75.0,
+        "rating": "Strong Buy",
+        "allocation": 90.0
+      },
+      {
+        "date": "2026-09-15",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 958.7,
+        "shares": 128,
+        "pnl_pct": -5.05,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-17",
+        "type": "BUY",
+        "price": 980.5,
+        "shares": 117,
+        "score": 63.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 978.0,
+        "shares": 117,
+        "pnl_pct": -0.25,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "DRREDDY",
+    "sector": "Pharma",
+    "initial_capital": 100000.0,
+    "final_capital": 69047.13,
+    "strategy_return": -30.95,
+    "bh_return": -2.99,
+    "alpha": -27.96,
+    "trades_count": 21,
+    "sharpe": -1.862,
+    "sortino": -2.516,
+    "max_drawdown": -31.6,
+    "win_rate": 38.1,
+    "profit_factor": 0.34,
+    "winning_trades": 8,
+    "losing_trades": 13,
+    "recent_trades": [
+      {
+        "date": "2026-06-04",
+        "type": "BUY",
+        "price": 1259.51,
+        "shares": 48,
+        "score": 83.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-07-09",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1261.5,
+        "shares": 48,
+        "pnl_pct": 0.16,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-07-14",
+        "type": "BUY",
+        "price": 1246.2,
+        "shares": 48,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-07-23",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 1166.3,
+        "shares": 48,
+        "pnl_pct": -6.41,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-07-24",
+        "type": "BUY",
+        "price": 1151.7,
+        "shares": 48,
+        "score": 68.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-07-30",
+        "type": "Sell (Technical)",
+        "price": 1144.8,
+        "shares": 48,
+        "pnl_pct": -0.6,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-31",
+        "type": "BUY",
+        "price": 1154.4,
+        "shares": 47,
+        "score": 60.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-01",
+        "type": "Sell (Technical)",
+        "price": 1171.0,
+        "shares": 47,
+        "pnl_pct": 1.44,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "BAJAJ-AUTO",
+    "sector": "Auto",
+    "initial_capital": 100000.0,
+    "final_capital": 112657.89,
+    "strategy_return": 12.66,
+    "bh_return": 29.08,
+    "alpha": -16.42,
+    "trades_count": 16,
+    "sharpe": 0.099,
+    "sortino": 0.149,
+    "max_drawdown": -15.51,
+    "win_rate": 56.2,
+    "profit_factor": 1.88,
+    "winning_trades": 9,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-04-07",
+        "type": "BUY",
+        "price": 8923.91,
+        "shares": 9,
+        "score": 82.5,
+        "confidence": 75.0,
+        "rating": "Strong Buy",
+        "allocation": 90.0
+      },
+      {
+        "date": "2026-06-11",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 10114.0,
+        "shares": 9,
+        "pnl_pct": 13.34,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-12",
+        "type": "BUY",
+        "price": 10063.0,
+        "shares": 9,
+        "score": 81.5,
+        "confidence": 67.0,
+        "rating": "Strong Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-06-29",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 9630.0,
+        "shares": 9,
+        "pnl_pct": -4.3,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-30",
+        "type": "BUY",
+        "price": 9716.0,
+        "shares": 8,
+        "score": 62.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-09",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 11790.0,
+        "shares": 8,
+        "pnl_pct": 21.35,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-09-10",
+        "type": "BUY",
+        "price": 11768.0,
+        "shares": 8,
+        "score": 70.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-25",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 11269.0,
+        "shares": 8,
+        "pnl_pct": -4.24,
+        "rating": "Strong Buy"
+      }
+    ]
+  },
+  {
+    "symbol": "CIPLA",
+    "sector": "Pharma",
+    "initial_capital": 100000.0,
+    "final_capital": 86993.62,
+    "strategy_return": -13.01,
+    "bh_return": -1.95,
+    "alpha": -11.06,
+    "trades_count": 25,
+    "sharpe": -1.224,
+    "sortino": -1.66,
+    "max_drawdown": -22.22,
+    "win_rate": 56.0,
+    "profit_factor": 1.11,
+    "winning_trades": 14,
+    "losing_trades": 11,
+    "recent_trades": [
+      {
+        "date": "2026-08-20",
+        "type": "BUY",
+        "price": 1438.0,
+        "shares": 53,
+        "score": 60.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-09",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1363.1,
+        "shares": 53,
+        "pnl_pct": -5.21,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-10",
+        "type": "BUY",
+        "price": 1373.3,
+        "shares": 50,
+        "score": 61.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-14",
+        "type": "Sell (Technical)",
+        "price": 1366.0,
+        "shares": 50,
+        "pnl_pct": -0.53,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-16",
+        "type": "BUY",
+        "price": 1358.0,
+        "shares": 50,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-17",
+        "type": "Sell (Technical)",
+        "price": 1376.3,
+        "shares": 50,
+        "pnl_pct": 1.35,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-09-18",
+        "type": "BUY",
+        "price": 1394.5,
+        "shares": 57,
+        "score": 83.5,
+        "confidence": 80.0,
+        "rating": "Strong Buy",
+        "allocation": 92.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 1411.9,
+        "shares": 57,
+        "pnl_pct": 1.25,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "APOLLOHOSP",
+    "sector": "Healthcare",
+    "initial_capital": 100000.0,
+    "final_capital": 103198.42,
+    "strategy_return": 3.2,
+    "bh_return": 24.42,
+    "alpha": -21.22,
+    "trades_count": 16,
+    "sharpe": -0.352,
+    "sortino": -0.593,
+    "max_drawdown": -14.44,
+    "win_rate": 56.2,
+    "profit_factor": 2.06,
+    "winning_trades": 9,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-03-05",
+        "type": "BUY",
+        "price": 7765.96,
+        "shares": 10,
+        "score": 62.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-03-10",
+        "type": "Sell (Technical)",
+        "price": 7793.93,
+        "shares": 10,
+        "pnl_pct": 0.36,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-03-16",
+        "type": "BUY",
+        "price": 7481.29,
+        "shares": 10,
+        "score": 63.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-03-20",
+        "type": "Sell (Technical)",
+        "price": 7355.94,
+        "shares": 10,
+        "pnl_pct": -1.68,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-04-09",
+        "type": "BUY",
+        "price": 7472.8,
+        "shares": 10,
+        "score": 60.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-08-12",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 8587.0,
+        "shares": 10,
+        "pnl_pct": 14.91,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-08-13",
+        "type": "BUY",
+        "price": 8590.0,
+        "shares": 9,
+        "score": 75.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 8904.0,
+        "shares": 9,
+        "pnl_pct": 3.66,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "TATACONSUM",
+    "sector": "FMCG",
+    "initial_capital": 100000.0,
+    "final_capital": 91600.08,
+    "strategy_return": -8.4,
+    "bh_return": 7.12,
+    "alpha": -15.52,
+    "trades_count": 15,
+    "sharpe": -0.816,
+    "sortino": -1.202,
+    "max_drawdown": -18.17,
+    "win_rate": 53.3,
+    "profit_factor": 1.04,
+    "winning_trades": 8,
+    "losing_trades": 7,
+    "recent_trades": [
+      {
+        "date": "2026-05-08",
+        "type": "BUY",
+        "price": 1166.33,
+        "shares": 73,
+        "score": 69.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-05-25",
+        "type": "Sell (Technical)",
+        "price": 1187.2,
+        "shares": 73,
+        "pnl_pct": 1.79,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-06-01",
+        "type": "BUY",
+        "price": 1143.3,
+        "shares": 71,
+        "score": 65.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-06-18",
+        "type": "Sell (Technical)",
+        "price": 1111.4,
+        "shares": 71,
+        "pnl_pct": -2.79,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-06-25",
+        "type": "BUY",
+        "price": 1131.3,
+        "shares": 68,
+        "score": 61.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-07-02",
+        "type": "Sell (Technical)",
+        "price": 1107.2,
+        "shares": 68,
+        "pnl_pct": -2.13,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-07-03",
+        "type": "BUY",
+        "price": 1116.7,
+        "shares": 74,
+        "score": 78.5,
+        "confidence": 71.0,
+        "rating": "Strong Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-07-17",
+        "type": "Sell (Technical)",
+        "price": 1088.6,
+        "shares": 74,
+        "pnl_pct": -2.52,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "BRITANNIA",
+    "sector": "FMCG",
+    "initial_capital": 100000.0,
+    "final_capital": 92767.46,
+    "strategy_return": -7.23,
+    "bh_return": 5.58,
+    "alpha": -12.81,
+    "trades_count": 10,
+    "sharpe": -0.938,
+    "sortino": -1.245,
+    "max_drawdown": -12.79,
+    "win_rate": 50.0,
+    "profit_factor": 0.93,
+    "winning_trades": 5,
+    "losing_trades": 5,
+    "recent_trades": [
+      {
+        "date": "2026-01-16",
+        "type": "BUY",
+        "price": 5801.87,
+        "shares": 14,
+        "score": 75.5,
+        "confidence": 62.0,
+        "rating": "Strong Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-03-04",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 5793.02,
+        "shares": 14,
+        "pnl_pct": -0.15,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-03-09",
+        "type": "BUY",
+        "price": 5793.51,
+        "shares": 13,
+        "score": 71.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-03-20",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 5526.46,
+        "shares": 13,
+        "pnl_pct": -4.61,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-03-23",
+        "type": "BUY",
+        "price": 5400.07,
+        "shares": 13,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-03-25",
+        "type": "Sell (Technical)",
+        "price": 5554.49,
+        "shares": 13,
+        "pnl_pct": 2.86,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-03-27",
+        "type": "BUY",
+        "price": 5409.9,
+        "shares": 14,
+        "score": 71.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-04-06",
+        "type": "Sell (Technical)",
+        "price": 5444.33,
+        "shares": 14,
+        "pnl_pct": 0.64,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "EICHERMOT",
+    "sector": "Auto",
+    "initial_capital": 100000.0,
+    "final_capital": 119606.86,
+    "strategy_return": 19.61,
+    "bh_return": 55.09,
+    "alpha": -35.48,
+    "trades_count": 20,
+    "sharpe": 0.29,
+    "sortino": 0.427,
+    "max_drawdown": -22.27,
+    "win_rate": 60.0,
+    "profit_factor": 2.46,
+    "winning_trades": 12,
+    "losing_trades": 8,
+    "recent_trades": [
+      {
+        "date": "2026-06-10",
+        "type": "BUY",
+        "price": 7144.68,
+        "shares": 14,
+        "score": 79.5,
+        "confidence": 67.0,
+        "rating": "Strong Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-06-30",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 7000.19,
+        "shares": 14,
+        "pnl_pct": -2.02,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-07-02",
+        "type": "BUY",
+        "price": 7174.87,
+        "shares": 13,
+        "score": 60.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-02",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 7711.5,
+        "shares": 13,
+        "pnl_pct": 7.48,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-03",
+        "type": "BUY",
+        "price": 7690.0,
+        "shares": 13,
+        "score": 77.5,
+        "confidence": 50.0,
+        "rating": "Strong Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-22",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 7427.0,
+        "shares": 13,
+        "pnl_pct": -3.42,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-23",
+        "type": "BUY",
+        "price": 7470.0,
+        "shares": 13,
+        "score": 69.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 7336.5,
+        "shares": 13,
+        "pnl_pct": -1.79,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "DIVISLAB",
+    "sector": "Pharma",
+    "initial_capital": 100000.0,
+    "final_capital": 107721.98,
+    "strategy_return": 7.72,
+    "bh_return": 62.64,
+    "alpha": -54.92,
+    "trades_count": 18,
+    "sharpe": -0.065,
+    "sortino": -0.1,
+    "max_drawdown": -25.66,
+    "win_rate": 55.6,
+    "profit_factor": 1.71,
+    "winning_trades": 10,
+    "losing_trades": 8,
+    "recent_trades": [
+      {
+        "date": "2026-02-11",
+        "type": "BUY",
+        "price": 6360.27,
+        "shares": 11,
+        "score": 60.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-02-13",
+        "type": "Sell (Technical)",
+        "price": 6143.17,
+        "shares": 11,
+        "pnl_pct": -3.41,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-02-27",
+        "type": "BUY",
+        "price": 6382.18,
+        "shares": 11,
+        "score": 61.5,
+        "confidence": 62.0,
+        "rating": "Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-03-04",
+        "type": "Sell (Technical)",
+        "price": 6290.06,
+        "shares": 11,
+        "pnl_pct": -1.44,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-05-15",
+        "type": "BUY",
+        "price": 6732.74,
+        "shares": 10,
+        "score": 66.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2026-06-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 6494.22,
+        "shares": 10,
+        "pnl_pct": -3.54,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-06-09",
+        "type": "BUY",
+        "price": 6725.27,
+        "shares": 10,
+        "score": 69.5,
+        "confidence": 80.0,
+        "rating": "Buy",
+        "allocation": 92.0
+      },
+      {
+        "date": "2026-09-24",
+        "type": "Sell (Technical)",
+        "price": 9602.0,
+        "shares": 10,
+        "pnl_pct": 42.77,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "BPCL",
+    "sector": "Energy",
+    "initial_capital": 100000.0,
+    "final_capital": 85084.81,
+    "strategy_return": -14.92,
+    "bh_return": 10.31,
+    "alpha": -25.23,
+    "trades_count": 16,
+    "sharpe": -0.898,
+    "sortino": -1.235,
+    "max_drawdown": -26.35,
+    "win_rate": 50.0,
+    "profit_factor": 0.94,
+    "winning_trades": 8,
+    "losing_trades": 8,
+    "recent_trades": [
+      {
+        "date": "2026-03-10",
+        "type": "BUY",
+        "price": 325.9,
+        "shares": 229,
+        "score": 66.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-16",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 304.95,
+        "shares": 229,
+        "pnl_pct": -6.43,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-03-17",
+        "type": "BUY",
+        "price": 300.05,
+        "shares": 235,
+        "score": 63.5,
+        "confidence": 55.0,
+        "rating": "Buy",
+        "allocation": 82.0
+      },
+      {
+        "date": "2026-03-23",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 271.3,
+        "shares": 235,
+        "pnl_pct": -9.58,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-04-01",
+        "type": "BUY",
+        "price": 281.25,
+        "shares": 224,
+        "score": 60.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-04-06",
+        "type": "Sell (Technical)",
+        "price": 278.7,
+        "shares": 224,
+        "pnl_pct": -0.91,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-04-07",
+        "type": "BUY",
+        "price": 277.45,
+        "shares": 224,
+        "score": 64.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-04-17",
+        "type": "Sell (Technical)",
+        "price": 312.1,
+        "shares": 224,
+        "pnl_pct": 12.49,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "HEROMOTOCO",
+    "sector": "Auto",
+    "initial_capital": 100000.0,
+    "final_capital": 78642.8,
+    "strategy_return": -21.36,
+    "bh_return": 24.79,
+    "alpha": -46.15,
+    "trades_count": 21,
+    "sharpe": -1.135,
+    "sortino": -1.57,
+    "max_drawdown": -32.83,
+    "win_rate": 23.8,
+    "profit_factor": 0.84,
+    "winning_trades": 5,
+    "losing_trades": 16,
+    "recent_trades": [
+      {
+        "date": "2026-05-01",
+        "type": "BUY",
+        "price": 5025.08,
+        "shares": 15,
+        "score": 65.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-05-04",
+        "type": "Sell (Technical)",
+        "price": 4993.06,
+        "shares": 15,
+        "pnl_pct": -0.64,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-05-07",
+        "type": "BUY",
+        "price": 5265.55,
+        "shares": 15,
+        "score": 72.5,
+        "confidence": 75.0,
+        "rating": "Buy",
+        "allocation": 90.0
+      },
+      {
+        "date": "2026-05-12",
+        "type": "Sell (Technical)",
+        "price": 5008.82,
+        "shares": 15,
+        "pnl_pct": -4.88,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-08-31",
+        "type": "BUY",
+        "price": 5450.0,
+        "shares": 12,
+        "score": 70.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-09-09",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 5218.0,
+        "shares": 12,
+        "pnl_pct": -4.26,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-21",
+        "type": "BUY",
+        "price": 5419.0,
+        "shares": 12,
+        "score": 61.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 5328.0,
+        "shares": 12,
+        "pnl_pct": -1.68,
+        "rating": "END"
+      }
+    ]
+  },
+  {
+    "symbol": "SHRIRAMFIN",
+    "sector": "NBFC",
+    "initial_capital": 100000.0,
+    "final_capital": 130950.26,
+    "strategy_return": 30.95,
+    "bh_return": 63.29,
+    "alpha": -32.34,
+    "trades_count": 18,
+    "sharpe": 0.481,
+    "sortino": 0.716,
+    "max_drawdown": -18.26,
+    "win_rate": 50.0,
+    "profit_factor": 2.45,
+    "winning_trades": 9,
+    "losing_trades": 9,
+    "recent_trades": [
+      {
+        "date": "2026-05-13",
+        "type": "BUY",
+        "price": 915.37,
+        "shares": 112,
+        "score": 76.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-06-08",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 891.61,
+        "shares": 112,
+        "pnl_pct": -2.6,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-06-10",
+        "type": "BUY",
+        "price": 892.3,
+        "shares": 108,
+        "score": 68.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-01",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 1059.1,
+        "shares": 108,
+        "pnl_pct": 18.69,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-02",
+        "type": "BUY",
+        "price": 1047.0,
+        "shares": 111,
+        "score": 80.5,
+        "confidence": 60.0,
+        "rating": "Strong Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-09-15",
+        "type": "Stop Loss (Fixed -6%)",
+        "price": 979.8,
+        "shares": 111,
+        "pnl_pct": -6.42,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-16",
+        "type": "BUY",
+        "price": 979.0,
+        "shares": 106,
+        "score": 63.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-09-24",
+        "type": "Sell (Technical)",
+        "price": 990.0,
+        "shares": 106,
+        "pnl_pct": 1.12,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "TRENT",
+    "sector": "Retail",
+    "initial_capital": 100000.0,
+    "final_capital": 92140.03,
+    "strategy_return": -7.86,
+    "bh_return": -61.31,
+    "alpha": 53.45,
+    "trades_count": 9,
+    "sharpe": -1.054,
+    "sortino": -1.296,
+    "max_drawdown": -21.01,
+    "win_rate": 44.4,
+    "profit_factor": 0.8,
+    "winning_trades": 4,
+    "losing_trades": 5,
+    "recent_trades": [
+      {
+        "date": "2025-02-21",
+        "type": "BUY",
+        "price": 5037.84,
+        "shares": 14,
+        "score": 78.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2025-03-19",
+        "type": "Sell (Technical)",
+        "price": 5220.12,
+        "shares": 14,
+        "pnl_pct": 3.62,
+        "rating": "Sell"
+      },
+      {
+        "date": "2025-03-25",
+        "type": "BUY",
+        "price": 5174.41,
+        "shares": 15,
+        "score": 67.5,
+        "confidence": 71.0,
+        "rating": "Buy",
+        "allocation": 88.4
+      },
+      {
+        "date": "2025-03-27",
+        "type": "Sell (Technical)",
+        "price": 5411.17,
+        "shares": 15,
+        "pnl_pct": 4.58,
+        "rating": "Sell"
+      },
+      {
+        "date": "2025-04-07",
+        "type": "BUY",
+        "price": 4731.22,
+        "shares": 16,
+        "score": 65.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2025-04-08",
+        "type": "Sell (Technical)",
+        "price": 4757.42,
+        "shares": 16,
+        "pnl_pct": 0.55,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-01-22",
+        "type": "BUY",
+        "price": 2532.12,
+        "shares": 30,
+        "score": 60.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-01-27",
+        "type": "Sell (Technical)",
+        "price": 2526.33,
+        "shares": 30,
+        "pnl_pct": -0.23,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "BEL",
+    "sector": "Defence",
+    "initial_capital": 100000.0,
+    "final_capital": 81432.9,
+    "strategy_return": -18.57,
+    "bh_return": 26.05,
+    "alpha": -44.61,
+    "trades_count": 17,
+    "sharpe": -1.066,
+    "sortino": -1.556,
+    "max_drawdown": -23.25,
+    "win_rate": 41.2,
+    "profit_factor": 0.77,
+    "winning_trades": 7,
+    "losing_trades": 10,
+    "recent_trades": [
+      {
+        "date": "2026-04-29",
+        "type": "BUY",
+        "price": 436.96,
+        "shares": 170,
+        "score": 60.5,
+        "confidence": 50.0,
+        "rating": "Buy",
+        "allocation": 80.0
+      },
+      {
+        "date": "2026-05-12",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 415.94,
+        "shares": 170,
+        "pnl_pct": -4.81,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-05-13",
+        "type": "BUY",
+        "price": 427.67,
+        "shares": 174,
+        "score": 63.5,
+        "confidence": 60.0,
+        "rating": "Buy",
+        "allocation": 84.0
+      },
+      {
+        "date": "2026-06-02",
+        "type": "Sell (Technical)",
+        "price": 407.3,
+        "shares": 174,
+        "pnl_pct": -4.76,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-06-17",
+        "type": "BUY",
+        "price": 419.28,
+        "shares": 175,
+        "score": 73.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-06-25",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 406.65,
+        "shares": 175,
+        "pnl_pct": -3.01,
+        "rating": "Hold"
+      },
+      {
+        "date": "2026-06-26",
+        "type": "BUY",
+        "price": 406.65,
+        "shares": 167,
+        "score": 60.5,
+        "confidence": 57.0,
+        "rating": "Buy",
+        "allocation": 82.8
+      },
+      {
+        "date": "2026-07-09",
+        "type": "Sell (Technical)",
+        "price": 405.65,
+        "shares": 167,
+        "pnl_pct": -0.25,
+        "rating": "Sell"
+      }
+    ]
+  },
+  {
+    "symbol": "HAL",
+    "sector": "Defence",
+    "initial_capital": 100000.0,
+    "final_capital": 86168.93,
+    "strategy_return": -13.83,
+    "bh_return": 5.71,
+    "alpha": -19.55,
+    "trades_count": 18,
+    "sharpe": -0.978,
+    "sortino": -1.387,
+    "max_drawdown": -19.05,
+    "win_rate": 50.0,
+    "profit_factor": 0.89,
+    "winning_trades": 9,
+    "losing_trades": 9,
+    "recent_trades": [
+      {
+        "date": "2026-06-17",
+        "type": "BUY",
+        "price": 4451.48,
+        "shares": 15,
+        "score": 62.5,
+        "confidence": 56.0,
+        "rating": "Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-07-08",
+        "type": "Sell (Technical)",
+        "price": 4355.87,
+        "shares": 15,
+        "pnl_pct": -2.15,
+        "rating": "Sell"
+      },
+      {
+        "date": "2026-07-10",
+        "type": "BUY",
+        "price": 4497.69,
+        "shares": 15,
+        "score": 77.5,
+        "confidence": 56.0,
+        "rating": "Strong Buy",
+        "allocation": 82.4
+      },
+      {
+        "date": "2026-08-31",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 4801.6,
+        "shares": 15,
+        "pnl_pct": 6.76,
+        "rating": "Buy"
+      },
+      {
+        "date": "2026-09-01",
+        "type": "BUY",
+        "price": 4807.6,
+        "shares": 15,
+        "score": 74.5,
+        "confidence": 67.0,
+        "rating": "Buy",
+        "allocation": 86.8
+      },
+      {
+        "date": "2026-09-15",
+        "type": "Stop Loss (ATR Trail)",
+        "price": 4695.0,
+        "shares": 15,
+        "pnl_pct": -2.34,
+        "rating": "Strong Buy"
+      },
+      {
+        "date": "2026-09-16",
+        "type": "BUY",
+        "price": 4695.6,
+        "shares": 15,
+        "score": 80.5,
+        "confidence": 62.0,
+        "rating": "Strong Buy",
+        "allocation": 84.8
+      },
+      {
+        "date": "2026-09-25",
+        "type": "SELL (END)",
+        "price": 4782.0,
+        "shares": 15,
+        "pnl_pct": 1.84,
+        "rating": "END"
+      }
+    ]
+  }
+]

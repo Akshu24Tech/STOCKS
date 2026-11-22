@@ -32,7 +32,7 @@ function IndexCard({ name, data }) {
 }
 
 export default function HomePage() {
-  const { ticks, riskScore, portfolio } = useApp()
+  const { ticks, riskScore, portfolio, openStockModal } = useApp()
   const navigate = useNavigate()
   const [snapshot, setSnapshot] = useState(null)
   const [gainers, setGainers] = useState([])
@@ -164,7 +164,7 @@ export default function HomePage() {
             </thead>
             <tbody>
               {gainers.slice(0, 6).map(s => (
-                <tr key={s.symbol}>
+                <tr key={s.symbol} style={{ cursor: 'pointer' }} onClick={() => openStockModal(s.symbol)}>
                   <td><span className="mono" style={{ fontWeight: 700 }}>{s.symbol}</span></td>
                   <td className="mono">₹{s.price?.toFixed(2)}</td>
                   <td><span className="badge badge-green">+{s.change?.toFixed(2)}</span></td>

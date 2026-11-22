@@ -31,7 +31,7 @@ function ChangeCell({ chg, pct }) {
   )
 }
 
-function MarketTable({ title, icon, data, loading, colorKey }) {
+function MarketTable({ title, icon, data, loading, colorKey, onSelectStock }) {
   return (
     <div className="market-table-wrap">
       <div className="market-table-header">
@@ -59,7 +59,7 @@ function MarketTable({ title, icon, data, loading, colorKey }) {
           </thead>
           <tbody>
             {data.map(s => (
-              <tr key={s.symbol}>
+              <tr key={s.symbol} style={{ cursor: 'pointer' }} onClick={() => onSelectStock && onSelectStock(s.symbol)}>
                 <td><span className="mono" style={{ fontWeight: 700, fontSize: 12 }}>{s.symbol}</span></td>
                 <td><PriceCell value={s.price} /></td>
                 <td><ChangeCell chg={s.change} pct={s.change_pct} /></td>
@@ -180,7 +180,7 @@ function TickerBoard({ ticks }) {
 }
 
 export default function LiveFeedPage() {
-  const { ticks } = useApp()
+  const { ticks, openStockModal } = useApp()
   const [gainers, setGainers] = useState([])
   const [losers, setLosers] = useState([])
   const [volume, setVolume] = useState([])
@@ -240,9 +240,9 @@ export default function LiveFeedPage() {
 
       {/* Three tables */}
       <div className="market-grid">
-        <MarketTable title="Top Gainers" icon="🚀" data={gainers} loading={loading} colorKey="gain" />
-        <MarketTable title="Top Losers" icon="📉" data={losers} loading={loading} colorKey="loss" />
-        <MarketTable title="Volume Shakers" icon="🔥" data={volume} loading={loading} colorKey="volume" />
+        <MarketTable title="Top Gainers" icon="🚀" data={gainers} loading={loading} colorKey="gain" onSelectStock={openStockModal} />
+        <MarketTable title="Top Losers" icon="📉" data={losers} loading={loading} colorKey="loss" onSelectStock={openStockModal} />
+        <MarketTable title="Volume Shakers" icon="🔥" data={volume} loading={loading} colorKey="volume" onSelectStock={openStockModal} />
       </div>
     </div>
   )

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>IndiaStocks AI — Backtest Report v2 | 2026-09-25 11:10:43</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:#0d1117;color:#e6edf3;line-height:1.6}
+  .header{background:linear-gradient(135deg,#161b22,#0d1117);padding:36px 40px;border-bottom:1px solid #30363d}
+  .header h1{font-size:2em;font-weight:800;color:#58a6ff}
+  .header p{color:#8b949e;margin-top:4px;font-size:.95em}
+  .container{max-width:1500px;margin:0 auto;padding:28px 20px}
+  .section{background:#161b22;border:1px solid #30363d;border-radius:12px;padding:24px;margin-bottom:28px}
+  .section h2{font-size:1.15em;font-weight:700;color:#58a6ff;border-bottom:1px solid #30363d;padding-bottom:10px;margin-bottom:18px}
+  .kpi-row{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:18px}
+  .kpi{background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:16px 22px;flex:1;min-width:130px;text-align:center}
+  .kpi .val{font-size:1.8em;font-weight:800}
+  .kpi .lbl{font-size:.78em;color:#8b949e;text-transform:uppercase;letter-spacing:.05em;margin-top:3px}
+  table{width:100%;border-collapse:collapse;font-size:.85em}
+  th{background:#0d1117;color:#8b949e;padding:9px 12px;text-align:left;border-bottom:1px solid #30363d;font-weight:600;font-size:.78em;text-transform:uppercase;position:sticky;top:0;z-index:1}
+  td{padding:8px 12px;border-bottom:1px solid #21262d;vertical-align:middle}
+  tr:hover{background:#1c2128}
+  .badge{display:inline-block;padding:2px 9px;border-radius:10px;font-size:.78em;font-weight:700}
+  .scroll{overflow-x:auto}
+  .indicator-table td,.indicator-table th{padding:7px 14px}
+  .footer{text-align:center;color:#8b949e;font-size:.82em;padding:20px;border-top:1px solid #30363d;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>IndiaStocks AI — Advanced Backtest Report <span style="color:#30363d;font-size:.6em">v2</span></h1>
+  <p>Generated: 2026-09-25 11:10:43 &nbsp;|&nbsp; Stocks: 47 NIFTY 100 &nbsp;|&nbsp;
+     Engine: 9-indicator scoring (RSI, MACD+Crossover, BB, MA/EMA, ADX, Stochastic, OBV, ROC, Williams %R) &nbsp;|&nbsp;
+     Backtest period: 2 years &nbsp;|&nbsp; Transaction costs modelled: 0.35% per round trip</p>
+</div>
+<div class="container">
+
+<!-- Aggregate KPIs -->
+<div class="section">
+  <h2>Aggregate Performance — 47 Stocks</h2>
+  <div class="kpi-row">
+    <div class="kpi"><div class="val">47</div><div class="lbl">Stocks Tested</div></div>
+    <div class="kpi"><div class="val" style="color:#FF5252">-6.45%</div><div class="lbl">Avg Strategy Return</div></div>
+    <div class="kpi"><div class="val" style="color:#00E676">+6.70%</div><div class="lbl">Avg Buy & Hold</div></div>
+    <div class="kpi"><div class="val" style="color:#FF5252">-13.15%</div><div class="lbl">Avg Alpha</div></div>
+    <div class="kpi"><div class="val" style="color:#FF5252">-0.91</div><div class="lbl">Avg Sharpe Ratio</div></div>
+    <div class="kpi"><div class="val" style="color:#00E676">50.2%</div><div class="lbl">Avg Win Rate</div></div>
+    <div class="kpi"><div class="val" style="color:#FF5252">-20.9%</div><div class="lbl">Avg Max Drawdown</div></div>
+    <div class="kpi"><div class="val" style="color:#00E676">16</div><div class="lbl">Profitable Stocks</div></div>
+    <div class="kpi"><div class="val" style="color:#58a6ff">10</div><div class="lbl">Beat Buy & Hold</div></div>
+  </div>
+</div>
+
+<!-- Full Results Table -->
+<div class="section">
+  <h2>Per-Stock Backtest Results (sorted by Alpha)</h2>
+  <div class="scroll">
+  <table>
+    <thead><tr>
+      <th>Symbol</th><th>Sector</th>
+      <th>Strategy Ret</th><th>Buy&Hold Ret</th><th>Alpha</th>
+      <th>Sharpe</th><th>Sortino</th><th>Max Drawdown</th>
+      <th>Win Rate</th><th>Profit Factor</th>
+      <th>Trades</th><th>W/L Split</th>
+    </tr></thead>
+    <tbody><tr>
+            <td><b>TRENT</b></td>
+            <td style="color:#8b949e;font-size:.85em">Retail</td>
+            <td style="color:#FF5252;font-weight:600">-7.86%</td>
+            <td style="color:#FF5252;font-weight:600">-61.31%</td>
+            <td style="color:#00E676;font-weight:700">+53.45%</td>
+            <td style="color:#FF5252">-1.05</td>
+            <td style="color:#FF5252">-1.30</td>
+            <td style="color:#00E676">-21.01%</td>
+            <td style="color:#FF5252">44.4%</td>
+            <td>0.80x</td>
+            <td>9</td>
+            <td>4W / 5L</td>
+        </tr><tr>
+            <td><b>WIPRO</b></td>
+            <td style="color:#8b949e;font-size:.85em">IT</td>
+            <td style="color:#FF5252;font-weight:600">-8.21%</td>
+            <td style="color:#FF5252;font-weight:600">-41.97%</td>
+            <td style="color:#00E676;font-weight:700">+33.75%</td>
+            <td style="color:#FF5252">-0.99</td>
+            <td style="color:#FF5252">-1.27</td>
+            <td style="color:#00E676">-15.25%</td>
+            <td style="color:#00E676">61.5%</td>
+            <td>1.00x</td>
+            <td>13</td>
+            <td>8W / 5L</td>
+        </tr><tr>
+            <td><b>ITC</b></td>
+            <td style="color:#8b949e;font-size:.85em">FMCG</td>
+            <td style="color:#FF5252;font-weight:600">-6.05%</td>
+            <td style="color:#FF5252;font-weight:600">-35.21%</td>
+            <td style="color:#00E676;font-weight:700">+29.16%</td>
+            <td style="color:#FF5252">-1.98</td>
+            <td style="color:#FF5252">-2.65</td>
+            <td style="color:#00E676">-9.75%</td>
+            <td style="color:#00E676">70.0%</td>
+            <td>1.02x</td>
+            <td>10</td>
+            <td>7W / 3L</td>
+        </tr><tr>
+            <td><b>INFY</b></td>
+            <td style="color:#8b949e;font-size:.85em">IT</td>
+            <td style="color:#FF5252;font-weight:600">-26.07%</td>
+            <td style="color:#FF5252;font-weight:600">-45.31%</td>
+            <td style="color:#00E676;font-weight:700">+19.24%</td>
+            <td style="color:#FF5252">-2.00</td>
+            <td style="color:#FF5252">-2.36</td>
+            <td style="color:#00E676">-29.88%</td>
+            <td style="color:#00E676">53.3%</td>
+            <td>0.45x</td>
+            <td>15</td>
+            <td>8W / 7L</td>
+        </tr><tr>
+            <td><b>TCS</b></td>
+            <td style="color:#8b949e;font-size:.85em">IT</td>
+            <td style="color:#FF5252;font-weight:600">-33.53%</td>
+            <td style="color:#FF5252;font-weight:600">-49.81%</td>
+            <td style="color:#00E676;font-weight:700">+16.28%</td>
+            <td style="color:#FF5252">-3.06</td>
+            <td style="color:#FF5252">-3.38</td>
+            <td style="color:#00E676">-34.50%</td>
+            <td style="color:#FF5252">23.5%</td>
+            <td>0.15x</td>
+            <td>17</td>
+            <td>4W / 13L</td>
+        </tr><tr>
+            <td><b>HINDUNILVR</b></td>
+            <td style="color:#8b949e;font-size:.85em">FMCG</td>
+            <td style="color:#FF5252;font-weight:600">-3.54%</td>
+            <td style="color:#FF5252;font-weight:600">-17.56%</td>
+            <td style="color:#00E676;font-weight:700">+14.01%</td>
+            <td style="color:#FF5252">-0.91</td>
+            <td style="color:#FF5252">-1.26</td>
+            <td style="color:#00E676">-14.38%</td>
+            <td style="color:#00E676">50.0%</td>
+            <td>1.33x</td>
+            <td>12</td>
+            <td>6W / 6L</td>
+        </tr><tr>
+            <td><b>HDFCBANK</b></td>
+            <td style="color:#8b949e;font-size:.85em">Banking</td>
+            <td style="color:#FF5252;font-weight:600">-9.87%</td>
+            <td style="color:#FF5252;font-weight:600">-19.32%</td>
+            <td style="color:#00E676;font-weight:700">+9.45%</td>
+            <td style="color:#FF5252">-1.72</td>
+            <td style="color:#FF5252">-2.29</td>
+            <td style="color:#00E676">-10.72%</td>
+            <td style="color:#FF5252">40.0%</td>
+            <td>0.62x</td>
+            <td>10</td>
+            <td>4W / 6L</td>
+        </tr><tr>
+            <td><b>LT</b></td>
+            <td style="color:#8b949e;font-size:.85em">Engineering</td>
+            <td style="color:#00E676;font-weight:600">+4.97%</td>
+            <td style="color:#FF5252;font-weight:600">-0.57%</td>
+            <td style="color:#00E676;font-weight:700">+5.54%</td>
+            <td style="color:#FF5252">-0.16</td>
+            <td style="color:#FF5252">-0.23</td>
+            <td style="color:#00E676">-19.17%</td>
+            <td style="color:#00E676">77.8%</td>
+            <td>2.00x</td>
+            <td>18</td>
+            <td>14W / 4L</td>
+        </tr><tr>
+            <td><b>ONGC</b></td>
+            <td style="color:#8b949e;font-size:.85em">Energy</td>
+            <td style="color:#00E676;font-weight:600">+1.55%</td>
+            <td style="color:#FF5252;font-weight:600">-1.51%</td>
+            <td style="color:#00E676;font-weight:700">+3.06%</td>
+            <td style="color:#FF5252">-0.27</td>
+            <td style="color:#FF5252">-0.40</td>
+            <td style="color:#00E676">-22.57%</td>
+            <td style="color:#00E676">55.6%</td>
+            <td>1.42x</td>
+            <td>18</td>
+            <td>10W / 8L</td>
+        </tr><tr>
+            <td><b>HCLTECH</b></td>
+            <td style="color:#8b949e;font-size:.85em">IT</td>
+            <td style="color:#FF5252;font-weight:600">-27.67%</td>
+            <td style="color:#FF5252;font-weight:600">-29.02%</td>
+            <td style="color:#00E676;font-weight:700">+1.35%</td>
+            <td style="color:#FF5252">-2.28</td>
+            <td style="color:#FF5252">-2.81</td>
+            <td style="color:#00E676">-28.81%</td>
+            <td style="color:#FF5252">41.7%</td>
+            <td>0.29x</td>
+            <td>12</td>
+            <td>5W / 7L</td>
+        </tr><tr>
+            <td><b>M&M</b></td>
+            <td style="color:#8b949e;font-size:.85em">Auto</td>
+            <td style="color:#FF5252;font-weight:600">-0.78%</td>
+            <td style="color:#00E676;font-weight:600">+0.09%</td>
+            <td style="color:#FF5252;font-weight:700">-0.87%</td>
+            <td style="color:#FF5252">-0.50</td>
+            <td style="color:#FF5252">-0.70</td>
+            <td style="color:#00E676">-19.35%</td>
+            <td style="color:#00E676">64.7%</td>
+            <td>1.57x</td>
+            <td>17</td>
+            <td>11W / 6L</td>
+        </tr><tr>
+            <td><b>AXISBANK</b></td>
+            <td style="color:#8b949e;font-size:.85em">Banking</td>
+            <td style="color:#00E676;font-weight:600">+3.07%</td>
+            <td style="color:#00E676;font-weight:600">+4.15%</td>
+            <td style="color:#FF5252;font-weight:700">-1.07%</td>
+            <td style="color:#FF5252">-0.24</td>
+            <td style="color:#FF5252">-0.34</td>
+            <td style="color:#00E676">-11.25%</td>
+            <td style="color:#00E676">61.1%</td>
+            <td>1.87x</td>
+            <td>18</td>
+            <td>11W / 7L</td>
+        </tr><tr>
+            <td><b>JSWSTEEL</b></td>
+            <td style="color:#8b949e;font-size:.85em">Metals</td>
+            <td style="color:#00E676;font-weight:600">+24.55%</td>
+            <td style="color:#00E676;font-weight:600">+27.03%</td>
+            <td style="color:#FF5252;font-weight:700">-2.48%</td>
+            <td style="color:#00E676">0.45</td>
+            <td style="color:#00E676">0.62</td>
+            <td style="color:#00E676">-13.22%</td>
+            <td style="color:#00E676">71.4%</td>
+            <td>5.07x</td>
+            <td>14</td>
+            <td>10W / 4L</td>
+        </tr><tr>
+            <td><b>SUNPHARMA</b></td>
+            <td style="color:#8b949e;font-size:.85em">Pharma</td>
+            <td style="color:#00E676;font-weight:600">+1.72%</td>
+            <td style="color:#00E676;font-weight:600">+4.56%</td>
+            <td style="color:#FF5252;font-weight:700">-2.84%</td>
+            <td style="color:#FF5252">-0.41</td>
+            <td style="color:#FF5252">-0.57</td>
+            <td style="color:#00E676">-12.40%</td>
+            <td style="color:#00E676">66.7%</td>
+            <td>1.86x</td>
+            <td>18</td>
+            <td>12W / 6L</td>
+        </tr><tr>
+            <td><b>GRASIM</b></td>
+            <td style="color:#8b949e;font-size:.85em">Cement</td>
+            <td style="color:#00E676;font-weight:600">+15.11%</td>
+            <td style="color:#00E676;font-weight:600">+19.43%</td>
+            <td style="color:#FF5252;font-weight:700">-4.32%</td>
+            <td style="color:#00E676">0.17</td>
+            <td style="color:#00E676">0.25</td>
+            <td style="color:#00E676">-8.64%</td>
+            <td style="color:#00E676">62.5%</td>
+            <td>7.70x</td>
+            <td>16</td>
+            <td>10W / 6L</td>
+        </tr><tr>
+            <td><b>RELIANCE</b></td>
+            <td style="color:#8b949e;font-size:.85em">Conglomerate</td>
+            <td style="color:#FF5252;font-weight:600">-11.79%</td>
+            <td style="color:#FF5252;font-weight:600">-5.03%</td>
+            <td style="color:#FF5252;font-weight:700">-6.76%</td>
+            <td style="color:#FF5252">-1.35</td>
+            <td style="color:#FF5252">-1.74</td>
+            <td style="color:#00E676">-15.90%</td>
+            <td style="color:#00E676">53.3%</td>
+            <td>0.83x</td>
+            <td>15</td>
+            <td>8W / 7L</td>
+        </tr><tr>
+            <td><b>MARUTI</b></td>
+            <td style="color:#8b949e;font-size:.85em">Auto</td>
+            <td style="color:#00E676;font-weight:600">+0.65%</td>
+            <td style="color:#00E676;font-weight:600">+9.09%</td>
+            <td style="color:#FF5252;font-weight:700">-8.44%</td>
+            <td style="color:#FF5252">-0.45</td>
+            <td style="color:#FF5252">-0.68</td>
+            <td style="color:#00E676">-22.15%</td>
+            <td style="color:#FF5252">36.4%</td>
+            <td>1.25x</td>
+            <td>11</td>
+            <td>4W / 7L</td>
+        </tr><tr>
+            <td><b>POWERGRID</b></td>
+            <td style="color:#8b949e;font-size:.85em">Utilities</td>
+            <td style="color:#FF5252;font-weight:600">-23.06%</td>
+            <td style="color:#FF5252;font-weight:600">-14.49%</td>
+            <td style="color:#FF5252;font-weight:700">-8.57%</td>
+            <td style="color:#FF5252">-1.77</td>
+            <td style="color:#FF5252">-2.39</td>
+            <td style="color:#00E676">-23.30%</td>
+            <td style="color:#FF5252">38.1%</td>
+            <td>0.60x</td>
+            <td>21</td>
+            <td>8W / 13L</td>
+        </tr><tr>
+            <td><b>CIPLA</b></td>
+            <td style="color:#8b949e;font-size:.85em">Pharma</td>
+            <td style="color:#FF5252;font-weight:600">-13.01%</td>
+            <td style="color:#FF5252;font-weight:600">-1.95%</td>
+            <td style="color:#FF5252;font-weight:700">-11.06%</td>
+            <td style="color:#FF5252">-1.22</td>
+            <td style="color:#FF5252">-1.66</td>
+            <td style="color:#00E676">-22.22%</td>
+            <td style="color:#00E676">56.0%</td>
+            <td>1.11x</td>
+            <td>25</td>
+            <td>14W / 11L</td>
+        </tr><tr>
+            <td><b>NTPC</b></td>
+            <td style="color:#8b949e;font-size:.85em">Energy</td>
+            <td style="color:#FF5252;font-weight:600">-19.82%</td>
+            <td style="color:#FF5252;font-weight:600">-7.99%</td>
+            <td style="color:#FF5252;font-weight:700">-11.82%</td>
+            <td style="color:#FF5252">-1.35</td>
+            <td style="color:#FF5252">-1.91</td>
+            <td style="color:#00E676">-19.93%</td>
+            <td style="color:#FF5252">38.1%</td>
+            <td>0.75x</td>
+            <td>21</td>
+            <td>8W / 13L</td>
+        </tr><tr>
+            <td><b>COALINDIA</b></td>
+            <td style="color:#8b949e;font-size:.85em">Mining</td>
+            <td style="color:#00E676;font-weight:600">+2.48%</td>
+            <td style="color:#00E676;font-weight:600">+14.42%</td>
+            <td style="color:#FF5252;font-weight:700">-11.94%</td>
+            <td style="color:#FF5252">-0.25</td>
+            <td style="color:#FF5252">-0.37</td>
+            <td style="color:#00E676">-16.03%</td>
+            <td style="color:#00E676">66.7%</td>
+            <td>1.99x</td>
+            <td>21</td>
+            <td>14W / 7L</td>
+        </tr><tr>
+            <td><b>HINDALCO</b></td>
+            <td style="color:#8b949e;font-size:.85em">Metals</td>
+            <td style="color:#00E676;font-weight:600">+35.58%</td>
+            <td style="color:#00E676;font-weight:600">+47.61%</td>
+            <td style="color:#FF5252;font-weight:700">-12.03%</td>
+            <td style="color:#00E676">0.62</td>
+            <td style="color:#00E676">0.86</td>
+            <td style="color:#00E676">-16.98%</td>
+            <td style="color:#FF5252">46.7%</td>
+            <td>2.77x</td>
+            <td>15</td>
+            <td>7W / 8L</td>
+        </tr><tr>
+            <td><b>BRITANNIA</b></td>
+            <td style="color:#8b949e;font-size:.85em">FMCG</td>
+            <td style="color:#FF5252;font-weight:600">-7.23%</td>
+            <td style="color:#00E676;font-weight:600">+5.58%</td>
+            <td style="color:#FF5252;font-weight:700">-12.81%</td>
+            <td style="color:#FF5252">-0.94</td>
+            <td style="color:#FF5252">-1.25</td>
+            <td style="color:#00E676">-12.79%</td>
+            <td style="color:#00E676">50.0%</td>
+            <td>0.93x</td>
+            <td>10</td>
+            <td>5W / 5L</td>
+        </tr><tr>
+            <td><b>TATACONSUM</b></td>
+            <td style="color:#8b949e;font-size:.85em">FMCG</td>
+            <td style="color:#FF5252;font-weight:600">-8.40%</td>
+            <td style="color:#00E676;font-weight:600">+7.12%</td>
+            <td style="color:#FF5252;font-weight:700">-15.52%</td>
+            <td style="color:#FF5252">-0.82</td>
+            <td style="color:#FF5252">-1.20</td>
+            <td style="color:#00E676">-18.17%</td>
+            <td style="color:#00E676">53.3%</td>
+            <td>1.04x</td>
+            <td>15</td>
+            <td>8W / 7L</td>
+        </tr><tr>
+            <td><b>BAJAJ-AUTO</b></td>
+            <td style="color:#8b949e;font-size:.85em">Auto</td>
+            <td style="color:#00E676;font-weight:600">+12.66%</td>
+            <td style="color:#00E676;font-weight:600">+29.08%</td>
+            <td style="color:#FF5252;font-weight:700">-16.42%</td>
+            <td style="color:#00E676">0.10</td>
+            <td style="color:#00E676">0.15</td>
+            <td style="color:#00E676">-15.51%</td>
+            <td style="color:#00E676">56.2%</td>
+            <td>1.88x</td>
+            <td>16</td>
+            <td>9W / 7L</td>
+        </tr><tr>
+            <td><b>ASIANPAINT</b></td>
+            <td style="color:#8b949e;font-size:.85em">Consumer</td>
+            <td style="color:#FF5252;font-weight:600">-12.96%</td>
+            <td style="color:#00E676;font-weight:600">+3.69%</td>
+            <td style="color:#FF5252;font-weight:700">-16.65%</td>
+            <td style="color:#FF5252">-0.91</td>
+            <td style="color:#FF5252">-1.30</td>
+            <td style="color:#00E676">-26.74%</td>
+            <td style="color:#FF5252">45.5%</td>
+            <td>1.05x</td>
+            <td>22</td>
+            <td>10W / 12L</td>
+        </tr><tr>
+            <td><b>TITAN</b></td>
+            <td style="color:#8b949e;font-size:.85em">Consumer</td>
+            <td style="color:#00E676;font-weight:600">+23.93%</td>
+            <td style="color:#00E676;font-weight:600">+40.69%</td>
+            <td style="color:#FF5252;font-weight:700">-16.77%</td>
+            <td style="color:#00E676">0.43</td>
+            <td style="color:#00E676">0.63</td>
+            <td style="color:#00E676">-11.57%</td>
+            <td style="color:#00E676">62.5%</td>
+            <td>3.05x</td>
+            <td>16</td>
+            <td>10W / 6L</td>
+        </tr><tr>
+            <td><b>NESTLEIND</b></td>
+            <td style="color:#8b949e;font-size:.85em">FMCG</td>
+            <td style="color:#00E676;font-weight:600">+6.22%</td>
+            <td style="color:#00E676;font-weight:600">+23.78%</td>
+            <td style="color:#FF5252;font-weight:700">-17.56%</td>
+            <td style="color:#FF5252">-0.14</td>
+            <td style="color:#FF5252">-0.21</td>
+            <td style="color:#00E676">-12.18%</td>
+            <td style="color:#00E676">60.0%</td>
+            <td>2.02x</td>
+            <td>15</td>
+            <td>9W / 6L</td>
+        </tr><tr>
+            <td><b>HAL</b></td>
+            <td style="color:#8b949e;font-size:.85em">Defence</td>
+            <td style="color:#FF5252;font-weight:600">-13.83%</td>
+            <td style="color:#00E676;font-weight:600">+5.71%</td>
+            <td style="color:#FF5252;font-weight:700">-19.55%</td>
+            <td style="color:#FF5252">-0.98</td>
+            <td style="color:#FF5252">-1.39</td>
+            <td style="color:#00E676">-19.05%</td>
+            <td style="color:#00E676">50.0%</td>
+            <td>0.89x</td>
+            <td>18</td>
+            <td>9W / 9L</td>
+        </tr><tr>
+            <td><b>ULTRACEMCO</b></td>
+            <td style="color:#8b949e;font-size:.85em">Cement</td>
+            <td style="color:#FF5252;font-weight:600">-23.01%</td>
+            <td style="color:#FF5252;font-weight:600">-3.30%</td>
+            <td style="color:#FF5252;font-weight:700">-19.71%</td>
+            <td style="color:#FF5252">-1.88</td>
+            <td style="color:#FF5252">-2.44</td>
+            <td style="color:#00E676">-29.91%</td>
+            <td style="color:#FF5252">42.9%</td>
+            <td>0.63x</td>
+            <td>21</td>
+            <td>9W / 12L</td>
+        </tr><tr>
+            <td><b>BHARTIARTL</b></td>
+            <td style="color:#8b949e;font-size:.85em">Telecom</td>
+            <td style="color:#FF5252;font-weight:600">-6.28%</td>
+            <td style="color:#00E676;font-weight:600">+14.53%</td>
+            <td style="color:#FF5252;font-weight:700">-20.81%</td>
+            <td style="color:#FF5252">-1.03</td>
+            <td style="color:#FF5252">-1.40</td>
+            <td style="color:#00E676">-15.59%</td>
+            <td style="color:#00E676">50.0%</td>
+            <td>1.07x</td>
+            <td>12</td>
+            <td>6W / 5L</td>
+        </tr><tr>
+            <td><b>APOLLOHOSP</b></td>
+            <td style="color:#8b949e;font-size:.85em">Healthcare</td>
+            <td style="color:#00E676;font-weight:600">+3.20%</td>
+            <td style="color:#00E676;font-weight:600">+24.42%</td>
+            <td style="color:#FF5252;font-weight:700">-21.22%</td>
+            <td style="color:#FF5252">-0.35</td>
+            <td style="color:#FF5252">-0.59</td>
+            <td style="color:#00E676">-14.44%</td>
+            <td style="color:#00E676">56.2%</td>
+            <td>2.06x</td>
+            <td>16</td>
+            <td>9W / 7L</td>
+        </tr><tr>
+            <td><b>SBIN</b></td>
+            <td style="color:#8b949e;font-size:.85em">Banking</td>
+            <td style="color:#FF5252;font-weight:600">-5.34%</td>
+            <td style="color:#00E676;font-weight:600">+18.74%</td>
+            <td style="color:#FF5252;font-weight:700">-24.08%</td>
+            <td style="color:#FF5252">-0.55</td>
+            <td style="color:#FF5252">-0.75</td>
+            <td style="color:#00E676">-25.45%</td>
+            <td style="color:#FF5252">44.4%</td>
+            <td>1.24x</td>
+            <td>18</td>
+            <td>8W / 10L</td>
+        </tr><tr>
+            <td><b>BAJAJFINSV</b></td>
+            <td style="color:#8b949e;font-size:.85em">NBFC</td>
+            <td style="color:#FF5252;font-weight:600">-16.76%</td>
+            <td style="color:#00E676;font-weight:600">+7.96%</td>
+            <td style="color:#FF5252;font-weight:700">-24.72%</td>
+            <td style="color:#FF5252">-1.36</td>
+            <td style="color:#FF5252">-1.93</td>
+            <td style="color:#00E676">-23.94%</td>
+            <td style="color:#FF5252">41.2%</td>
+            <td>0.73x</td>
+            <td>17</td>
+            <td>7W / 10L</td>
+        </tr><tr>
+            <td><b>BPCL</b></td>
+            <td style="color:#8b949e;font-size:.85em">Energy</td>
+            <td style="color:#FF5252;font-weight:600">-14.92%</td>
+            <td style="color:#00E676;font-weight:600">+10.31%</td>
+            <td style="color:#FF5252;font-weight:700">-25.23%</td>
+            <td style="color:#FF5252">-0.90</td>
+            <td style="color:#FF5252">-1.24</td>
+            <td style="color:#00E676">-26.35%</td>
+            <td style="color:#00E676">50.0%</td>
+            <td>0.94x</td>
+            <td>16</td>
+            <td>8W / 8L</td>
+        </tr><tr>
+            <td><b>ICICIBANK</b></td>
+            <td style="color:#8b949e;font-size:.85em">Banking</td>
+            <td style="color:#FF5252;font-weight:600">-23.31%</td>
+            <td style="color:#00E676;font-weight:600">+2.12%</td>
+            <td style="color:#FF5252;font-weight:700">-25.43%</td>
+            <td style="color:#FF5252">-2.60</td>
+            <td style="color:#FF5252">-3.29</td>
+            <td style="color:#00E676">-23.54%</td>
+            <td style="color:#FF5252">35.0%</td>
+            <td>0.31x</td>
+            <td>20</td>
+            <td>7W / 13L</td>
+        </tr><tr>
+            <td><b>DRREDDY</b></td>
+            <td style="color:#8b949e;font-size:.85em">Pharma</td>
+            <td style="color:#FF5252;font-weight:600">-30.95%</td>
+            <td style="color:#FF5252;font-weight:600">-2.99%</td>
+            <td style="color:#FF5252;font-weight:700">-27.96%</td>
+            <td style="color:#FF5252">-1.86</td>
+            <td style="color:#FF5252">-2.52</td>
+            <td style="color:#00E676">-31.60%</td>
+            <td style="color:#FF5252">38.1%</td>
+            <td>0.34x</td>
+            <td>21</td>
+            <td>8W / 13L</td>
+        </tr><tr>
+            <td><b>TATASTEEL</b></td>
+            <td style="color:#8b949e;font-size:.85em">Metals</td>
+            <td style="color:#FF5252;font-weight:600">-0.33%</td>
+            <td style="color:#00E676;font-weight:600">+31.61%</td>
+            <td style="color:#FF5252;font-weight:700">-31.94%</td>
+            <td style="color:#FF5252">-0.28</td>
+            <td style="color:#FF5252">-0.38</td>
+            <td style="color:#00E676">-16.99%</td>
+            <td style="color:#FF5252">47.4%</td>
+            <td>1.40x</td>
+            <td>19</td>
+            <td>9W / 10L</td>
+        </tr><tr>
+            <td><b>SHRIRAMFIN</b></td>
+            <td style="color:#8b949e;font-size:.85em">NBFC</td>
+            <td style="color:#00E676;font-weight:600">+30.95%</td>
+            <td style="color:#00E676;font-weight:600">+63.29%</td>
+            <td style="color:#FF5252;font-weight:700">-32.34%</td>
+            <td style="color:#00E676">0.48</td>
+            <td style="color:#00E676">0.72</td>
+            <td style="color:#00E676">-18.26%</td>
+            <td style="color:#00E676">50.0%</td>
+            <td>2.45x</td>
+            <td>18</td>
+            <td>9W / 9L</td>
+        </tr><tr>
+            <td><b>TECHM</b></td>
+            <td style="color:#8b949e;font-size:.85em">IT</td>
+            <td style="color:#FF5252;font-weight:600">-41.19%</td>
+            <td style="color:#FF5252;font-weight:600">-8.19%</td>
+            <td style="color:#FF5252;font-weight:700">-33.00%</td>
+            <td style="color:#FF5252">-2.50</td>
+            <td style="color:#FF5252">-3.05</td>
+            <td style="color:#00E676">-41.78%</td>
+            <td style="color:#FF5252">40.9%</td>
+            <td>0.31x</td>
+            <td>22</td>
+            <td>9W / 13L</td>
+        </tr><tr>
+            <td><b>EICHERMOT</b></td>
+            <td style="color:#8b949e;font-size:.85em">Auto</td>
+            <td style="color:#00E676;font-weight:600">+19.61%</td>
+            <td style="color:#00E676;font-weight:600">+55.09%</td>
+            <td style="color:#FF5252;font-weight:700">-35.48%</td>
+            <td style="color:#00E676">0.29</td>
+            <td style="color:#00E676">0.43</td>
+            <td style="color:#00E676">-22.27%</td>
+            <td style="color:#00E676">60.0%</td>
+            <td>2.46x</td>
+            <td>20</td>
+            <td>12W / 8L</td>
+        </tr><tr>
+            <td><b>KOTAKBANK</b></td>
+            <td style="color:#8b949e;font-size:.85em">Banking</td>
+            <td style="color:#FF5252;font-weight:600">-24.23%</td>
+            <td style="color:#00E676;font-weight:600">+14.02%</td>
+            <td style="color:#FF5252;font-weight:700">-38.24%</td>
+            <td style="color:#FF5252">-1.99</td>
+            <td style="color:#FF5252">-2.37</td>
+            <td style="color:#00E676">-27.04%</td>
+            <td style="color:#FF5252">42.9%</td>
+            <td>0.40x</td>
+            <td>14</td>
+            <td>6W / 8L</td>
+        </tr><tr>
+            <td><b>ADANIENT</b></td>
+            <td style="color:#8b949e;font-size:.85em">Conglomerate</td>
+            <td style="color:#FF5252;font-weight:600">-25.57%</td>
+            <td style="color:#00E676;font-weight:600">+17.47%</td>
+            <td style="color:#FF5252;font-weight:700">-43.05%</td>
+            <td style="color:#FF5252">-1.22</td>
+            <td style="color:#FF5252">-1.61</td>
+            <td style="color:#00E676">-33.67%</td>
+            <td style="color:#FF5252">47.4%</td>
+            <td>0.59x</td>
+            <td>19</td>
+            <td>9W / 9L</td>
+        </tr><tr>
+            <td><b>BEL</b></td>
+            <td style="color:#8b949e;font-size:.85em">Defence</td>
+            <td style="color:#FF5252;font-weight:600">-18.57%</td>
+            <td style="color:#00E676;font-weight:600">+26.05%</td>
+            <td style="color:#FF5252;font-weight:700">-44.61%</td>
+            <td style="color:#FF5252">-1.07</td>
+            <td style="color:#FF5252">-1.56</td>
+            <td style="color:#00E676">-23.25%</td>
+            <td style="color:#FF5252">41.2%</td>
+            <td>0.77x</td>
+            <td>17</td>
+            <td>7W / 10L</td>
+        </tr><tr>
+            <td><b>HEROMOTOCO</b></td>
+            <td style="color:#8b949e;font-size:.85em">Auto</td>
+            <td style="color:#FF5252;font-weight:600">-21.36%</td>
+            <td style="color:#00E676;font-weight:600">+24.79%</td>
+            <td style="color:#FF5252;font-weight:700">-46.15%</td>
+            <td style="color:#FF5252">-1.14</td>
+            <td style="color:#FF5252">-1.57</td>
+            <td style="color:#00E676">-32.83%</td>
+            <td style="color:#FF5252">23.8%</td>
+            <td>0.84x</td>
+            <td>21</td>
+            <td>5W / 16L</td>
+        </tr><tr>
+            <td><b>DIVISLAB</b></td>
+            <td style="color:#8b949e;font-size:.85em">Pharma</td>
+            <td style="color:#00E676;font-weight:600">+7.72%</td>
+            <td style="color:#00E676;font-weight:600">+62.64%</td>
+            <td style="color:#FF5252;font-weight:700">-54.92%</td>
+            <td style="color:#FF5252">-0.07</td>
+            <td style="color:#FF5252">-0.10</td>
+            <td style="color:#00E676">-25.66%</td>
+            <td style="color:#00E676">55.6%</td>
+            <td>1.71x</td>
+            <td>18</td>
+            <td>10W / 8L</td>
+        </tr><tr>
+            <td><b>BAJFINANCE</b></td>
+            <td style="color:#8b949e;font-size:.85em">NBFC</td>
+            <td style="color:#FF5252;font-weight:600">-11.81%</td>
+            <td style="color:#00E676;font-weight:600">+45.37%</td>
+            <td style="color:#FF5252;font-weight:700">-57.19%</td>
+            <td style="color:#FF5252">-0.75</td>
+            <td style="color:#FF5252">-1.01</td>
+            <td style="color:#00E676">-25.04%</td>
+            <td style="color:#FF5252">35.7%</td>
+            <td>0.89x</td>
+            <td>14</td>
+            <td>5W / 8L</td>
+        </tr></tbody>
+  </table>
+  </div>
+</div>
+
+<!-- Methodology -->
+<div class="section">
+  <h2>Scoring Engine — 9 Indicators Used</h2>
+  <table class="indicator-table">
+    <thead><tr><th>#</th><th>Indicator</th><th>Formula</th><th>Signal Logic</th><th>Max Score Impact</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><b>RSI (14-day)</b></td><td>100 - 100/(1+AvgGain/AvgLoss)</td><td>&lt;30=Oversold (+15), &lt;40 (+8), &gt;70=Overbought (-12), &gt;60 (-4)</td><td>±15</td></tr>
+      <tr><td>2</td><td><b>MACD + Fresh Crossover</b></td><td>EMA12-EMA26, Signal=EMA9, Hist=MACD-Sig</td><td>Crossover (+15), Bullish (+8), Bearish (-7)</td><td>±15</td></tr>
+      <tr><td>3</td><td><b>Bollinger Bands (20,2)</b></td><td>MA20 ± 2σ; pos% = (price-lower)/(upper-lower)</td><td>&lt;10% pos (+12), &lt;20% (+7), &gt;90% (-10), &gt;80% (-5)</td><td>±12</td></tr>
+      <tr><td>4</td><td><b>MA20/50/200 + EMA9 + Golden/Death Cross</b></td><td>SMA & EMA rolling means</td><td>Above MA200 filter (-15), Golden Cross (+10), Death Cross (-8), EMA9 (+4)</td><td>±22</td></tr>
+      <tr><td>5</td><td><b>ADX (14-day)</b></td><td>ADX = EMA(|+DI - -DI|/(+DI+-DI)×100)</td><td>ADX&gt;25 with +DI&gt;-DI (+10), with -DI&gt;+DI (-8)</td><td>±10</td></tr>
+      <tr><td>6</td><td><b>Stochastic %K/%D (14,3)</b></td><td>%K = (Close-Low14)/(High14-Low14)×100</td><td>%K&lt;20 turning up (+10), %K&gt;80 turning down (-10)</td><td>±10</td></tr>
+      <tr><td>7</td><td><b>OBV Trend</b></td><td>OBV = cumsum(sign(ΔClose) × Volume)</td><td>OBV above 20-day MA (+5), below (-3)</td><td>±5</td></tr>
+      <tr><td>8</td><td><b>Rate of Change (10-day)</b></td><td>ROC = (Close - Close[10]) / Close[10] × 100</td><td>&gt;8% (+8), &gt;3% (+4), &lt;-8% (-8), &lt;-3% (-4)</td><td>±8</td></tr>
+      <tr><td>9</td><td><b>Williams %R (14-day)</b></td><td>%R = (High14-Close)/(High14-Low14)×-100</td><td>≤-80 oversold (+8), ≥-20 overbought (-6)</td><td>±8</td></tr>
+      <tr><td>10</td><td><b>Volume Surge</b></td><td>Ratio = 5-day avg / 20-day avg</td><td>&gt;1.5× (+7), &gt;1.2× (+4), &lt;0.5× (-3)</td><td>±7</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Risk Management -->
+<div class="section">
+  <h2>Risk Management in Backtesting</h2>
+  <table class="indicator-table">
+    <thead><tr><th>Rule</th><th>Implementation</th><th>Purpose</th></tr></thead>
+    <tbody>
+      <tr><td><b>ATR Trailing Stop</b></td><td>Sell if price ≤ PeakPrice − 2.5 × ATR(14)</td><td>Locks in profits on momentum stocks; adapts to volatility</td></tr>
+      <tr><td><b>Fixed Hard Stop</b></td><td>Sell if price ≤ Entry × 0.94 (−6%)</td><td>Catastrophic loss prevention on day-1 breakout failures</td></tr>
+      <tr><td><b>Technical Exit</b></td><td>Sell when engine rating drops to "Sell"</td><td>Exits on fundamental/momentum deterioration</td></tr>
+      <tr><td><b>Confidence Sizing</b></td><td>Deploy 60–100% capital based on signal confidence</td><td>Bets more on high-confidence signals; reduces risk on weak ones</td></tr>
+      <tr><td><b>Transaction Costs</b></td><td>0.25% brokerage + 0.1% STT per side = 0.35% per round trip</td><td>Realistic simulation of real brokerage friction</td></tr>
+      <tr><td><b>200-day MA Filter</b></td><td>−15 pts penalty if stock below 200-day MA</td><td>Prevents buying assets in long-term downtrends</td></tr>
+    </tbody>
+  </table>
+</div>
+
+</div>
+<div class="footer">IndiaStocks AI Advanced Backtest Engine v2 &nbsp;|&nbsp; 2026-09-25 11:10:43 &nbsp;|&nbsp; Data: Yahoo Finance &nbsp;|&nbsp; NOT financial advice</div>
+</body>
+</html>

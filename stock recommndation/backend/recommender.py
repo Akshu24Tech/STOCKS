@@ -22,6 +22,7 @@ import numpy as np
 import pandas as pd
 import yfinance as yf
 from market_data import _fetch_ticks_combined_sync, REAL_EXCHANGE_PRICES
+from trading_agents_service import TradingAgentsService
 
 logger = logging.getLogger(__name__)
 executor = ThreadPoolExecutor(max_workers=10)
@@ -191,7 +192,7 @@ for tier_list in NIFTY_500_UNIVERSE.values():
             })
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Technical Indicators
+# Technical Indicators  (v2 — 9 indicators, upgraded scoring engine)
 # ─────────────────────────────────────────────────────────────────────────────
 def compute_rsi(series: pd.Series, period: int = 14) -> float:
     if len(series) < period + 1:
@@ -206,17 +207,20 @@ def compute_rsi(series: pd.Series, period: int = 14) -> float:
 
 def compute_macd(series: pd.Series) -> Dict:
     if len(series) < 26:
-        return {"macd": 0, "signal": 0, "histogram": 0, "bullish": True}
+        return {"macd": 0, "signal": 0, "histogram": 0, "bullish": True, "crossover": False}
     ema12 = series.ewm(span=12, adjust=False).mean()
     ema26 = series.ewm(span=26, adjust=False).mean()
     macd_line = ema12 - ema26
     signal = macd_line.ewm(span=9, adjust=False).mean()
     histogram = macd_line - signal
+    # Detect fresh bullish crossover (histogram just turned positive)
+    crossover = len(histogram) >= 2 and float(histogram.iloc[-2]) <= 0 < float(histogram.iloc[-1])
     return {
         "macd": round(float(macd_line.iloc[-1]), 4),
         "signal": round(float(signal.iloc[-1]), 4),
         "histogram": round(float(histogram.iloc[-1]), 4),
         "bullish": float(histogram.iloc[-1]) > 0,
+        "crossover": crossover,
     }
 
 def compute_bollinger(series: pd.Series, period: int = 20) -> Dict:
@@ -245,81 +249,289 @@ def compute_moving_averages(series: pd.Series) -> Dict:
     ma20 = float(series.rolling(20).mean().iloc[-1]) if len(series) >= 20 else price
     ma50 = float(series.rolling(50).mean().iloc[-1]) if len(series) >= 50 else price
     ma200 = float(series.rolling(200).mean().iloc[-1]) if len(series) >= 200 else price
+    # EMA 9 for short-term trend
+    ema9 = float(series.ewm(span=9, adjust=False).mean().iloc[-1])
     return {
         "ma20": round(ma20, 2),
         "ma50": round(ma50, 2),
         "ma200": round(ma200, 2),
+        "ema9": round(ema9, 2),
         "above_ma20": price > ma20,
         "above_ma50": price > ma50,
         "above_ma200": price > ma200,
+        "above_ema9": price > ema9,
         "golden_cross": ma50 > ma200,
+        "death_cross": ma50 < ma200,
     }
 
-def technical_score(closes: pd.Series, volumes: pd.Series) -> Dict:
+def compute_adx(high: pd.Series, low: pd.Series, close: pd.Series, period: int = 14) -> Dict:
+    """Average Directional Index — measures trend STRENGTH (not direction)."""
+    if len(close) < period + 2:
+        return {"adx": 20.0, "trend_strong": False, "plus_di": 20.0, "minus_di": 20.0}
+    try:
+        up_move   = high.diff()
+        down_move = -low.diff()
+        plus_dm   = np.where((up_move > down_move) & (up_move > 0), up_move, 0)
+        minus_dm  = np.where((down_move > up_move) & (down_move > 0), down_move, 0)
+        tr1 = high - low
+        tr2 = (high - close.shift()).abs()
+        tr3 = (low  - close.shift()).abs()
+        tr  = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1)
+        atr = tr.rolling(period).mean()
+        plus_di   = pd.Series(plus_dm).rolling(period).mean()  / atr * 100
+        minus_di  = pd.Series(minus_dm).rolling(period).mean() / atr * 100
+        dx  = ((plus_di - minus_di).abs() / (plus_di + minus_di).replace(0, np.nan) * 100)
+        adx = dx.rolling(period).mean()
+        adx_val      = round(float(adx.iloc[-1]), 2) if not adx.empty and not np.isnan(adx.iloc[-1]) else 20.0
+        plus_di_val  = round(float(plus_di.iloc[-1]),  2) if not np.isnan(plus_di.iloc[-1])  else 20.0
+        minus_di_val = round(float(minus_di.iloc[-1]), 2) if not np.isnan(minus_di.iloc[-1]) else 20.0
+        return {"adx": adx_val, "trend_strong": adx_val > 25, "plus_di": plus_di_val, "minus_di": minus_di_val}
+    except Exception:
+        return {"adx": 20.0, "trend_strong": False, "plus_di": 20.0, "minus_di": 20.0}
+
+def compute_stochastic(high: pd.Series, low: pd.Series, close: pd.Series, k: int = 14, d: int = 3) -> Dict:
+    """Stochastic Oscillator — %K and %D for momentum confirmation."""
+    if len(close) < k:
+        return {"k": 50.0, "d": 50.0, "oversold": False, "overbought": False}
+    try:
+        low_k  = low.rolling(k).min()
+        high_k = high.rolling(k).max()
+        denom  = (high_k - low_k).replace(0, np.nan)
+        stoch_k = ((close - low_k) / denom * 100).fillna(50)
+        stoch_d = stoch_k.rolling(d).mean()
+        k_val = round(float(stoch_k.iloc[-1]), 2)
+        d_val = round(float(stoch_d.iloc[-1]), 2)
+        return {"k": k_val, "d": d_val, "oversold": k_val < 20, "overbought": k_val > 80}
+    except Exception:
+        return {"k": 50.0, "d": 50.0, "oversold": False, "overbought": False}
+
+def compute_obv_trend(close: pd.Series, volume: pd.Series) -> Dict:
+    """On-Balance Volume — confirms if volume supports the price trend."""
+    if len(close) < 20:
+        return {"obv_rising": True, "obv_slope": 0.0}
+    try:
+        direction = np.sign(close.diff().fillna(0))
+        obv = (direction * volume).cumsum()
+        obv_ma = obv.rolling(20).mean()
+        obv_rising = float(obv.iloc[-1]) > float(obv_ma.iloc[-1])
+        obv_slope = float(obv.iloc[-1] - obv.iloc[-10]) if len(obv) >= 10 else 0.0
+        return {"obv_rising": obv_rising, "obv_slope": round(obv_slope, 0)}
+    except Exception:
+        return {"obv_rising": True, "obv_slope": 0.0}
+
+def compute_roc(close: pd.Series, period: int = 10) -> float:
+    """Rate of Change — price momentum over N days."""
+    if len(close) < period + 1:
+        return 0.0
+    try:
+        roc = ((float(close.iloc[-1]) - float(close.iloc[-period - 1])) / float(close.iloc[-period - 1])) * 100
+        return round(roc, 2)
+    except Exception:
+        return 0.0
+
+def compute_williams_r(high: pd.Series, low: pd.Series, close: pd.Series, period: int = 14) -> float:
+    """Williams %R — -80 to -100 = oversold, 0 to -20 = overbought."""
+    if len(close) < period:
+        return -50.0
+    try:
+        highest_high = high.rolling(period).max()
+        lowest_low   = low.rolling(period).min()
+        denom = (highest_high - lowest_low).replace(0, np.nan)
+        wr = ((highest_high - close) / denom * -100).fillna(-50)
+        return round(float(wr.iloc[-1]), 2)
+    except Exception:
+        return -50.0
+
+def technical_score(closes: pd.Series, volumes: pd.Series,
+                    highs: pd.Series = None, lows: pd.Series = None) -> Dict:
+    """
+    Upgraded 9-indicator technical scoring engine (v2).
+    Indicators: RSI, MACD+Crossover, Bollinger Bands, MA20/50/200/EMA9,
+                ADX trend strength, Stochastic, OBV, ROC, Williams %R.
+    """
     score = 50.0
     signals = []
 
-    rsi = compute_rsi(closes)
+    # ── Core computations ────────────────────────────────────────────────────
+    rsi  = compute_rsi(closes)
     macd = compute_macd(closes)
-    bb = compute_bollinger(closes)
-    mas = compute_moving_averages(closes)
+    bb   = compute_bollinger(closes)
+    mas  = compute_moving_averages(closes)
+    roc  = compute_roc(closes, period=10)
 
-    # RSI
+    # Use highs/lows if provided, otherwise approximate from closes
+    if highs is None or lows is None:
+        highs = closes
+        lows  = closes
+
+    adx   = compute_adx(highs, lows, closes)
+    stoch = compute_stochastic(highs, lows, closes)
+    obv   = compute_obv_trend(closes, volumes)
+    wr    = compute_williams_r(highs, lows, closes)
+
+    # ── 1. RSI (weight: 15 max) ────────────────────────────────────────────
     if rsi < 30:
         score += 15
-        signals.append({"label": "RSI Oversold", "impact": "+", "value": f"{rsi} (Reversal Zone)"})
+        signals.append({"label": "RSI Oversold", "impact": "+", "value": f"{rsi} — Strong Reversal Zone"})
+    elif rsi < 40:
+        score += 8
+        signals.append({"label": "RSI Approaching Oversold", "impact": "+", "value": f"{rsi}"})
     elif rsi > 70:
-        score -= 10
-        signals.append({"label": "RSI Overbought", "impact": "-", "value": f"{rsi}"})
-    elif 40 <= rsi <= 60:
+        score -= 12
+        signals.append({"label": "RSI Overbought", "impact": "-", "value": f"{rsi} — Risk of Pullback"})
+    elif rsi > 60:
+        score -= 4
+        signals.append({"label": "RSI Elevated", "impact": "-", "value": f"{rsi}"})
+    elif 45 <= rsi <= 55:
         score += 5
         signals.append({"label": "RSI Balanced", "impact": "~", "value": f"{rsi}"})
 
-    # MACD
-    if macd["bullish"]:
-        score += 10
-        signals.append({"label": "MACD Bullish", "impact": "+", "value": f"+{macd['histogram']:.2f}"})
+    # ── 2. MACD + Crossover (weight: 15 max) ─────────────────────────────
+    if macd["crossover"]:
+        score += 15  # Fresh bullish crossover — very strong signal
+        signals.append({"label": "MACD Bullish Crossover", "impact": "+", "value": "Histogram just turned positive!"})
+    elif macd["bullish"]:
+        score += 8
+        signals.append({"label": "MACD Bullish", "impact": "+", "value": f"+{macd['histogram']:.3f}"})
     else:
-        score -= 5
-        signals.append({"label": "MACD Bearish", "impact": "-", "value": f"{macd['histogram']:.2f}"})
+        score -= 7
+        signals.append({"label": "MACD Bearish", "impact": "-", "value": f"{macd['histogram']:.3f}"})
 
-    # Bollinger Bands
-    if bb["position_pct"] < 20:
-        score += 10
+    # ── 3. Bollinger Bands (weight: 12 max) ───────────────────────────────
+    if bb["position_pct"] < 10:
+        score += 12  # Extreme oversold squeeze
+        signals.append({"label": "BB Extreme Oversold", "impact": "+", "value": "Below Lower Band — Snap-back likely"})
+    elif bb["position_pct"] < 20:
+        score += 7
         signals.append({"label": "BB Lower Band", "impact": "+", "value": "Near Strong Support"})
+    elif bb["position_pct"] > 90:
+        score -= 10
+        signals.append({"label": "BB Extreme Overbought", "impact": "-", "value": "Above Upper Band"})
     elif bb["position_pct"] > 80:
         score -= 5
         signals.append({"label": "BB Upper Band", "impact": "-", "value": "Near Resistance"})
 
-    # Moving averages
+    # ── 4. Moving Averages + EMA9 (weight: 22 max) ───────────────────────
     ma_bullish = sum([mas["above_ma20"], mas["above_ma50"], mas["above_ma200"]])
-    score += (ma_bullish - 1.5) * 5
+    score += (ma_bullish - 1.5) * 5  # +7.5 if all 3 bullish, -7.5 if all bearish
+
+    if not mas["above_ma200"]:  # Anti-falling-knife filter
+        score -= 15
+        signals.append({"label": "Below MA200", "impact": "-", "value": "Long-term downtrend — Avoid"})
+
+    if mas["above_ema9"] and mas["above_ma20"]:
+        score += 4  # EMA9 confirmation of short-term strength
+        signals.append({"label": "EMA9 Bullish", "impact": "+", "value": "Price above EMA9 & MA20"})
+
     signals.append({
         "label": "MA Trend",
         "impact": "+" if ma_bullish >= 2 else "-",
-        "value": f"{ma_bullish}/3 Key MAs Bullish",
+        "value": f"{ma_bullish}/3 MAs Bullish (MA20/50/200)",
     })
     if mas["golden_cross"]:
-        score += 8
-        signals.append({"label": "Golden Cross", "impact": "+", "value": "MA50 > MA200 (Long-Term Bullish)"})
+        score += 10
+        signals.append({"label": "Golden Cross", "impact": "+", "value": "MA50 > MA200 — Long-Term Bull"})
+    elif mas["death_cross"]:
+        score -= 8
+        signals.append({"label": "Death Cross", "impact": "-", "value": "MA50 < MA200 — Long-Term Bear"})
 
-    # Volume trend
+    # ── 5. ADX — Trend Strength (weight: 10 max) ─────────────────────────
+    if adx["trend_strong"]:  # ADX > 25 = strong directional trend
+        if adx["plus_di"] > adx["minus_di"]:
+            score += 10
+            signals.append({"label": "ADX Strong Uptrend", "impact": "+", "value": f"ADX={adx['adx']}, +DI>{adx['plus_di']:.1f}"})
+        else:
+            score -= 8
+            signals.append({"label": "ADX Strong Downtrend", "impact": "-", "value": f"ADX={adx['adx']}, -DI>{adx['minus_di']:.1f}"})
+    else:
+        signals.append({"label": "ADX Weak Trend", "impact": "~", "value": f"ADX={adx['adx']} (choppy market)"})
+
+    # ── 6. Stochastic Oscillator (weight: 10 max) ─────────────────────────
+    if stoch["oversold"] and stoch["k"] > stoch["d"]:  # Stoch turning up from oversold
+        score += 10
+        signals.append({"label": "Stochastic Buy", "impact": "+", "value": f"%K={stoch['k']} turning up from oversold"})
+    elif stoch["oversold"]:
+        score += 5
+        signals.append({"label": "Stochastic Oversold", "impact": "+", "value": f"%K={stoch['k']}"})
+    elif stoch["overbought"] and stoch["k"] < stoch["d"]:  # Stoch turning down from overbought
+        score -= 10
+        signals.append({"label": "Stochastic Sell", "impact": "-", "value": f"%K={stoch['k']} turning down from overbought"})
+    elif stoch["overbought"]:
+        score -= 4
+        signals.append({"label": "Stochastic Overbought", "impact": "-", "value": f"%K={stoch['k']}"})
+
+    # ── 7. OBV Confirmation (weight: 5 max) ───────────────────────────────
+    if obv["obv_rising"]:
+        score += 5
+        signals.append({"label": "OBV Confirming", "impact": "+", "value": "Volume supports price trend"})
+    else:
+        score -= 3
+        signals.append({"label": "OBV Diverging", "impact": "-", "value": "Volume not supporting price"})
+
+    # ── 8. Rate of Change — Momentum (weight: 8 max) ─────────────────────
+    if roc > 8:
+        score += 8
+        signals.append({"label": "ROC Strong Momentum", "impact": "+", "value": f"+{roc:.1f}% in 10 days"})
+    elif roc > 3:
+        score += 4
+        signals.append({"label": "ROC Positive", "impact": "+", "value": f"+{roc:.1f}% momentum"})
+    elif roc < -8:
+        score -= 8
+        signals.append({"label": "ROC Falling Fast", "impact": "-", "value": f"{roc:.1f}% in 10 days"})
+    elif roc < -3:
+        score -= 4
+        signals.append({"label": "ROC Negative", "impact": "-", "value": f"{roc:.1f}%"})
+
+    # ── 9. Williams %R (weight: 8 max) ────────────────────────────────────
+    if wr <= -80:
+        score += 8
+        signals.append({"label": "Williams %R Oversold", "impact": "+", "value": f"{wr} (Extreme oversold)"})
+    elif wr >= -20:
+        score -= 6
+        signals.append({"label": "Williams %R Overbought", "impact": "-", "value": f"{wr}"})
+
+    # ── Volume Surge (weight: 7 max) ──────────────────────────────────────
     if len(volumes) >= 20:
         recent_vol = float(volumes.tail(5).mean())
-        avg_vol = float(volumes.tail(20).mean())
-        if avg_vol > 0 and recent_vol > avg_vol * 1.2:
-            score += 5
-            signals.append({"label": "Volume Surge", "impact": "+", "value": f"+{((recent_vol/avg_vol)-1)*100:.0f}% vs 20d"})
+        avg_vol    = float(volumes.tail(20).mean())
+        if avg_vol > 0:
+            vol_ratio = recent_vol / avg_vol
+            if vol_ratio > 1.5:
+                score += 7
+                signals.append({"label": "Volume Explosion", "impact": "+", "value": f"+{(vol_ratio-1)*100:.0f}% vs 20d avg"})
+            elif vol_ratio > 1.2:
+                score += 4
+                signals.append({"label": "Volume Surge", "impact": "+", "value": f"+{(vol_ratio-1)*100:.0f}% vs 20d avg"})
+            elif vol_ratio < 0.5:
+                score -= 3
+                signals.append({"label": "Volume Drying Up", "impact": "-", "value": f"{(vol_ratio)*100:.0f}% of avg"})
 
-    score = max(10, min(95, score))
+    score = max(10, min(98, score))
+    final_score = round(score, 1)
+
+    # Confidence: how many signals agree with the rating direction
+    bullish_count = sum(1 for s in signals if s["impact"] == "+")
+    bearish_count = sum(1 for s in signals if s["impact"] == "-")
+    total_signals = bullish_count + bearish_count
+    confidence = round(max(bullish_count, bearish_count) / total_signals * 100, 0) if total_signals > 0 else 50.0
+
+    rating = "Strong Buy" if final_score >= 75 else "Buy" if final_score >= 60 else "Hold" if final_score >= 40 else "Sell"
     return {
-        "score": round(score, 1),
+        "score": final_score,
+        "confidence": confidence,
         "rsi": rsi,
+        "roc": roc,
+        "williams_r": wr,
         "macd": macd,
         "bollinger": bb,
         "moving_averages": mas,
+        "adx": adx,
+        "stochastic": stoch,
+        "obv": obv,
         "signals": signals,
-        "rating": "Strong Buy" if score >= 75 else "Buy" if score >= 60 else "Hold" if score >= 40 else "Sell",
+        "bullish_signals": bullish_count,
+        "bearish_signals": bearish_count,
+        "rating": rating,
     }
 
 def fundamental_score(info: Dict) -> Dict:
@@ -685,7 +897,28 @@ class RecommendationEngine:
                 tgt_pct = round(desired.get(cand_sector, 0) * 100, 1)
                 gap_reason = f"Your portfolio is underweight in {cand_sector} ({curr_pct}% vs target {tgt_pct}%)"
 
-            adjusted_score = min(98, analysis["combined_score"] + gap_bonus)
+            # TradingAgents AI Multi-Agent Evaluation
+            st_data = TradingAgentsService.get_stocktwits_sentiment(cand["symbol"])
+            news_data = TradingAgentsService.get_news_sentiment(cand["symbol"])
+            
+            ai_bonus = 0
+            ai_sentiment_label = "Neutral"
+            trader_decision = "HOLD"
+            
+            if st_data.get("sentiment") == "Bullish" or news_data.get("overall_sentiment") == "Bullish":
+                ai_bonus = 8
+                ai_sentiment_label = "Bullish"
+                trader_decision = "BUY"
+            elif st_data.get("sentiment") == "Bearish" or news_data.get("overall_sentiment") == "Bearish":
+                ai_bonus = -5
+                ai_sentiment_label = "Bearish"
+                trader_decision = "SELL"
+            else:
+                ai_bonus = 4
+                ai_sentiment_label = "Neutral"
+                trader_decision = "BUY" if analysis["combined_score"] >= 60 else "HOLD"
+
+            adjusted_score = min(98, max(10, analysis["combined_score"] + gap_bonus + ai_bonus))
             analysis["combined_score"] = round(adjusted_score, 1)
             analysis["combined_rating"] = (
                 "Strong Buy" if adjusted_score >= 75 else
@@ -697,6 +930,7 @@ class RecommendationEngine:
             # Build explainability reasons
             reasons = []
             reasons.append(f"Precise Match: Fits your **{tier_label}** risk tier (Score {risk_score}/100)")
+            reasons.append(f"🤖 **TradingAgents AI**: Chief Trader verdict **{trader_decision}** with {ai_sentiment_label} crowd & news sentiment (+{ai_bonus} pts)")
 
             cagr_5y = analysis.get("expected_returns", {}).get("5y_cagr", 0)
             if cagr_5y > 0:
@@ -722,6 +956,13 @@ class RecommendationEngine:
             analysis["why_recommended"] = reasons
             analysis["gap_bonus"] = gap_bonus
             analysis["fills_gap"] = bool(gap_reason)
+            analysis["ai_agent_consensus"] = {
+                "sentiment": ai_sentiment_label,
+                "trader_decision": trader_decision,
+                "bonus": ai_bonus,
+                "stocktwits_score": st_data.get("sentiment_score", 50),
+                "news_count": news_data.get("total_news", 0)
+            }
 
             analyses.append(analysis)
 

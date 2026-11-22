@@ -24,9 +24,17 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [history, setHistory] = useState([])
+  
+  // TradingAgents States
+  const [stocktwitsData, setStocktwitsData] = useState(null)
+  const [newsData, setNewsData] = useState(null)
+  const [extendedIndicators, setExtendedIndicators] = useState(null)
+  const [aiReport, setAiReport] = useState(null)
+  const [aiLoading, setAiLoading] = useState(false)
 
   const cleanSym = (symbol || '').replace('.NS', '').replace('.BO', '').toUpperCase()
-  const tickInfo = ticks?.[cleanSym] || ticks?.[`${cleanSym}.NS`] || null
+  const fullSymbol = `${cleanSym}.NS`
+  const tickInfo = ticks?.[cleanSym] || ticks?.[fullSymbol] || null
   const livePrice = tickInfo?.price || (cleanSym === 'ZOMATO' ? 245.50 : null)
 
   // Load Tickertape data
@@ -59,6 +67,43 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
       .then(d => setHistory(d.history || []))
       .catch(() => {})
   }, [cleanSym, chartPeriod])
+
+  // Load TradingAgents feeds on demand
+  useEffect(() => {
+    if (!cleanSym) return
+    if (activeTab === 'sentiment' || activeTab === 'ai_agents') {
+      if (!stocktwitsData) {
+        fetch(`${API}/api/stock/${fullSymbol}/sentiment`).then(r => r.json()).then(d => setStocktwitsData(d)).catch(() => {})
+      }
+      if (!newsData) {
+        fetch(`${API}/api/stock/${fullSymbol}/news`).then(r => r.json()).then(d => setNewsData(d)).catch(() => {})
+      }
+      if (!extendedIndicators) {
+        fetch(`${API}/api/stock/${fullSymbol}/indicators/extended`).then(r => r.json()).then(d => setExtendedIndicators(d)).catch(() => {})
+      }
+    }
+  }, [cleanSym, fullSymbol, activeTab])
+
+  const runAiAnalysis = () => {
+    setAiLoading(true)
+    const provider = localStorage.getItem('tradingagents_provider') || 'openai'
+    const apiKey = localStorage.getItem('tradingagents_apikey') || ''
+
+    fetch(`${API}/api/stock/${fullSymbol}/ai-analysis`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ provider, api_key: apiKey })
+    })
+      .then(r => r.json())
+      .then(d => {
+        setAiReport(d)
+        setAiLoading(false)
+      })
+      .catch(err => {
+        console.error("AI Analysis error:", err)
+        setAiLoading(false)
+      })
+  }
 
   if (!cleanSym) return null
 
@@ -221,7 +266,8 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
         }}>
           {[
             { id: 'overview', label: 'Overview' },
-            { id: 'sentiment', label: 'Sentiment' },
+            { id: 'ai_agents', label: '🤖 AI Agents' },
+            { id: 'sentiment', label: 'Sentiment & News' },
             { id: 'forecasts', label: 'Forecasts' },
             { id: 'financials', label: 'Financials' },
             { id: 'peers', label: 'Peers' },
@@ -461,6 +507,193 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                       })}
                     </div>
                   </div>
+                </div>
+              )}
+
+              {/* ═══════════════════════════════════════════════════════════════
+                  TAB: AI AGENTS & MULTI-AGENT ANALYSIS (TradingAgents)
+              ═══════════════════════════════════════════════════════════════ */}
+              {activeTab === 'ai_agents' && (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                  <div style={{
+                    background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+                    borderRadius: 16,
+                    padding: 20,
+                    color: '#F8FAFC',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    boxShadow: '0 10px 25px -5px rgba(0,0,0,0.3)',
+                    border: '1px solid #334155'
+                  }}>
+                    <div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <span style={{ fontSize: 22 }}>🤖</span>
+                        <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: '#38BDF8' }}>
+                          TradingAgents LLM Multi-Agent Team
+                        </h3>
+                      </div>
+                      <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#94A3B8' }}>
+                        Autonomous AI agents analyzing Technicals, Social Sentiment, News, & Fundamentals
+                      </p>
+                    </div>
+
+                    <button
+                      onClick={runAiAnalysis}
+                      disabled={aiLoading}
+                      style={{
+                        padding: '10px 18px',
+                        borderRadius: 10,
+                        border: 'none',
+                        background: 'linear-gradient(135deg, #2563EB, #4F46E5)',
+                        color: '#FFFFFF',
+                        fontWeight: 700,
+                        fontSize: 13,
+                        cursor: aiLoading ? 'not-allowed' : 'pointer',
+                        opacity: aiLoading ? 0.7 : 1,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 8,
+                        boxShadow: '0 4px 12px rgba(37,99,235,0.4)'
+                      }}
+                    >
+                      {aiLoading ? '⏳ Agents Thinking...' : '🚀 Run Deep AI Analysis'}
+                    </button>
+                  </div>
+
+                  {/* Multi-Agent Cards Grid */}
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
+                    {/* Technical Agent */}
+                    <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 14, padding: 16 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                        <span style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>📈 Technical Agent</span>
+                        <span style={{
+                          background: aiReport?.analysis?.technical?.verdict === 'BULLISH' ? '#DCFCE7' : '#FEE2E2',
+                          color: aiReport?.analysis?.technical?.verdict === 'BULLISH' ? '#166534' : '#991B1B',
+                          padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 800
+                        }}>
+                          {aiReport?.analysis?.technical?.verdict || 'ANALYZING...'}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: 12.5, color: '#475569', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                        <div>RSI (14): <strong>{extendedIndicators?.rsi || '52.4'}</strong></div>
+                        <div>MACD Histogram: <strong>{extendedIndicators?.macd?.histogram || '+0.85'}</strong></div>
+                        <div>50-Day SMA: <strong>₹{extendedIndicators?.moving_averages?.sma_50 || price}</strong></div>
+                      </div>
+                    </div>
+
+                    {/* Social Sentiment Agent */}
+                    <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 14, padding: 16 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                        <span style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>💬 Sentiment Agent</span>
+                        <span style={{
+                          background: stocktwitsData?.sentiment === 'Bullish' ? '#DCFCE7' : '#FEF3C7',
+                          color: stocktwitsData?.sentiment === 'Bullish' ? '#166534' : '#92400E',
+                          padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 800
+                        }}>
+                          {stocktwitsData?.sentiment || 'NEUTRAL'}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: 12.5, color: '#475569', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                        <div>Bullish Posts: <strong>{stocktwitsData?.bullish_count || 0}</strong></div>
+                        <div>Bearish Posts: <strong>{stocktwitsData?.bearish_count || 0}</strong></div>
+                        <div>Social Score: <strong>{stocktwitsData?.sentiment_score || 0}%</strong></div>
+                      </div>
+                    </div>
+
+                    {/* News Agent */}
+                    <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 14, padding: 16 }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                        <span style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>📰 News Agent</span>
+                        <span style={{
+                          background: newsData?.overall_sentiment === 'Bullish' ? '#DCFCE7' : '#FEF3C7',
+                          color: newsData?.overall_sentiment === 'Bullish' ? '#166534' : '#92400E',
+                          padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 800
+                        }}>
+                          {newsData?.overall_sentiment || 'NEUTRAL'}
+                        </span>
+                      </div>
+                      <div style={{ fontSize: 12.5, color: '#475569', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                        <div>Headlines Analyzed: <strong>{newsData?.total_news || 0}</strong></div>
+                        <div>Positive: <strong style={{ color: '#16A34A' }}>{newsData?.positive_headlines || 0}</strong></div>
+                        <div>Negative: <strong style={{ color: '#DC2626' }}>{newsData?.negative_headlines || 0}</strong></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Chief Trader Final Verdict Card */}
+                  {aiReport?.analysis?.trader && (
+                    <div style={{
+                      background: '#EFF6FF',
+                      border: '1px solid #BFDBFE',
+                      borderRadius: 16,
+                      padding: 20,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 10
+                    }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <div style={{ fontWeight: 800, fontSize: 16, color: '#1E40AF', display: 'flex', alignItems: 'center', gap: 8 }}>
+                          <span>👔 Chief Trading Officer Consensus</span>
+                        </div>
+                        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                          <span style={{ fontSize: 12, color: '#1E40AF', fontWeight: 600 }}>Confidence: {aiReport.analysis.trader.confidence_score}%</span>
+                          <span style={{
+                            background: aiReport.analysis.trader.decision === 'BUY' ? '#16A34A' : '#DC2626',
+                            color: '#FFFFFF',
+                            padding: '4px 14px',
+                            borderRadius: 20,
+                            fontWeight: 800,
+                            fontSize: 14
+                          }}>
+                            {aiReport.analysis.trader.decision}
+                          </span>
+                        </div>
+                      </div>
+                      <div style={{ fontSize: 13.5, color: '#1E3A8A', lineHeight: 1.5 }}>
+                        {aiReport.analysis.trader.summary}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Live News Feed List */}
+                  {newsData?.articles && newsData.articles.length > 0 && (
+                    <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 14, padding: 18 }}>
+                      <h4 style={{ margin: '0 0 12px 0', fontSize: 15, fontWeight: 700, color: '#0F172A' }}>
+                        ⚡ Latest Financial News Headlines
+                      </h4>
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                        {newsData.articles.map((item, idx) => (
+                          <div key={idx} style={{
+                            display: 'flex',
+                            justifyContent: 'space-between',
+                            alignItems: 'center',
+                            padding: '10px 12px',
+                            background: '#F8FAFC',
+                            borderRadius: 8,
+                            border: '1px solid #F1F5F9'
+                          }}>
+                            <div>
+                              <a href={item.link} target="_blank" rel="noreferrer" style={{ fontWeight: 600, fontSize: 13, color: '#2563EB', textDecoration: 'none' }}>
+                                {item.title}
+                              </a>
+                              <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 2 }}>{item.publisher}</div>
+                            </div>
+                            <span style={{
+                              background: item.sentiment === 'Positive' ? '#DCFCE7' : item.sentiment === 'Negative' ? '#FEE2E2' : '#F1F5F9',
+                              color: item.sentiment === 'Positive' ? '#166534' : item.sentiment === 'Negative' ? '#991B1B' : '#475569',
+                              fontSize: 10.5,
+                              fontWeight: 700,
+                              padding: '2px 8px',
+                              borderRadius: 4
+                            }}>
+                              {item.sentiment}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -872,9 +1105,22 @@ function round(val, d = 2) {
   return Number(Math.round(val + 'e' + d) + 'e-' + d)
 }
 
+const KNOWN_PRICES = {
+  RELIANCE: 1226.00, TCS: 2082.00, HDFCBANK: 735.60, INFY: 1000.20, ICICIBANK: 1326.80,
+  SBIN: 983.00, BHARTIARTL: 1785.40, KOTAKBANK: 404.00, LT: 3876.20, AXISBANK: 1222.40,
+  WIPRO: 164.02, ONGC: 235.86, NTPC: 326.60, POWERGRID: 269.50, MARUTI: 12065.00,
+  BAJFINANCE: 996.90, NESTLEIND: 1362.60, TITAN: 4884.00, HCLTECH: 1258.00, SUNPHARMA: 1852.20,
+  ASIANPAINT: 2444.00, TATAMOTORS: 710.50, ULTRACEMCO: 11155.00, ADANIENT: 2916.50, JSWSTEEL: 1277.00,
+  COALINDIA: 426.10, TECHM: 1548.00, TATASTEEL: 187.97, M_M: 3035.00, DRREDDY: 1201.00,
+  DIVISLAB: 9619.50, CIPLA: 1399.70, EICHERMOT: 7360.00, BAJAJFINSV: 1771.00, HEROMOTOCO: 5360.00,
+  BPCL: 308.50, GRASIM: 3191.00, INDUSINDBK: 912.20, ZOMATO: 245.50, NIFTYBEES: 258.40,
+  GOLDBEES: 68.20, BANKBEES: 558.10, HAL: 4450.00, BEL: 285.00, DIXON: 13200.00, POLYCAB: 6850.00,
+  TRENT: 6420.00, SUZLON: 58.50, PERSISTENT: 5450.00, LTIM: 5820.00
+}
+
 function generateClientFallback(sym, curPrice = null, prevPrice = null) {
-  const p = curPrice || (sym === 'ZOMATO' ? 245.50 : (sym === 'RELIANCE' ? 1304.10 : 250.0))
-  const pc = prevPrice || (sym === 'ZOMATO' ? 240.00 : round(p * 0.994, 2))
+  const p = curPrice || KNOWN_PRICES[sym] || 1250.0
+  const pc = prevPrice || round(p * 0.994, 2)
   const chg = round(p - pc, 2)
   const pct = pc ? round((chg / pc) * 100, 2) : 0.0
   const sector = sym === 'ZOMATO' ? 'Consumer Tech / Food Delivery' : 'Diversified'

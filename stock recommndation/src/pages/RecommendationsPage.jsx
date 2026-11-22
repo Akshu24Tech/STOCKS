@@ -70,6 +70,11 @@ function StockCard({ rec, onSelect }) {
             {rec.fills_gap && (
               <span className="badge badge-purple" style={{ fontSize: 9 }}>🧩 Gap Fill</span>
             )}
+            {rec.ai_agent_consensus && (
+              <span className="badge badge-green" style={{ fontSize: 9, background: '#E0F2FE', color: '#0369A1', borderColor: '#BAE6FD' }}>
+                🤖 AI {rec.ai_agent_consensus.trader_decision} Verdict
+              </span>
+            )}
           </div>
           <div className="stock-card-name">{rec.name}</div>
           <div style={{ display: 'flex', gap: 5, marginTop: 5, flexWrap: 'wrap' }}>
