@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useApp } from '../App'
 import {
   AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
-  BarChart, Bar,
+  BarChart, Bar, Cell, ReferenceLine,
 } from 'recharts'
 
 import { API } from '../config'
@@ -81,14 +81,14 @@ function IndexBanner({ indices }) {
         return (
           <div key={idx.symbol} style={{
             background: up ? 'var(--clr-green-lt)' : 'var(--clr-red-lt)',
-            border: `1px solid ${up ? '#A7F3D0' : '#FECACA'}`,
+            border: `1px solid ${up ? 'var(--clr-green-lt)' : 'var(--clr-red-lt)'}`,
             borderRadius: 'var(--r-lg)',
             padding: '12px 20px',
             display: 'flex', alignItems: 'center', gap: 16,
             flex: 1, minWidth: 200,
           }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase', letterSpacing: '0.6px' }}>
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)' }}>
                 {idx.symbol === 'NSEI' ? 'NIFTY 50' : idx.symbol === 'BSESN' ? 'SENSEX' : idx.symbol === 'NSEBANK' ? 'BANK NIFTY' : idx.symbol}
               </div>
               <div style={{ fontSize: 22, fontWeight: 800, fontFamily: 'var(--font-mono)', color: up ? 'var(--clr-green)' : 'var(--clr-red)' }}>
@@ -122,16 +122,17 @@ function TickChart({ ticks }) {
       <div className="chart-container">
         <ResponsiveContainer>
           <BarChart data={data} margin={{ top: 4, right: 8, bottom: 4, left: 8 }}>
-            <CartesianGrid strokeDasharray="3 3" stroke="var(--clr-border)" />
-            <XAxis dataKey="name" tick={{ fontSize: 9 }} />
-            <YAxis tick={{ fontSize: 10 }} tickFormatter={v => `${v}%`} />
-            <Tooltip formatter={(v) => [`${v}%`, '% Change']} contentStyle={{ fontSize: 12 }} />
-            <Bar dataKey="pct" fill="#4F46E5"
+            <CartesianGrid vertical={false} stroke="var(--clr-border)" />
+            <ReferenceLine y={0} stroke="var(--clr-border-2)" />
+            <XAxis dataKey="name" tick={{ fontSize: 10 }} axisLine={false} tickLine={false} interval={0} />
+            <YAxis tick={{ fontSize: 11 }} tickFormatter={v => `${v}%`} axisLine={false} tickLine={false} width={40} />
+            <Tooltip cursor={{ fill: 'var(--clr-surface-2)' }} formatter={(v) => [`${v}%`, 'Change today']} contentStyle={{ fontSize: 13 }} />
+            <Bar dataKey="pct" fill="var(--clr-primary)"
               radius={[4, 4, 0, 0]}
               label={false}
             >
               {data.map((d, i) => (
-                <rect key={i} fill={d.pct >= 0 ? '#059669' : '#DC2626'} />
+                <Cell key={i} fill={d.pct >= 0 ? 'var(--clr-green)' : 'var(--clr-red)'} radius={d.pct >= 0 ? [4, 4, 0, 0] : [0, 0, 4, 4]} />
               ))}
             </Bar>
           </BarChart>
@@ -158,8 +159,8 @@ function TickerBoard({ ticks }) {
           const up = t.change_pct >= 0
           return (
             <div key={t.symbol} style={{
-              background: up ? '#F0FDF4' : '#FFF1F2',
-              border: `1px solid ${up ? '#BBF7D0' : '#FECDD3'}`,
+              background: up ? 'var(--clr-green-lt)' : 'var(--clr-red-lt)',
+              border: `1px solid ${up ? 'var(--clr-green-lt)' : 'var(--clr-red-lt)'}`,
               borderRadius: 'var(--r-md)',
               padding: '8px 12px',
               display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -218,7 +219,7 @@ export default function LiveFeedPage() {
     <div>
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <h1>Live Market Feed ⚡</h1>
+          <h1>Live market</h1>
           <p>Real-time NSE tick data · Top gainers, losers & volume shakers</p>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>

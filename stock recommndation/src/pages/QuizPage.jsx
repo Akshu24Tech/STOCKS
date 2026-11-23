@@ -140,7 +140,7 @@ function RiskGauge({ score }) {
   const end = toXY(0)
   const needleEnd = toXY(angle - 90)
 
-  const color = score < 35 ? '#0891B2' : score < 65 ? '#D97706' : '#DC2626'
+  const color = score < 35 ? 'var(--clr-primary)' : score < 65 ? 'var(--clr-amber)' : 'var(--clr-red)'
   const label = score < 35 ? 'Conservative' : score < 65 ? 'Moderate' : 'Aggressive'
 
   return (
@@ -159,9 +159,9 @@ function RiskGauge({ score }) {
         />
         <defs>
           <linearGradient id="gauge-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#0891B2" />
-            <stop offset="50%" stopColor="#D97706" />
-            <stop offset="100%" stopColor="#DC2626" />
+            <stop offset="0%" stopColor="var(--clr-primary)" />
+            <stop offset="50%" stopColor="var(--clr-amber)" />
+            <stop offset="100%" stopColor="var(--clr-red)" />
           </linearGradient>
         </defs>
         {/* Needle */}
@@ -230,7 +230,7 @@ export default function QuizPage() {
     return (
       <div className="quiz-container">
         <div className="page-header">
-          <h1>Quiz Complete! 🎉</h1>
+          <h1>Your risk profile is ready</h1>
         </div>
         {loading ? (
           <div className="card" style={{ textAlign: 'center', padding: 48 }}>
@@ -301,7 +301,7 @@ export default function QuizPage() {
   return (
     <div className="quiz-container">
       <div className="page-header">
-        <h1>Risk Appetite Quiz</h1>
+        <h1>Find your risk profile</h1>
         <p>10 questions to build your personalized investment profile</p>
       </div>
 

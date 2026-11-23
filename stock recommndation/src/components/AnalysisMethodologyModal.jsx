@@ -13,9 +13,9 @@ const CATEGORY_ICONS = {
 }
 
 const IMPACT_COLOR = {
-  '+': { bg: 'var(--clr-green-lt)', text: 'var(--clr-green)', border: '#A7F3D0' },
-  '-': { bg: 'var(--clr-red-lt)', text: 'var(--clr-red)', border: '#FECACA' },
-  'Neutral': { bg: 'var(--clr-amber-lt)', text: 'var(--clr-amber)', border: '#FDE68A' },
+  '+': { bg: 'var(--clr-green-lt)', text: 'var(--clr-green)', border: 'var(--clr-green-lt)' },
+  '-': { bg: 'var(--clr-red-lt)', text: 'var(--clr-red)', border: 'var(--clr-red-lt)' },
+  'Neutral': { bg: 'var(--clr-amber-lt)', text: 'var(--clr-amber)', border: 'var(--clr-amber-lt)' },
 }
 
 function ImpactChip({ impact }) {
@@ -38,7 +38,7 @@ function ImpactChip({ impact }) {
 function IndicatorCard({ indicator, type }) {
   const [open, setOpen] = useState(false)
   const typeColor = type === 'technical' ? 'var(--clr-primary)' : 'var(--clr-accent)'
-  const typeBg = type === 'technical' ? 'var(--clr-primary-lt)' : '#F5F3FF'
+  const typeBg = type === 'technical' ? 'var(--clr-primary-lt)' : 'var(--clr-accent-lt)'
 
   return (
     <div style={{
@@ -71,8 +71,8 @@ function IndicatorCard({ indicator, type }) {
           {/* Formula */}
           {indicator.formula && (
             <div style={{ margin: '12px 0 10px' }}>
-              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase', marginBottom: 4 }}>Formula</div>
-              <code style={{ fontSize: 12, background: '#1E293B', color: '#A5F3FC', padding: '8px 12px',
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', marginBottom: 4 }}>Formula</div>
+              <code style={{ fontSize: 12, background: 'var(--clr-text-1)', color: '#A5F3FC', padding: '8px 12px',
                 borderRadius: 8, display: 'block', fontFamily: 'var(--font-mono)', lineHeight: 1.6 }}>
                 {indicator.formula}
               </code>
@@ -80,7 +80,7 @@ function IndicatorCard({ indicator, type }) {
           )}
 
           {/* Signals table */}
-          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase', marginBottom: 8 }}>Scoring Rules</div>
+          <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', marginBottom: 8 }}>Scoring Rules</div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
             {(indicator.signals || []).map((sig, i) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto auto', gap: 10, alignItems: 'center',
@@ -202,7 +202,7 @@ export default function AnalysisMethodologyModal({ onClose }) {
               </div>
 
               {/* Portfolio weighting info */}
-              <div style={{ background: 'var(--clr-primary-lt)', border: '1px solid #C7D2FE',
+              <div style={{ background: 'var(--clr-primary-lt)', border: '1px solid var(--clr-primary-lt)',
                 borderRadius: 'var(--r-lg)', padding: '14px 18px', marginBottom: 20 }}>
                 <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--clr-primary)', marginBottom: 8 }}>
                   🎯 How Broker Portfolio Enhances Recommendations

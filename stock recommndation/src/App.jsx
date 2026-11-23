@@ -9,6 +9,7 @@ import WatchlistPage from './pages/WatchlistPage'
 import TickertapeStockModal from './components/TickertapeStockModal'
 import AIConfigModal from './components/AIConfigModal'
 import { getWsUrl } from './config'
+import { LayoutDashboard, Activity, Sparkles, BriefcaseBusiness, Eye, Brain, Menu, Bot } from 'lucide-react'
 
 // ─── Global Context ──────────────────────────────────────────────────────────
 export const AppContext = createContext(null)
@@ -61,132 +62,151 @@ function useTickFeed() {
   return { ticks, wsStatus }
 }
 
-// ─── Sidebar ──────────────────────────────────────────────────────────────────
+// ─── Navigation ───────────────────────────────────────────────────────────────
 const NAV_ITEMS = [
-  { path: '/', icon: '🏠', label: 'Dashboard' },
-  { path: '/watchlist', icon: '👁️', label: 'Watchlist' },
-  { path: '/quiz', icon: '🧠', label: 'Risk Quiz' },
-  { path: '/portfolio', icon: '💼', label: 'My Portfolio' },
-  { path: '/recommendations', icon: '🎯', label: 'AI Picks' },
-  { path: '/live', icon: '⚡', label: 'Live Market' },
+  { path: '/', icon: LayoutDashboard, label: 'Dashboard', short: 'Home' },
+  { path: '/live', icon: Activity, label: 'Live market', short: 'Market' },
+  { path: '/recommendations', icon: Sparkles, label: 'AI picks', short: 'Picks' },
+  { path: '/portfolio', icon: BriefcaseBusiness, label: 'My portfolio', short: 'Portfolio' },
+  { path: '/watchlist', icon: Eye, label: 'Watchlist', short: 'Watchlist' },
+  { path: '/quiz', icon: Brain, label: 'Risk profile', short: 'Risk' },
 ]
 
-function Sidebar({ ticks }) {
+const STATUS_TEXT = {
+  connected: 'Live NSE feed connected',
+  connecting: 'Connecting to live feed…',
+  disconnected: 'Live feed offline — retrying',
+}
+
+function Sidebar({ ticks, wsStatus, open, onClose }) {
   const navigate = useNavigate()
   const { pathname } = useLocation()
   const { openStockModal } = useApp() || {}
-  const tickArr = Object.values(ticks).slice(0, 10)
+  const tickArr = Object.values(ticks).slice(0, 8)
+  const go = (path) => { navigate(path); onClose() }
 
   return (
-    <aside className="sidebar">
-      <div className="sidebar-logo">
-        <div className="logo-mark">
-          <div className="logo-icon">₹</div>
-          <div>
-            <div className="logo-text">IndiaStocks AI</div>
-            <div className="logo-sub">Smart Advisor</div>
-          </div>
-        </div>
-      </div>
-
-      <nav className="sidebar-nav">
-        <div className="nav-group">
-          <div className="nav-label">Navigation</div>
-          {NAV_ITEMS.map(item => (
-            <button
-              key={item.path}
-              className={`nav-item ${pathname === item.path ? 'active' : ''}`}
-              onClick={() => navigate(item.path)}
-            >
-              <span className="nav-icon">{item.icon}</span>
-              {item.label}
-            </button>
-          ))}
-        </div>
-
-        {tickArr.length > 0 && (
-          <div className="nav-group">
-            <div
-              className="nav-label"
-              style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
-              onClick={() => navigate('/watchlist')}
-            >
-              <span>Live Watchlist</span>
-              <span style={{ fontSize: 10, color: 'var(--clr-primary)' }}>Manage ⚙️</span>
+    <>
+      <div className={`rail-scrim ${open ? 'open' : ''}`} onClick={onClose} />
+      <aside className={`sidebar ${open ? 'open' : ''}`} aria-label="Main navigation">
+        <div className="sidebar-logo">
+          <div className="logo-mark">
+            <div className="logo-icon">₹</div>
+            <div>
+              <div className="logo-text">IndiaStocks AI</div>
+              <div className="logo-sub">Your market co-pilot</div>
             </div>
-            {tickArr.map(t => (
-              <div
-                key={t.symbol}
-                style={{ padding: '5px 10px', fontSize: 12, display: 'flex', justifyContent: 'space-between', cursor: 'pointer', borderRadius: 'var(--r-sm)', transition: 'background 0.15s' }}
-                onClick={() => openStockModal(t.symbol)}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(99,102,241,0.08)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
-              >
-                <span style={{ fontWeight: 600, color: 'var(--clr-text-2)', fontFamily: 'var(--font-mono)' }}>{t.symbol}</span>
-                <span className={t.change_pct >= 0 ? 'badge badge-green' : 'badge badge-red'} style={{ fontSize: 10, padding: '1px 6px' }}>
-                  {t.change_pct >= 0 ? '+' : ''}{t.change_pct?.toFixed(2)}%
-                </span>
-              </div>
-            ))}
           </div>
-        )}
-      </nav>
-
-      <div className="sidebar-footer">
-        <div className="live-badge">
-          <div className="live-dot" />
-          NSE Live Feed Active
         </div>
-      </div>
-    </aside>
+
+        <nav className="sidebar-nav">
+          <div className="nav-group">
+            {NAV_ITEMS.map(item => {
+              const Icon = item.icon
+              const active = pathname === item.path
+              return (
+                <button
+                  key={item.path}
+                  className={`nav-item ${active ? 'active' : ''}`}
+                  aria-current={active ? 'page' : undefined}
+                  onClick={() => go(item.path)}
+                >
+                  <span className="nav-icon"><Icon size={18} strokeWidth={2} /></span>
+                  {item.label}
+                </button>
+              )
+            })}
+          </div>
+
+          {tickArr.length > 0 && (
+            <div className="nav-group">
+              <div className="nav-label">
+                <span>Watching</span>
+                <button onClick={() => go('/watchlist')}>Edit</button>
+              </div>
+              {tickArr.map(t => (
+                <button key={t.symbol} className="rail-tick" onClick={() => { openStockModal(t.symbol); onClose() }}>
+                  <span className="sym">{t.symbol}</span>
+                  <span className={t.change_pct >= 0 ? 'up' : 'dn'}>
+                    {t.change_pct >= 0 ? '+' : ''}{t.change_pct?.toFixed(2)}%
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </nav>
+
+        <div className="sidebar-footer">
+          <div className={`live-badge ${wsStatus}`}>
+            <div className="live-dot" />
+            {STATUS_TEXT[wsStatus] || STATUS_TEXT.disconnected}
+          </div>
+        </div>
+      </aside>
+    </>
   )
 }
 
-// ─── Ticker Tape & Top Bar ───────────────────────────────────────────────────
-function TickerTape({ ticks, wsStatus, onSelectStock, onOpenAiConfig }) {
+function BottomNav() {
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
+  return (
+    <nav className="bottom-nav" aria-label="Quick navigation">
+      {NAV_ITEMS.slice(0, 5).map(item => {
+        const Icon = item.icon
+        return (
+          <button key={item.path} className={pathname === item.path ? 'active' : ''} onClick={() => navigate(item.path)}>
+            <Icon size={20} strokeWidth={2} />
+            {item.short}
+          </button>
+        )
+      })}
+    </nav>
+  )
+}
+
+// ─── Top bar with ticker tape ─────────────────────────────────────────────────
+function TickerTape({ ticks, wsStatus, onSelectStock, onOpenAiConfig, onOpenMenu }) {
   const items = Object.values(ticks)
   const doubled = items.length ? [...items, ...items] : []
-  const statusLabel = { connected: '● Live', connecting: '◌ Connecting', disconnected: '○ Offline' }
+  const statusLabel = { connected: 'Live', connecting: 'Connecting', disconnected: 'Offline' }
 
   return (
-    <div className="top-bar">
+    <header className="top-bar">
+      <button className="menu-btn" onClick={onOpenMenu} aria-label="Open menu"><Menu size={18} /></button>
       <div className="ticker-wrap">
         {doubled.length > 0 ? (
           <div className="ticker-track">
             {doubled.map((t, i) => (
-              <span
+              <button
                 key={`${t.symbol}-${i}`}
                 className="ticker-item"
                 onClick={() => onSelectStock && onSelectStock(t.symbol)}
-                title="Click to view Scorecard & Forecasts"
+                title={`Open ${t.symbol} details`}
+                tabIndex={i >= items.length ? -1 : 0}
               >
                 <span className="ticker-sym">{t.symbol}</span>
                 <span className="ticker-price">₹{t.price?.toFixed(2)}</span>
                 <span className={`ticker-chg ${t.change_pct >= 0 ? 'up' : 'dn'}`}>
-                  {t.change_pct >= 0 ? '▲' : '▼'}{Math.abs(t.change_pct).toFixed(2)}%
+                  {t.change_pct >= 0 ? '+' : '−'}{Math.abs(t.change_pct).toFixed(2)}%
                 </span>
-              </span>
+              </button>
             ))}
           </div>
         ) : (
-          <div style={{ fontSize: 12, color: 'var(--clr-text-3)', paddingLeft: 8 }}>
-            Waiting for live data — start the backend to see real-time NSE ticks
-          </div>
+          <div className="ticker-empty">Live prices appear here once the backend is running.</div>
         )}
       </div>
-      <div className={`ws-status ${wsStatus}`}>
-        <div className="live-dot" style={{ width: 6, height: 6 }} />
-        {statusLabel[wsStatus] || 'Offline'}
+      <div className={`ws-status ${wsStatus}`} title={STATUS_TEXT[wsStatus]}>
+        <div className="live-dot" />
+        <span className="label">{statusLabel[wsStatus] || 'Offline'}</span>
       </div>
-      <button
-        onClick={onOpenAiConfig}
-        className="ai-settings-btn"
-        title="Configure TradingAgents LLM Provider"
-      >
-        <span className="pulse-dot"></span>
-        <span>🤖 TradingAgents AI</span>
+      <button onClick={onOpenAiConfig} className="ai-settings-btn" title="Choose the AI model used for analysis">
+        <Bot size={16} />
+        <span className="label">AI settings</span>
+        <span className="pulse-dot" />
       </button>
-    </div>
+    </header>
   )
 }
 
@@ -204,6 +224,9 @@ export default function App() {
     return p ? JSON.parse(p) : []
   })
   const [quizAnswers, setQuizAnswers] = useState({})
+  const [menuOpen, setMenuOpen] = useState(false)
+  const { pathname } = useLocation()
+  useEffect(() => { window.scrollTo(0, 0) }, [pathname])
 
   const saveRiskScore = (s) => {
     setRiskScore(s)
@@ -233,15 +256,16 @@ export default function App() {
       openStockModal,
     }}>
       <div className="app-layout">
-        <Sidebar ticks={ticks} />
+        <Sidebar ticks={ticks} wsStatus={wsStatus} open={menuOpen} onClose={() => setMenuOpen(false)} />
         <div className="main-content">
           <TickerTape
             ticks={ticks}
             wsStatus={wsStatus}
             onSelectStock={openStockModal}
             onOpenAiConfig={() => setShowAiConfig(true)}
+            onOpenMenu={() => setMenuOpen(true)}
           />
-          <div className="page-container">
+          <main className="page-container">
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/watchlist" element={<WatchlistPage />} />
@@ -250,7 +274,8 @@ export default function App() {
               <Route path="/recommendations" element={<RecommendationsPage />} />
               <Route path="/live" element={<LiveFeedPage />} />
             </Routes>
-          </div>
+          </main>
+          <BottomNav />
         </div>
       </div>
 

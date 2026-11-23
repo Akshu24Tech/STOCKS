@@ -247,8 +247,8 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
     <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
       {/* Banner */}
       <div style={{
-        background: 'linear-gradient(135deg, #EFF6FF, #F5F3FF)',
-        border: '1px solid #C7D2FE',
+        background: 'linear-gradient(135deg, var(--clr-primary-lt), var(--clr-accent-lt))',
+        border: '1px solid var(--clr-primary-lt)',
         borderRadius: 14,
         padding: '16px 20px',
         display: 'flex',
@@ -269,8 +269,8 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
           </div>
         </div>
         <div style={{
-          background: '#DCFCE7',
-          color: '#166534',
+          background: 'var(--clr-green-lt)',
+          color: 'var(--clr-green)',
           border: '1px solid #86EFAC',
           borderRadius: 20,
           padding: '4px 14px',
@@ -283,7 +283,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
 
       {successMsg && (
         <div style={{
-          background: '#DCFCE7',
+          background: 'var(--clr-green-lt)',
           border: '1px solid #86EFAC',
           borderRadius: 10,
           padding: '12px 16px',
@@ -301,11 +301,11 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
 
       {error && (
         <div style={{
-          background: '#FEF2F2',
-          border: '1px solid #FECACA',
+          background: 'var(--clr-red-lt)',
+          border: '1px solid var(--clr-red-lt)',
           borderRadius: 10,
           padding: '12px 16px',
-          color: '#DC2626',
+          color: 'var(--clr-red)',
           fontSize: 13,
           display: 'flex',
           alignItems: 'center',
@@ -318,7 +318,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
 
       {/* Broker Cards Grid */}
       <div>
-        <div style={{ fontSize: 14, fontWeight: 700, color: '#1E293B', marginBottom: 12 }}>
+        <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--clr-text-1)', marginBottom: 12 }}>
           Select Broker to Connect
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 14 }}>
@@ -331,7 +331,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                 key={b.id}
                 style={{
                   background: '#FFFFFF',
-                  border: isConn ? `2px solid ${b.color}` : '1px solid #E2E8F0',
+                  border: isConn ? `2px solid ${b.color}` : '1px solid var(--clr-border)',
                   borderRadius: 14,
                   padding: '18px 20px',
                   display: 'flex',
@@ -346,14 +346,14 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                     <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                       <span style={{ fontSize: 26 }}>{b.logo}</span>
                       <div>
-                        <div style={{ fontWeight: 800, fontSize: 15, color: '#0F172A' }}>{b.name}</div>
+                        <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--clr-text)' }}>{b.name}</div>
                         <span style={{ fontSize: 10, color: b.color, fontWeight: 700 }}>{b.tag}</span>
                       </div>
                     </div>
                     {isConn && (
                       <span style={{
-                        background: '#DCFCE7',
-                        color: '#166534',
+                        background: 'var(--clr-green-lt)',
+                        color: 'var(--clr-green)',
                         fontSize: 11,
                         padding: '2px 8px',
                         borderRadius: 6,
@@ -363,7 +363,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                       </span>
                     )}
                   </div>
-                  <p style={{ fontSize: 12, color: '#64748B', lineHeight: 1.45, margin: '8px 0 16px' }}>
+                  <p style={{ fontSize: 12, color: 'var(--clr-text-3)', lineHeight: 1.45, margin: '8px 0 16px' }}>
                     {b.description}
                   </p>
                 </div>
@@ -372,7 +372,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                   {isConn ? (
                     <button
                       className="btn btn-ghost"
-                      style={{ flex: 1, fontSize: 12, padding: '7px 12px', color: '#DC2626' }}
+                      style={{ flex: 1, fontSize: 12, padding: '7px 12px', color: 'var(--clr-red)' }}
                       onClick={() => onDisconnectBroker(b.id)}
                     >
                       Disconnect
@@ -454,17 +454,17 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
       {/* CSV / Statement Upload Section */}
       <div style={{
         background: '#FFFFFF',
-        border: '1px solid #E2E8F0',
+        border: '1px solid var(--clr-border)',
         borderRadius: 14,
         padding: '20px 24px',
         marginTop: 6,
       }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12, marginBottom: 14 }}>
           <div>
-            <div style={{ fontSize: 15, fontWeight: 700, color: '#0F172A' }}>
+            <div style={{ fontSize: 15, fontWeight: 700, color: 'var(--clr-text)' }}>
               Alternative: Upload Broker Statement CSV
             </div>
-            <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>
+            <div style={{ fontSize: 12, color: 'var(--clr-text-3)', marginTop: 2 }}>
               Download holdings CSV from Groww, Zerodha Console, Upstox, Dhan or custom Excel, and drop it here.
             </div>
           </div>
@@ -479,11 +479,11 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
 
         <div
           style={{
-            border: '2px dashed #CBD5E1',
+            border: '2px dashed var(--clr-border-2)',
             borderRadius: 12,
             padding: '24px 20px',
             textAlign: 'center',
-            background: '#F8FAFC',
+            background: 'var(--clr-surface-2)',
             cursor: 'pointer',
           }}
           onClick={() => fileRef.current?.click()}
@@ -496,10 +496,10 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
             onChange={handleCsvFile}
           />
           <div style={{ fontSize: 32, marginBottom: 6 }}>📄</div>
-          <div style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>
+          <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--clr-text)' }}>
             {csvUploading ? 'Parsing statement file…' : 'Click to Upload Portfolio CSV Statement'}
           </div>
-          <div style={{ fontSize: 12, color: '#64748B', marginTop: 4 }}>
+          <div style={{ fontSize: 12, color: 'var(--clr-text-3)', marginTop: 4 }}>
             Recognizes: Symbol / Stock, Quantity, and Buy / Average Price columns automatically
           </div>
         </div>
@@ -513,7 +513,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(15, 23, 42, 0.6)',
+            background: 'rgba(19,32,58,0.45)',
             backdropFilter: 'blur(4px)',
             zIndex: 1100,
             display: 'flex',
@@ -531,7 +531,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
               maxWidth: 520,
               padding: '24px 28px',
               boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)',
-              border: '1px solid #E2E8F0',
+              border: '1px solid var(--clr-border)',
             }}
             onClick={e => e.stopPropagation()}
           >
@@ -539,10 +539,10 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontSize: 26 }}>🔵</span>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: '#0F172A' }}>
+                  <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: 'var(--clr-text)' }}>
                     Connect Angel One SmartAPI
                   </h3>
-                  <div style={{ fontSize: 12, color: '#64748B' }}>
+                  <div style={{ fontSize: 12, color: 'var(--clr-text-3)' }}>
                     Directly fetch your real equity portfolio from Angel One
                   </div>
                 </div>
@@ -554,7 +554,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                   background: 'none',
                   fontSize: 18,
                   cursor: 'pointer',
-                  color: '#64748B',
+                  color: 'var(--clr-text-3)',
                 }}
               >
                 ✕
@@ -563,26 +563,26 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
 
             {/* Quick Helper Box */}
             <div style={{
-              background: '#EFF6FF',
-              border: '1px solid #BFDBFE',
+              background: 'var(--clr-primary-lt)',
+              border: '1px solid var(--clr-primary-lt)',
               borderRadius: 10,
               padding: '10px 14px',
               fontSize: 12,
-              color: '#1E40AF',
+              color: 'var(--clr-primary-dk)',
               lineHeight: 1.45,
               marginBottom: 16,
             }}>
               <strong>💡 How to connect:</strong>
               <ol style={{ margin: '4px 0 0', paddingLeft: 18 }}>
-                <li>Get your <strong>API Key</strong> from <a href="https://smartapi.angelone.in/new/apps" target="_blank" rel="noreferrer" style={{ color: '#1D4ED8', textDecoration: 'underline' }}>smartapi.angelone.in/new/apps</a>.</li>
+                <li>Get your <strong>API Key</strong> from <a href="https://smartapi.angelone.in/new/apps" target="_blank" rel="noreferrer" style={{ color: 'var(--clr-primary)', textDecoration: 'underline' }}>smartapi.angelone.in/new/apps</a>.</li>
                 <li>Enter your <strong>Client Code</strong> (e.g. A123456) &amp; <strong>Trading PIN</strong>.</li>
-                <li>Paste either your live <strong>6-digit TOTP</strong> from Authenticator OR your <strong>TOTP Secret Key</strong> from <a href="https://smartapi.angelone.in/enable-totp" target="_blank" rel="noreferrer" style={{ color: '#1D4ED8', textDecoration: 'underline' }}>enable-totp</a> (backend will auto-generate TOTP!).</li>
+                <li>Paste either your live <strong>6-digit TOTP</strong> from Authenticator OR your <strong>TOTP Secret Key</strong> from <a href="https://smartapi.angelone.in/enable-totp" target="_blank" rel="noreferrer" style={{ color: 'var(--clr-primary)', textDecoration: 'underline' }}>enable-totp</a> (backend will auto-generate TOTP!).</li>
               </ol>
             </div>
 
             <form onSubmit={handleAngelConnect} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#334155', marginBottom: 4 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: 'var(--clr-text-2)', marginBottom: 4 }}>
                   SmartAPI API Key *
                 </label>
                 <input
@@ -595,9 +595,9 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: 8,
-                    border: '1px solid #CBD5E1',
+                    border: '1px solid var(--clr-border-2)',
                     fontSize: 13,
-                    fontFamily: 'monospace',
+                    fontFamily: 'var(--font-mono)',
                     boxSizing: 'border-box',
                   }}
                 />
@@ -605,7 +605,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
 
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
                 <div>
-                  <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#334155', marginBottom: 4 }}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: 'var(--clr-text-2)', marginBottom: 4 }}>
                     Client Code (User ID) *
                   </label>
                   <input
@@ -618,7 +618,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                       width: '100%',
                       padding: '10px 12px',
                       borderRadius: 8,
-                      border: '1px solid #CBD5E1',
+                      border: '1px solid var(--clr-border-2)',
                       fontSize: 13,
                       boxSizing: 'border-box',
                     }}
@@ -626,7 +626,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#334155', marginBottom: 4 }}>
+                  <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: 'var(--clr-text-2)', marginBottom: 4 }}>
                     Trading PIN / Password *
                   </label>
                   <input
@@ -639,7 +639,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                       width: '100%',
                       padding: '10px 12px',
                       borderRadius: 8,
-                      border: '1px solid #CBD5E1',
+                      border: '1px solid var(--clr-border-2)',
                       fontSize: 13,
                       boxSizing: 'border-box',
                     }}
@@ -648,7 +648,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
               </div>
 
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#334155', marginBottom: 4 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: 'var(--clr-text-2)', marginBottom: 4 }}>
                   TOTP Code OR TOTP Secret Key *
                 </label>
                 <input
@@ -661,13 +661,13 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: 8,
-                    border: '1px solid #CBD5E1',
+                    border: '1px solid var(--clr-border-2)',
                     fontSize: 13,
-                    fontFamily: 'monospace',
+                    fontFamily: 'var(--font-mono)',
                     boxSizing: 'border-box',
                   }}
                 />
-                <span style={{ fontSize: 11, color: '#64748B', marginTop: 3, display: 'block' }}>
+                <span style={{ fontSize: 11, color: 'var(--clr-text-3)', marginTop: 3, display: 'block' }}>
                   Tip: Pasting your TOTP secret key allows automatic regeneration on every sync without opening Google Authenticator.
                 </span>
               </div>
@@ -683,9 +683,9 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                   style={{
                     padding: '10px 14px',
                     borderRadius: 8,
-                    border: '1px solid #CBD5E1',
+                    border: '1px solid var(--clr-border-2)',
                     background: '#FFFFFF',
-                    color: '#475569',
+                    color: 'var(--clr-text-2)',
                     fontSize: 12,
                     fontWeight: 600,
                     cursor: 'pointer',
@@ -729,7 +729,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
           style={{
             position: 'fixed',
             inset: 0,
-            background: 'rgba(15, 23, 42, 0.6)',
+            background: 'rgba(19,32,58,0.45)',
             backdropFilter: 'blur(4px)',
             zIndex: 1100,
             display: 'flex',
@@ -747,7 +747,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
               maxWidth: 500,
               padding: '24px 28px',
               boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)',
-              border: '1px solid #E2E8F0',
+              border: '1px solid var(--clr-border)',
             }}
             onClick={e => e.stopPropagation()}
           >
@@ -755,10 +755,10 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ fontSize: 26 }}>🟣</span>
                 <div>
-                  <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: '#0F172A' }}>
+                  <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: 'var(--clr-text)' }}>
                     Connect Upstox Account
                   </h3>
-                  <div style={{ fontSize: 12, color: '#64748B' }}>
+                  <div style={{ fontSize: 12, color: 'var(--clr-text-3)' }}>
                     Sync live portfolio holdings via Upstox Access Token
                   </div>
                 </div>
@@ -770,7 +770,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                   background: 'none',
                   fontSize: 18,
                   cursor: 'pointer',
-                  color: '#64748B',
+                  color: 'var(--clr-text-3)',
                 }}
               >
                 ✕
@@ -779,7 +779,7 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
 
             <form onSubmit={handleUpstoxConnect} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               <div>
-                <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#334155', marginBottom: 4 }}>
+                <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: 'var(--clr-text-2)', marginBottom: 4 }}>
                   Upstox Access Token *
                 </label>
                 <textarea
@@ -792,14 +792,14 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                     width: '100%',
                     padding: '10px 12px',
                     borderRadius: 8,
-                    border: '1px solid #CBD5E1',
+                    border: '1px solid var(--clr-border-2)',
                     fontSize: 12,
-                    fontFamily: 'monospace',
+                    fontFamily: 'var(--font-mono)',
                     boxSizing: 'border-box',
                     resize: 'vertical',
                   }}
                 />
-                <span style={{ fontSize: 11, color: '#64748B', marginTop: 3, display: 'block' }}>
+                <span style={{ fontSize: 11, color: 'var(--clr-text-3)', marginTop: 3, display: 'block' }}>
                   Generated from Upstox developer dashboard or OAuth redirect.
                 </span>
               </div>
@@ -814,9 +814,9 @@ export default function BrokerConnect({ onHoldingsImported, connectedBrokers = [
                   style={{
                     padding: '10px 14px',
                     borderRadius: 8,
-                    border: '1px solid #CBD5E1',
+                    border: '1px solid var(--clr-border-2)',
                     background: '#FFFFFF',
-                    color: '#475569',
+                    color: 'var(--clr-text-2)',
                     fontSize: 12,
                     fontWeight: 600,
                     cursor: 'pointer',

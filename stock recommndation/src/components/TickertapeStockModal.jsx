@@ -7,14 +7,14 @@ import {
 import { API } from '../config'
 
 const SCORE_BADGES = {
-  High: { bg: '#FEE2E2', color: '#DC2626', border: '#FECACA' },
-  Moderate: { bg: '#FEF3C7', color: '#D97706', border: '#FDE68A' },
-  Low: { bg: '#FEE2E2', color: '#DC2626', border: '#FECACA' },
-  Fair: { bg: '#E0E7FF', color: '#4338CA', border: '#C7D2FE' },
-  Attractive: { bg: '#DCFCE7', color: '#16A34A', border: '#BBF7D0' },
-  Good: { bg: '#DCFCE7', color: '#16A34A', border: '#BBF7D0' },
-  Average: { bg: '#FEF3C7', color: '#D97706', border: '#FDE68A' },
-  'No Red Flags': { bg: '#DCFCE7', color: '#16A34A', border: '#BBF7D0' },
+  High: { bg: 'var(--clr-red-lt)', color: 'var(--clr-red)', border: 'var(--clr-red-lt)' },
+  Moderate: { bg: 'var(--clr-amber-lt)', color: 'var(--clr-amber)', border: 'var(--clr-amber-lt)' },
+  Low: { bg: 'var(--clr-red-lt)', color: 'var(--clr-red)', border: 'var(--clr-red-lt)' },
+  Fair: { bg: '#E0E7FF', color: '#4338CA', border: 'var(--clr-primary-lt)' },
+  Attractive: { bg: 'var(--clr-green-lt)', color: 'var(--clr-green)', border: 'var(--clr-green-lt)' },
+  Good: { bg: 'var(--clr-green-lt)', color: 'var(--clr-green)', border: 'var(--clr-green-lt)' },
+  Average: { bg: 'var(--clr-amber-lt)', color: 'var(--clr-amber)', border: 'var(--clr-amber-lt)' },
+  'No Red Flags': { bg: 'var(--clr-green-lt)', color: 'var(--clr-green)', border: 'var(--clr-green-lt)' },
 }
 
 export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWatchlist, isInWatchlist }) {
@@ -146,39 +146,39 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
           flexDirection: 'column',
           boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
           overflow: 'hidden',
-          border: '1px solid #E2E8F0',
+          border: '1px solid var(--clr-border)',
         }}
         onClick={e => e.stopPropagation()}
       >
         {/* Top Header Bar */}
         <div style={{
           padding: '20px 28px 16px',
-          borderBottom: '1px solid #E2E8F0',
+          borderBottom: '1px solid var(--clr-border)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'flex-start',
-          backgroundColor: '#F8FAFC',
+          backgroundColor: 'var(--clr-surface-2)',
         }}>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <h2 style={{ margin: 0, fontSize: 24, fontWeight: 800, color: '#0F172A', letterSpacing: '-0.5px' }}>
+              <h2 style={{ margin: 0, fontSize: 24, fontWeight: 800, color: 'var(--clr-text)', letterSpacing: '-0.5px' }}>
                 {cleanSym}
               </h2>
               <span style={{
-                background: '#EEF2FF',
-                color: '#4F46E5',
+                background: 'var(--clr-primary-lt)',
+                color: 'var(--clr-primary)',
                 fontSize: 11,
                 fontWeight: 700,
                 padding: '3px 8px',
                 borderRadius: 6,
-                border: '1px solid #C7D2FE',
+                border: '1px solid var(--clr-primary-lt)',
               }}>
                 NSE · EQ
               </span>
               {data?.quick_tags?.group && (
                 <span style={{
-                  background: '#F1F5F9',
-                  color: '#475569',
+                  background: 'var(--clr-surface-3)',
+                  color: 'var(--clr-text-2)',
                   fontSize: 11,
                   fontWeight: 600,
                   padding: '3px 8px',
@@ -188,20 +188,20 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                 </span>
               )}
             </div>
-            <div style={{ fontSize: 13, color: '#64748B', marginTop: 4 }}>
+            <div style={{ fontSize: 13, color: 'var(--clr-text-3)', marginTop: 4 }}>
               {data?.name || cleanSym} · {data?.sector || 'Diversified'}
             </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
             <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 26, fontWeight: 800, color: '#0F172A', fontFamily: 'monospace' }}>
+              <div style={{ fontSize: 26, fontWeight: 800, color: 'var(--clr-text)', fontFamily: 'var(--font-display)' }}>
                 ₹{price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
               </div>
               <div style={{
                 fontSize: 12,
                 fontWeight: 700,
-                color: isPosDay ? '#16A34A' : '#DC2626',
+                color: isPosDay ? 'var(--clr-green)' : 'var(--clr-red)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'flex-end',
@@ -209,7 +209,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
               }}>
                 <span>{isPosDay ? '▲' : '▼'} ₹{Math.abs(dayChange).toFixed(2)}</span>
                 <span>({isPosDay ? '+' : ''}{dayChangePct.toFixed(2)}%)</span>
-                <span style={{ color: '#94A3B8', fontWeight: 500, marginLeft: 4 }}>Today</span>
+                <span style={{ color: 'var(--clr-text-3)', fontWeight: 500, marginLeft: 4 }}>Today</span>
               </div>
             </div>
 
@@ -219,9 +219,9 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                 style={{
                   padding: '8px 14px',
                   borderRadius: 10,
-                  border: '1px solid #CBD5E1',
-                  background: isInWatchlist ? '#FEF3C7' : '#FFFFFF',
-                  color: isInWatchlist ? '#B45309' : '#334155',
+                  border: '1px solid var(--clr-border-2)',
+                  background: isInWatchlist ? 'var(--clr-amber-lt)' : '#FFFFFF',
+                  color: isInWatchlist ? 'var(--clr-amber)' : 'var(--clr-text-2)',
                   cursor: 'pointer',
                   fontWeight: 700,
                   fontSize: 12,
@@ -240,9 +240,9 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                 width: 36,
                 height: 36,
                 borderRadius: 18,
-                border: '1px solid #E2E8F0',
+                border: '1px solid var(--clr-border)',
                 background: '#FFFFFF',
-                color: '#64748B',
+                color: 'var(--clr-text-3)',
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
@@ -261,7 +261,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
           display: 'flex',
           gap: 4,
           padding: '0 28px',
-          borderBottom: '1px solid #E2E8F0',
+          borderBottom: '1px solid var(--clr-border)',
           backgroundColor: '#FFFFFF',
         }}>
           {[
@@ -281,8 +281,8 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                   padding: '14px 18px',
                   border: 'none',
                   background: 'none',
-                  borderBottom: active ? '3px solid #2563EB' : '3px solid transparent',
-                  color: active ? '#2563EB' : '#64748B',
+                  borderBottom: active ? '3px solid var(--clr-primary)' : '3px solid transparent',
+                  color: active ? 'var(--clr-primary)' : 'var(--clr-text-3)',
                   fontWeight: active ? 700 : 500,
                   fontSize: 14,
                   cursor: 'pointer',
@@ -298,7 +298,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
         {/* Scrollable Tab Content */}
         <div style={{ flex: 1, overflowY: 'auto', padding: '24px 28px', backgroundColor: '#FFFFFF' }}>
           {loading && (
-            <div style={{ textAlign: 'center', padding: '60px 20px', color: '#64748B' }}>
+            <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--clr-text-3)' }}>
               <div style={{ fontSize: 32, marginBottom: 12 }}>⚡</div>
               <div style={{ fontWeight: 700, fontSize: 16 }}>Loading Tickertape Insights for {cleanSym}…</div>
             </div>
@@ -314,10 +314,10 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                   {/* Price Chart Header */}
                   <div>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-                      <div style={{ fontSize: 13, color: '#64748B' }}>
-                        Prev. Close: <strong style={{ color: '#0F172A' }}>₹{prevClose.toFixed(2)}</strong>
+                      <div style={{ fontSize: 13, color: 'var(--clr-text-3)' }}>
+                        Prev. Close: <strong style={{ color: 'var(--clr-text)' }}>₹{prevClose.toFixed(2)}</strong>
                       </div>
-                      <div style={{ display: 'flex', background: '#F1F5F9', borderRadius: 8, padding: 2 }}>
+                      <div style={{ display: 'flex', background: 'var(--clr-surface-3)', borderRadius: 8, padding: 2 }}>
                         {['1mo', '3mo', '6mo', '1y', '5y'].map(p => (
                           <button
                             key={p}
@@ -327,7 +327,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                               padding: '5px 12px',
                               borderRadius: 6,
                               background: chartPeriod === p ? '#FFFFFF' : 'transparent',
-                              color: chartPeriod === p ? '#0F172A' : '#64748B',
+                              color: chartPeriod === p ? 'var(--clr-text)' : 'var(--clr-text-3)',
                               fontWeight: chartPeriod === p ? 700 : 500,
                               fontSize: 11,
                               cursor: 'pointer',
@@ -346,15 +346,15 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                         <AreaChart data={history.length ? history : generateDummyHistory(price)}>
                           <defs>
                             <linearGradient id="ttGreen" x1="0" y1="0" x2="0" y2="1">
-                              <stop offset="5%" stopColor="#10B981" stopOpacity={0.25} />
-                              <stop offset="95%" stopColor="#10B981" stopOpacity={0.0} />
+                              <stop offset="5%" stopColor="var(--clr-green)" stopOpacity={0.25} />
+                              <stop offset="95%" stopColor="var(--clr-green)" stopOpacity={0.0} />
                             </linearGradient>
                           </defs>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
-                          <XAxis dataKey="date" tickFormatter={d => d?.slice(5)} tick={{ fontSize: 10, fill: '#94A3B8' }} />
-                          <YAxis domain={['auto', 'auto']} tick={{ fontSize: 10, fill: '#94A3B8' }} tickFormatter={v => `₹${v}`} />
-                          <Tooltip formatter={v => [`₹${v}`, 'Price']} contentStyle={{ borderRadius: 8, border: '1px solid #E2E8F0', fontSize: 12 }} />
-                          <Area type="monotone" dataKey="close" stroke="#10B981" strokeWidth={2} fill="url(#ttGreen)" />
+                          <CartesianGrid strokeDasharray="3 3" stroke="var(--clr-surface-3)" />
+                          <XAxis dataKey="date" tickFormatter={d => d?.slice(5)} tick={{ fontSize: 10, fill: 'var(--clr-text-3)' }} />
+                          <YAxis domain={['auto', 'auto']} tick={{ fontSize: 10, fill: 'var(--clr-text-3)' }} tickFormatter={v => `₹${v}`} />
+                          <Tooltip formatter={v => [`₹${v}`, 'Price']} contentStyle={{ borderRadius: 8, border: '1px solid var(--clr-border)', fontSize: 12 }} />
+                          <Area type="monotone" dataKey="close" stroke="var(--clr-green)" strokeWidth={2} fill="url(#ttGreen)" />
                         </AreaChart>
                       </ResponsiveContainer>
                     </div>
@@ -365,14 +365,14 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                     {/* Sector Card */}
                     <div style={{
                       background: '#FFFFFF',
-                      border: '1px solid #E2E8F0',
+                      border: '1px solid var(--clr-border)',
                       borderRadius: 14,
                       padding: '16px 18px',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: 8,
                     }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#0F172A', fontWeight: 700, fontSize: 14 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--clr-text)', fontWeight: 700, fontSize: 14 }}>
                         <span style={{ fontSize: 18 }}>⚡</span>
                         <span>{data.quick_tags?.sector || data.sector} ›</span>
                       </div>
@@ -381,13 +381,13 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                           <span
                             key={idx}
                             style={{
-                              background: '#F1F5F9',
-                              color: '#334155',
+                              background: 'var(--clr-surface-3)',
+                              color: 'var(--clr-text-2)',
                               fontSize: 11,
                               padding: '4px 10px',
                               borderRadius: 20,
                               fontWeight: 500,
-                              border: '1px solid #E2E8F0',
+                              border: '1px solid var(--clr-border)',
                             }}
                           >
                             {tag}
@@ -399,18 +399,18 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                     {/* Market Cap Card */}
                     <div style={{
                       background: '#FFFFFF',
-                      border: '1px solid #E2E8F0',
+                      border: '1px solid var(--clr-border)',
                       borderRadius: 14,
                       padding: '16px 18px',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: 6,
                     }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#0F172A', fontWeight: 700, fontSize: 14 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--clr-text)', fontWeight: 700, fontSize: 14 }}>
                         <span style={{ fontSize: 18 }}>🌲</span>
                         <span>{data.quick_tags?.market_cap_category || 'Largecap'} ›</span>
                       </div>
-                      <div style={{ fontSize: 12, color: '#475569', lineHeight: 1.4 }}>
+                      <div style={{ fontSize: 12, color: 'var(--clr-text-2)', lineHeight: 1.4 }}>
                         {data.quick_tags?.market_cap_text || `Ranked among top market cap stocks on NSE`}
                       </div>
                     </div>
@@ -418,18 +418,18 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                     {/* Risk Profile Card */}
                     <div style={{
                       background: '#FFFFFF',
-                      border: '1px solid #E2E8F0',
+                      border: '1px solid var(--clr-border)',
                       borderRadius: 14,
                       padding: '16px 18px',
                       display: 'flex',
                       flexDirection: 'column',
                       gap: 6,
                     }}>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: '#0F172A', fontWeight: 700, fontSize: 14 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--clr-text)', fontWeight: 700, fontSize: 14 }}>
                         <span style={{ fontSize: 18 }}>⚓</span>
                         <span>{data.quick_tags?.risk_profile || 'Moderate Risk'} ›</span>
                       </div>
-                      <div style={{ fontSize: 12, color: '#475569', lineHeight: 1.4 }}>
+                      <div style={{ fontSize: 12, color: 'var(--clr-text-2)', lineHeight: 1.4 }}>
                         {data.quick_tags?.risk_text || `Stock beta is ${data.quick_tags?.beta || 1.1}x vs Nifty 50`}
                       </div>
                     </div>
@@ -437,7 +437,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
 
                   {/* Stock Scorecard Section (Exact Tickertape Scorecard UI) */}
                   <div style={{
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid var(--clr-border)',
                     borderRadius: 16,
                     padding: '20px 24px',
                     background: '#FFFFFF',
@@ -445,16 +445,16 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                     <div style={{
                       fontSize: 17,
                       fontWeight: 800,
-                      color: '#0F172A',
+                      color: 'var(--clr-text)',
                       marginBottom: 16,
                       letterSpacing: '-0.3px',
                     }}>
                       {cleanSym} Stock Scorecard
                     </div>
 
-                    <div style={{ display: 'flex', flexDirection: 'column', divideY: '#F1F5F9' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', divideY: 'var(--clr-surface-3)' }}>
                       {(data.scorecard || []).map((item, idx) => {
-                        const badgeStyle = SCORE_BADGES[item.status] || { bg: '#F1F5F9', color: '#475569', border: '#E2E8F0' }
+                        const badgeStyle = SCORE_BADGES[item.status] || { bg: 'var(--clr-surface-3)', color: 'var(--clr-text-2)', border: 'var(--clr-border)' }
                         const icon = item.id === 'entry_point' ? '🚪' : (item.positive ? '🟢' : '🔒')
                         return (
                           <div
@@ -464,14 +464,14 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                               alignItems: 'flex-start',
                               gap: 16,
                               padding: '14px 0',
-                              borderBottom: idx < data.scorecard.length - 1 ? '1px solid #F1F5F9' : 'none',
+                              borderBottom: idx < data.scorecard.length - 1 ? '1px solid var(--clr-surface-3)' : 'none',
                             }}
                           >
                             <div style={{
                               width: 36,
                               height: 36,
                               borderRadius: 18,
-                              background: item.positive ? '#ECFDF5' : '#FEF2F2',
+                              background: item.positive ? '#ECFDF5' : 'var(--clr-red-lt)',
                               display: 'flex',
                               alignItems: 'center',
                               justifyContent: 'center',
@@ -483,7 +483,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                             </div>
                             <div style={{ flex: 1 }}>
                               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                                <span style={{ fontWeight: 700, fontSize: 15, color: '#0F172A' }}>
+                                <span style={{ fontWeight: 700, fontSize: 15, color: 'var(--clr-text)' }}>
                                   {item.title}
                                 </span>
                                 <span style={{
@@ -498,7 +498,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                                   {item.status}
                                 </span>
                               </div>
-                              <div style={{ fontSize: 13, color: '#64748B', marginTop: 3, lineHeight: 1.4 }}>
+                              <div style={{ fontSize: 13, color: 'var(--clr-text-3)', marginTop: 3, lineHeight: 1.4 }}>
                                 {item.desc}
                               </div>
                             </div>
@@ -516,15 +516,15 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
               {activeTab === 'ai_agents' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                   <div style={{
-                    background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
+                    background: 'linear-gradient(135deg, var(--clr-text) 0%, var(--clr-text-1) 100%)',
                     borderRadius: 16,
                     padding: 20,
-                    color: '#F8FAFC',
+                    color: 'var(--clr-surface-2)',
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
                     boxShadow: '0 10px 25px -5px rgba(0,0,0,0.3)',
-                    border: '1px solid #334155'
+                    border: '1px solid var(--clr-text-2)'
                   }}>
                     <div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
@@ -533,7 +533,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                           TradingAgents LLM Multi-Agent Team
                         </h3>
                       </div>
-                      <p style={{ margin: '4px 0 0 0', fontSize: 13, color: '#94A3B8' }}>
+                      <p style={{ margin: '4px 0 0 0', fontSize: 13, color: 'var(--clr-text-3)' }}>
                         Autonomous AI agents analyzing Technicals, Social Sentiment, News, & Fundamentals
                       </p>
                     </div>
@@ -545,7 +545,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                         padding: '10px 18px',
                         borderRadius: 10,
                         border: 'none',
-                        background: 'linear-gradient(135deg, #2563EB, #4F46E5)',
+                        background: 'linear-gradient(135deg, var(--clr-primary), var(--clr-primary))',
                         color: '#FFFFFF',
                         fontWeight: 700,
                         fontSize: 13,
@@ -564,18 +564,18 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                   {/* Multi-Agent Cards Grid */}
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 16 }}>
                     {/* Technical Agent */}
-                    <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 14, padding: 16 }}>
+                    <div style={{ background: 'var(--clr-surface-2)', border: '1px solid var(--clr-border)', borderRadius: 14, padding: 16 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                        <span style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>📈 Technical Agent</span>
+                        <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--clr-text)' }}>📈 Technical Agent</span>
                         <span style={{
-                          background: aiReport?.analysis?.technical?.verdict === 'BULLISH' ? '#DCFCE7' : '#FEE2E2',
-                          color: aiReport?.analysis?.technical?.verdict === 'BULLISH' ? '#166534' : '#991B1B',
+                          background: aiReport?.analysis?.technical?.verdict === 'BULLISH' ? 'var(--clr-green-lt)' : 'var(--clr-red-lt)',
+                          color: aiReport?.analysis?.technical?.verdict === 'BULLISH' ? 'var(--clr-green)' : '#991B1B',
                           padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 800
                         }}>
                           {aiReport?.analysis?.technical?.verdict || 'ANALYZING...'}
                         </span>
                       </div>
-                      <div style={{ fontSize: 12.5, color: '#475569', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <div style={{ fontSize: 12.5, color: 'var(--clr-text-2)', display: 'flex', flexDirection: 'column', gap: 4 }}>
                         <div>RSI (14): <strong>{extendedIndicators?.rsi || '52.4'}</strong></div>
                         <div>MACD Histogram: <strong>{extendedIndicators?.macd?.histogram || '+0.85'}</strong></div>
                         <div>50-Day SMA: <strong>₹{extendedIndicators?.moving_averages?.sma_50 || price}</strong></div>
@@ -583,18 +583,18 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                     </div>
 
                     {/* Social Sentiment Agent */}
-                    <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 14, padding: 16 }}>
+                    <div style={{ background: 'var(--clr-surface-2)', border: '1px solid var(--clr-border)', borderRadius: 14, padding: 16 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                        <span style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>💬 Sentiment Agent</span>
+                        <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--clr-text)' }}>💬 Sentiment Agent</span>
                         <span style={{
-                          background: stocktwitsData?.sentiment === 'Bullish' ? '#DCFCE7' : '#FEF3C7',
-                          color: stocktwitsData?.sentiment === 'Bullish' ? '#166534' : '#92400E',
+                          background: stocktwitsData?.sentiment === 'Bullish' ? 'var(--clr-green-lt)' : 'var(--clr-amber-lt)',
+                          color: stocktwitsData?.sentiment === 'Bullish' ? 'var(--clr-green)' : 'var(--clr-amber)',
                           padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 800
                         }}>
                           {stocktwitsData?.sentiment || 'NEUTRAL'}
                         </span>
                       </div>
-                      <div style={{ fontSize: 12.5, color: '#475569', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <div style={{ fontSize: 12.5, color: 'var(--clr-text-2)', display: 'flex', flexDirection: 'column', gap: 4 }}>
                         <div>Bullish Posts: <strong>{stocktwitsData?.bullish_count || 0}</strong></div>
                         <div>Bearish Posts: <strong>{stocktwitsData?.bearish_count || 0}</strong></div>
                         <div>Social Score: <strong>{stocktwitsData?.sentiment_score || 0}%</strong></div>
@@ -602,21 +602,21 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                     </div>
 
                     {/* News Agent */}
-                    <div style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 14, padding: 16 }}>
+                    <div style={{ background: 'var(--clr-surface-2)', border: '1px solid var(--clr-border)', borderRadius: 14, padding: 16 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                        <span style={{ fontWeight: 700, fontSize: 14, color: '#0F172A' }}>📰 News Agent</span>
+                        <span style={{ fontWeight: 700, fontSize: 14, color: 'var(--clr-text)' }}>📰 News Agent</span>
                         <span style={{
-                          background: newsData?.overall_sentiment === 'Bullish' ? '#DCFCE7' : '#FEF3C7',
-                          color: newsData?.overall_sentiment === 'Bullish' ? '#166534' : '#92400E',
+                          background: newsData?.overall_sentiment === 'Bullish' ? 'var(--clr-green-lt)' : 'var(--clr-amber-lt)',
+                          color: newsData?.overall_sentiment === 'Bullish' ? 'var(--clr-green)' : 'var(--clr-amber)',
                           padding: '2px 8px', borderRadius: 6, fontSize: 11, fontWeight: 800
                         }}>
                           {newsData?.overall_sentiment || 'NEUTRAL'}
                         </span>
                       </div>
-                      <div style={{ fontSize: 12.5, color: '#475569', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                      <div style={{ fontSize: 12.5, color: 'var(--clr-text-2)', display: 'flex', flexDirection: 'column', gap: 4 }}>
                         <div>Headlines Analyzed: <strong>{newsData?.total_news || 0}</strong></div>
-                        <div>Positive: <strong style={{ color: '#16A34A' }}>{newsData?.positive_headlines || 0}</strong></div>
-                        <div>Negative: <strong style={{ color: '#DC2626' }}>{newsData?.negative_headlines || 0}</strong></div>
+                        <div>Positive: <strong style={{ color: 'var(--clr-green)' }}>{newsData?.positive_headlines || 0}</strong></div>
+                        <div>Negative: <strong style={{ color: 'var(--clr-red)' }}>{newsData?.negative_headlines || 0}</strong></div>
                       </div>
                     </div>
                   </div>
@@ -624,8 +624,8 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                   {/* Chief Trader Final Verdict Card */}
                   {aiReport?.analysis?.trader && (
                     <div style={{
-                      background: '#EFF6FF',
-                      border: '1px solid #BFDBFE',
+                      background: 'var(--clr-primary-lt)',
+                      border: '1px solid var(--clr-primary-lt)',
                       borderRadius: 16,
                       padding: 20,
                       display: 'flex',
@@ -633,13 +633,13 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                       gap: 10
                     }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <div style={{ fontWeight: 800, fontSize: 16, color: '#1E40AF', display: 'flex', alignItems: 'center', gap: 8 }}>
+                        <div style={{ fontWeight: 800, fontSize: 16, color: 'var(--clr-primary-dk)', display: 'flex', alignItems: 'center', gap: 8 }}>
                           <span>👔 Chief Trading Officer Consensus</span>
                         </div>
                         <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                          <span style={{ fontSize: 12, color: '#1E40AF', fontWeight: 600 }}>Confidence: {aiReport.analysis.trader.confidence_score}%</span>
+                          <span style={{ fontSize: 12, color: 'var(--clr-primary-dk)', fontWeight: 600 }}>Confidence: {aiReport.analysis.trader.confidence_score}%</span>
                           <span style={{
-                            background: aiReport.analysis.trader.decision === 'BUY' ? '#16A34A' : '#DC2626',
+                            background: aiReport.analysis.trader.decision === 'BUY' ? 'var(--clr-green)' : 'var(--clr-red)',
                             color: '#FFFFFF',
                             padding: '4px 14px',
                             borderRadius: 20,
@@ -658,8 +658,8 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
 
                   {/* Live News Feed List */}
                   {newsData?.articles && newsData.articles.length > 0 && (
-                    <div style={{ background: '#FFFFFF', border: '1px solid #E2E8F0', borderRadius: 14, padding: 18 }}>
-                      <h4 style={{ margin: '0 0 12px 0', fontSize: 15, fontWeight: 700, color: '#0F172A' }}>
+                    <div style={{ background: '#FFFFFF', border: '1px solid var(--clr-border)', borderRadius: 14, padding: 18 }}>
+                      <h4 style={{ margin: '0 0 12px 0', fontSize: 15, fontWeight: 700, color: 'var(--clr-text)' }}>
                         ⚡ Latest Financial News Headlines
                       </h4>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -669,19 +669,19 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                             justifyContent: 'space-between',
                             alignItems: 'center',
                             padding: '10px 12px',
-                            background: '#F8FAFC',
+                            background: 'var(--clr-surface-2)',
                             borderRadius: 8,
-                            border: '1px solid #F1F5F9'
+                            border: '1px solid var(--clr-surface-3)'
                           }}>
                             <div>
-                              <a href={item.link} target="_blank" rel="noreferrer" style={{ fontWeight: 600, fontSize: 13, color: '#2563EB', textDecoration: 'none' }}>
+                              <a href={item.link} target="_blank" rel="noreferrer" style={{ fontWeight: 600, fontSize: 13, color: 'var(--clr-primary)', textDecoration: 'none' }}>
                                 {item.title}
                               </a>
-                              <div style={{ fontSize: 11, color: '#94A3B8', marginTop: 2 }}>{item.publisher}</div>
+                              <div style={{ fontSize: 11, color: 'var(--clr-text-3)', marginTop: 2 }}>{item.publisher}</div>
                             </div>
                             <span style={{
-                              background: item.sentiment === 'Positive' ? '#DCFCE7' : item.sentiment === 'Negative' ? '#FEE2E2' : '#F1F5F9',
-                              color: item.sentiment === 'Positive' ? '#166534' : item.sentiment === 'Negative' ? '#991B1B' : '#475569',
+                              background: item.sentiment === 'Positive' ? 'var(--clr-green-lt)' : item.sentiment === 'Negative' ? 'var(--clr-red-lt)' : 'var(--clr-surface-3)',
+                              color: item.sentiment === 'Positive' ? 'var(--clr-green)' : item.sentiment === 'Negative' ? '#991B1B' : 'var(--clr-text-2)',
                               fontSize: 10.5,
                               fontWeight: 700,
                               padding: '2px 8px',
@@ -704,27 +704,27 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                   <div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                      <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: '#0F172A' }}>
+                      <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: 'var(--clr-text)' }}>
                         {data.sentiment?.title || `${cleanSym} Sentiment Analysis`}
                       </h3>
-                      <span style={{ color: '#94A3B8', fontSize: 16, cursor: 'help' }} title="Decodes earnings calls and management commentary">ℹ️</span>
+                      <span style={{ color: 'var(--clr-text-3)', fontSize: 16, cursor: 'help' }} title="Decodes earnings calls and management commentary">ℹ️</span>
                     </div>
-                    <div style={{ fontSize: 13, color: '#64748B', marginTop: 3 }}>
+                    <div style={{ fontSize: 13, color: 'var(--clr-text-3)', marginTop: 3 }}>
                       {data.sentiment?.subtitle || 'Crisp summary & key insights to decode earnings calls instantly'}
                     </div>
                   </div>
 
                   {/* Stock Summary Box */}
                   <div style={{
-                    background: '#F8FAFC',
-                    border: '1px solid #E2E8F0',
+                    background: 'var(--clr-surface-2)',
+                    border: '1px solid var(--clr-border)',
                     borderRadius: 14,
                     padding: '20px 22px',
                   }}>
-                    <div style={{ fontWeight: 700, fontSize: 15, color: '#0F172A', marginBottom: 8 }}>
+                    <div style={{ fontWeight: 700, fontSize: 15, color: 'var(--clr-text)', marginBottom: 8 }}>
                       {cleanSym} Stock Summary · {data.sentiment?.period || 'April 2026'}
                     </div>
-                    <div style={{ fontSize: 13.5, color: '#334155', lineHeight: 1.6 }}>
+                    <div style={{ fontSize: 13.5, color: 'var(--clr-text-2)', lineHeight: 1.6 }}>
                       {data.sentiment?.summary}
                     </div>
                   </div>
@@ -733,8 +733,8 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: 20 }}>
                     {/* Column 1: Growth Drivers */}
                     <div style={{
-                      background: '#F0FDF4',
-                      border: '1px solid #BBF7D0',
+                      background: 'var(--clr-green-lt)',
+                      border: '1px solid var(--clr-green-lt)',
                       borderRadius: 16,
                       padding: '18px 20px',
                     }}>
@@ -744,11 +744,11 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                         alignItems: 'center',
                         marginBottom: 16,
                       }}>
-                        <div style={{ fontWeight: 800, fontSize: 15, color: '#166534' }}>
+                        <div style={{ fontWeight: 800, fontSize: 15, color: 'var(--clr-green)' }}>
                           {cleanSym} Stock Growth Drivers
                         </div>
                         <span style={{
-                          background: '#166534',
+                          background: 'var(--clr-green)',
                           color: '#FFFFFF',
                           borderRadius: 12,
                           padding: '2px 8px',
@@ -768,13 +768,13 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                               borderRadius: 10,
                               padding: '14px 16px',
                               boxShadow: '0 1px 2px rgba(0,0,0,0.05)',
-                              borderLeft: '4px solid #16A34A',
+                              borderLeft: '4px solid var(--clr-green)',
                             }}
                           >
-                            <div style={{ fontWeight: 700, fontSize: 13.5, color: '#0F172A', marginBottom: 4 }}>
+                            <div style={{ fontWeight: 700, fontSize: 13.5, color: 'var(--clr-text)', marginBottom: 4 }}>
                               {d.title}
                             </div>
-                            <div style={{ fontSize: 12.5, color: '#475569', lineHeight: 1.45 }}>
+                            <div style={{ fontSize: 12.5, color: 'var(--clr-text-2)', lineHeight: 1.45 }}>
                               {d.desc}
                             </div>
                           </div>
@@ -784,8 +784,8 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
 
                     {/* Column 2: Challenges */}
                     <div style={{
-                      background: '#FFF1F2',
-                      border: '1px solid #FECDD3',
+                      background: 'var(--clr-red-lt)',
+                      border: '1px solid var(--clr-red-lt)',
                       borderRadius: 16,
                       padding: '18px 20px',
                     }}>
@@ -822,10 +822,10 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                               borderLeft: '4px solid #E11D48',
                             }}
                           >
-                            <div style={{ fontWeight: 700, fontSize: 13.5, color: '#0F172A', marginBottom: 4 }}>
+                            <div style={{ fontWeight: 700, fontSize: 13.5, color: 'var(--clr-text)', marginBottom: 4 }}>
                               {c.title}
                             </div>
-                            <div style={{ fontSize: 12.5, color: '#475569', lineHeight: 1.45 }}>
+                            <div style={{ fontSize: 12.5, color: 'var(--clr-text-2)', lineHeight: 1.45 }}>
                               {c.desc}
                             </div>
                           </div>
@@ -842,62 +842,62 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
               {activeTab === 'forecasts' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
                   <div>
-                    <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: '#0F172A' }}>
+                    <h3 style={{ margin: 0, fontSize: 20, fontWeight: 800, color: 'var(--clr-text)' }}>
                       {cleanSym} Forecast
                     </h3>
-                    <div style={{ fontSize: 13, color: '#64748B', marginTop: 3 }}>
+                    <div style={{ fontSize: 13, color: 'var(--clr-text-3)', marginTop: 3 }}>
                       Analyst price targets, probability cones, and forward revenue estimates
                     </div>
                   </div>
 
                   {/* Section 1: Share Price Forecast */}
                   <div style={{
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid var(--clr-border)',
                     borderRadius: 16,
                     padding: '22px 24px',
                     background: '#FFFFFF',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 16 }}>
-                      <span style={{ fontWeight: 800, fontSize: 16, color: '#0F172A' }}>
+                      <span style={{ fontWeight: 800, fontSize: 16, color: 'var(--clr-text)' }}>
                         {cleanSym} Share Price Forecast
                       </span>
-                      <span style={{ color: '#94A3B8', fontSize: 14 }}>ℹ️</span>
+                      <span style={{ color: 'var(--clr-text-3)', fontSize: 14 }}>ℹ️</span>
                     </div>
 
                     <div style={{ display: 'grid', gridTemplateColumns: '240px 1fr', gap: 24, alignItems: 'center' }}>
                       {/* Left Metrics */}
-                      <div style={{ borderRight: '1px solid #E2E8F0', paddingRight: 20 }}>
+                      <div style={{ borderRight: '1px solid var(--clr-border)', paddingRight: 20 }}>
                         <div style={{ marginBottom: 16 }}>
-                          <div style={{ fontSize: 11, color: '#64748B', textTransform: 'uppercase', fontWeight: 700 }}>
+                          <div style={{ fontSize: 11, color: 'var(--clr-text-3)', fontWeight: 700 }}>
                             Current (2026 Baseline)
                           </div>
-                          <div style={{ fontSize: 24, fontWeight: 800, color: '#0F172A', fontFamily: 'monospace', marginTop: 2 }}>
+                          <div style={{ fontSize: 24, fontWeight: 800, color: 'var(--clr-text)', fontFamily: 'var(--font-display)', marginTop: 2 }}>
                             ₹{price.toFixed(2)}
                           </div>
                         </div>
 
-                        <div style={{ fontSize: 12, fontWeight: 700, color: '#475569', marginBottom: 10 }}>
+                        <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--clr-text-2)', marginBottom: 10 }}>
                           Forecast for Sep 2027 (1-Yr Forward):
                         </div>
 
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#ECFDF5', padding: '6px 10px', borderRadius: 8 }}>
-                            <span style={{ fontSize: 12, fontWeight: 700, color: '#047857' }}>High</span>
-                            <span style={{ fontSize: 13, fontWeight: 800, color: '#047857', fontFamily: 'monospace' }}>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--clr-green)' }}>High</span>
+                            <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--clr-green)', fontFamily: 'var(--font-display)' }}>
                               ₹{data.forecast?.targets?.high?.price} ({data.forecast?.targets?.high?.return_pct})
                             </span>
                           </div>
 
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#EFF6FF', padding: '6px 10px', borderRadius: 8 }}>
-                            <span style={{ fontSize: 12, fontWeight: 700, color: '#1D4ED8' }}>Median</span>
-                            <span style={{ fontSize: 13, fontWeight: 800, color: '#1D4ED8', fontFamily: 'monospace' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--clr-primary-lt)', padding: '6px 10px', borderRadius: 8 }}>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--clr-primary)' }}>Median</span>
+                            <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--clr-primary)', fontFamily: 'var(--font-display)' }}>
                               ₹{data.forecast?.targets?.median?.price} ({data.forecast?.targets?.median?.return_pct})
                             </span>
                           </div>
 
-                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: '#FEF2F2', padding: '6px 10px', borderRadius: 8 }}>
-                            <span style={{ fontSize: 12, fontWeight: 700, color: '#B91C1C' }}>Low</span>
-                            <span style={{ fontSize: 13, fontWeight: 800, color: '#B91C1C', fontFamily: 'monospace' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--clr-red-lt)', padding: '6px 10px', borderRadius: 8 }}>
+                            <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--clr-red)' }}>Low</span>
+                            <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--clr-red)', fontFamily: 'var(--font-display)' }}>
                               ₹{data.forecast?.targets?.low?.price} ({data.forecast?.targets?.low?.return_pct})
                             </span>
                           </div>
@@ -908,14 +908,14 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                       <div style={{ height: 200, width: '100%' }}>
                         <ResponsiveContainer width="100%" height="100%">
                           <LineChart data={data.forecast?.projection_chart || []}>
-                            <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
-                            <XAxis dataKey="year" tick={{ fontSize: 11, fill: '#64748B' }} />
-                            <YAxis domain={['auto', 'auto']} tick={{ fontSize: 10, fill: '#94A3B8' }} tickFormatter={v => `₹${v}`} />
+                            <CartesianGrid strokeDasharray="3 3" stroke="var(--clr-surface-3)" />
+                            <XAxis dataKey="year" tick={{ fontSize: 11, fill: 'var(--clr-text-3)' }} />
+                            <YAxis domain={['auto', 'auto']} tick={{ fontSize: 10, fill: 'var(--clr-text-3)' }} tickFormatter={v => `₹${v}`} />
                             <Tooltip formatter={v => [`₹${v}`, 'Target']} />
-                            <Line type="monotone" dataKey="actual" stroke="#2563EB" strokeWidth={2.5} dot={{ r: 3 }} name="Historical" />
-                            <Line type="monotone" dataKey="high" stroke="#10B981" strokeDasharray="4 4" strokeWidth={2} name="High Forecast" />
-                            <Line type="monotone" dataKey="median" stroke="#6366F1" strokeDasharray="4 4" strokeWidth={2} name="Median Forecast" />
-                            <Line type="monotone" dataKey="low" stroke="#EF4444" strokeDasharray="4 4" strokeWidth={2} name="Low Forecast" />
+                            <Line type="monotone" dataKey="actual" stroke="var(--clr-primary)" strokeWidth={2.5} dot={{ r: 3 }} name="Historical" />
+                            <Line type="monotone" dataKey="high" stroke="var(--clr-green)" strokeDasharray="4 4" strokeWidth={2} name="High Forecast" />
+                            <Line type="monotone" dataKey="median" stroke="var(--clr-primary)" strokeDasharray="4 4" strokeWidth={2} name="Median Forecast" />
+                            <Line type="monotone" dataKey="low" stroke="var(--clr-red)" strokeDasharray="4 4" strokeWidth={2} name="Low Forecast" />
                           </LineChart>
                         </ResponsiveContainer>
                       </div>
@@ -924,26 +924,26 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
 
                   {/* Section 2: Company Revenue Forecast */}
                   <div style={{
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid var(--clr-border)',
                     borderRadius: 16,
                     padding: '22px 24px',
                     background: '#FFFFFF',
                   }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 16 }}>
-                      <span style={{ fontWeight: 800, fontSize: 16, color: '#0F172A' }}>
+                      <span style={{ fontWeight: 800, fontSize: 16, color: 'var(--clr-text)' }}>
                         {cleanSym} Company Revenue Forecast (₹ Lakh Cr)
                       </span>
-                      <span style={{ color: '#94A3B8', fontSize: 14 }}>ℹ️</span>
+                      <span style={{ color: 'var(--clr-text-3)', fontSize: 14 }}>ℹ️</span>
                     </div>
 
                     <div style={{ height: 220, width: '100%' }}>
                       <ResponsiveContainer width="100%" height="100%">
                         <BarChart data={data.forecast?.revenue_forecast || []}>
-                          <CartesianGrid strokeDasharray="3 3" stroke="#F1F5F9" />
-                          <XAxis dataKey="year" tick={{ fontSize: 11, fill: '#64748B' }} />
-                          <YAxis tick={{ fontSize: 10, fill: '#94A3B8' }} />
+                          <CartesianGrid strokeDasharray="3 3" stroke="var(--clr-surface-3)" />
+                          <XAxis dataKey="year" tick={{ fontSize: 11, fill: 'var(--clr-text-3)' }} />
+                          <YAxis tick={{ fontSize: 10, fill: 'var(--clr-text-3)' }} />
                           <Tooltip formatter={v => [`₹${v} Lakh Cr`, 'Revenue']} />
-                          <Bar dataKey="revenue" fill="#94A3B8" name="Actual Revenue" radius={[4, 4, 0, 0]} />
+                          <Bar dataKey="revenue" fill="var(--clr-text-3)" name="Actual Revenue" radius={[4, 4, 0, 0]} />
                           <Bar dataKey="forecast" fill="#22D3EE" name="Forecasted Revenue" radius={[4, 4, 0, 0]} />
                         </BarChart>
                       </ResponsiveContainer>
@@ -952,10 +952,10 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
 
                   {/* Section 3: Analyst Coverage Consensus */}
                   <div style={{
-                    background: '#F8FAFC',
+                    background: 'var(--clr-surface-2)',
                     borderRadius: 14,
                     padding: '18px 22px',
-                    border: '1px solid #E2E8F0',
+                    border: '1px solid var(--clr-border)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -963,21 +963,21 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                     gap: 16,
                   }}>
                     <div>
-                      <div style={{ fontSize: 15, fontWeight: 800, color: '#0F172A' }}>
-                        Analyst Consensus: <span style={{ color: '#16A34A' }}>{data.forecast?.analysts?.consensus || 'Buy'}</span>
+                      <div style={{ fontSize: 15, fontWeight: 800, color: 'var(--clr-text)' }}>
+                        Analyst Consensus: <span style={{ color: 'var(--clr-green)' }}>{data.forecast?.analysts?.consensus || 'Buy'}</span>
                       </div>
-                      <div style={{ fontSize: 12, color: '#64748B', marginTop: 2 }}>
+                      <div style={{ fontSize: 12, color: 'var(--clr-text-3)', marginTop: 2 }}>
                         Based on {data.forecast?.analysts?.total_analysts || 36} institutional analysts covering {cleanSym}
                       </div>
                     </div>
                     <div style={{ display: 'flex', gap: 10 }}>
-                      <span style={{ background: '#DCFCE7', color: '#16A34A', padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>
+                      <span style={{ background: 'var(--clr-green-lt)', color: 'var(--clr-green)', padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>
                         {data.forecast?.analysts?.buy_pct || 81}% Buy
                       </span>
-                      <span style={{ background: '#FEF3C7', color: '#B45309', padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>
+                      <span style={{ background: 'var(--clr-amber-lt)', color: 'var(--clr-amber)', padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>
                         {data.forecast?.analysts?.hold_pct || 14}% Hold
                       </span>
-                      <span style={{ background: '#FEE2E2', color: '#DC2626', padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>
+                      <span style={{ background: 'var(--clr-red-lt)', color: 'var(--clr-red)', padding: '6px 14px', borderRadius: 8, fontSize: 12, fontWeight: 700 }}>
                         {data.forecast?.analysts?.sell_pct || 5}% Sell
                       </span>
                     </div>
@@ -990,7 +990,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
               ═══════════════════════════════════════════════════════════════ */}
               {activeTab === 'financials' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A' }}>Key Financial Metrics</div>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--clr-text)' }}>Key Financial Metrics</div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 12 }}>
                     {[
                       { label: 'P/E Ratio', val: `${(data.fundamental?.pe || 28.5)}x`, sub: 'Sector avg: 26.2x' },
@@ -1000,10 +1000,10 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                       { label: 'Operating Margin', val: '18.4%', sub: 'EBITDA Margin' },
                       { label: 'Dividend Yield', val: '0.85%', sub: 'Regular dividend track record' },
                     ].map((m, i) => (
-                      <div key={i} style={{ background: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: 12, padding: '14px 16px' }}>
-                        <div style={{ fontSize: 11, color: '#64748B', fontWeight: 600, textTransform: 'uppercase' }}>{m.label}</div>
-                        <div style={{ fontSize: 20, fontWeight: 800, color: '#0F172A', fontFamily: 'monospace', margin: '4px 0 2px' }}>{m.val}</div>
-                        <div style={{ fontSize: 11, color: '#94A3B8' }}>{m.sub}</div>
+                      <div key={i} style={{ background: 'var(--clr-surface-2)', border: '1px solid var(--clr-border)', borderRadius: 12, padding: '14px 16px' }}>
+                        <div style={{ fontSize: 11, color: 'var(--clr-text-3)', fontWeight: 600 }}>{m.label}</div>
+                        <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--clr-text)', fontFamily: 'var(--font-display)', margin: '4px 0 2px' }}>{m.val}</div>
+                        <div style={{ fontSize: 11, color: 'var(--clr-text-3)' }}>{m.sub}</div>
                       </div>
                     ))}
                   </div>
@@ -1015,11 +1015,11 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
               ═══════════════════════════════════════════════════════════════ */}
               {activeTab === 'peers' && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ fontSize: 16, fontWeight: 800, color: '#0F172A' }}>Sector Peer Comparison</div>
-                  <div style={{ border: '1px solid #E2E8F0', borderRadius: 12, overflow: 'hidden' }}>
+                  <div style={{ fontSize: 16, fontWeight: 800, color: 'var(--clr-text)' }}>Sector Peer Comparison</div>
+                  <div style={{ border: '1px solid var(--clr-border)', borderRadius: 12, overflow: 'hidden' }}>
                     <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
                       <thead>
-                        <tr style={{ background: '#F8FAFC', borderBottom: '1px solid #E2E8F0', textAlign: 'left' }}>
+                        <tr style={{ background: 'var(--clr-surface-2)', borderBottom: '1px solid var(--clr-border)', textAlign: 'left' }}>
                           <th style={{ padding: '12px 16px' }}>Stock</th>
                           <th style={{ padding: '12px 16px' }}>Price</th>
                           <th style={{ padding: '12px 16px' }}>P/E Ratio</th>
@@ -1034,14 +1034,14 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
                           { sym: 'INFY', name: 'Infosys Ltd', price: '₹1,840.50', pe: '26.4x', ret: '+22.1%', mcap: 'Largecap' },
                           { sym: 'HDFCBANK', name: 'HDFC Bank Ltd', price: '₹1,650.00', pe: '18.9x', ret: '+8.4%', mcap: 'Largecap' },
                         ].map((p, i) => (
-                          <tr key={i} style={{ borderBottom: '1px solid #F1F5F9', background: p.highlight ? '#EEF2FF' : 'transparent' }}>
+                          <tr key={i} style={{ borderBottom: '1px solid var(--clr-surface-3)', background: p.highlight ? 'var(--clr-primary-lt)' : 'transparent' }}>
                             <td style={{ padding: '12px 16px', fontWeight: 700 }}>
-                              {p.sym} {p.highlight && <span style={{ fontSize: 10, color: '#4F46E5', marginLeft: 4 }}>(Current)</span>}
+                              {p.sym} {p.highlight && <span style={{ fontSize: 10, color: 'var(--clr-primary)', marginLeft: 4 }}>(Current)</span>}
                             </td>
-                            <td style={{ padding: '12px 16px', fontFamily: 'monospace' }}>{p.price}</td>
+                            <td style={{ padding: '12px 16px', fontFamily: 'var(--font-display)' }}>{p.price}</td>
                             <td style={{ padding: '12px 16px' }}>{p.pe}</td>
-                            <td style={{ padding: '12px 16px', color: p.ret.startsWith('+') ? '#16A34A' : '#DC2626', fontWeight: 700 }}>{p.ret}</td>
-                            <td style={{ padding: '12px 16px', color: '#64748B' }}>{p.mcap}</td>
+                            <td style={{ padding: '12px 16px', color: p.ret.startsWith('+') ? 'var(--clr-green)' : 'var(--clr-red)', fontWeight: 700 }}>{p.ret}</td>
+                            <td style={{ padding: '12px 16px', color: 'var(--clr-text-3)' }}>{p.mcap}</td>
                           </tr>
                         ))}
                       </tbody>
@@ -1056,13 +1056,13 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
         {/* Footer */}
         <div style={{
           padding: '14px 28px',
-          borderTop: '1px solid #E2E8F0',
+          borderTop: '1px solid var(--clr-border)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
-          backgroundColor: '#F8FAFC',
+          backgroundColor: 'var(--clr-surface-2)',
         }}>
-          <div style={{ fontSize: 12, color: '#64748B' }}>
+          <div style={{ fontSize: 12, color: 'var(--clr-text-3)' }}>
             Data powered by IndiaStocks AI & Tickertape Scorecard methodology.
           </div>
           <button
@@ -1071,7 +1071,7 @@ export default function TickertapeStockModal({ symbol, ticks, onClose, onAddToWa
               padding: '8px 20px',
               borderRadius: 8,
               border: 'none',
-              background: '#0F172A',
+              background: 'var(--clr-text)',
               color: '#FFFFFF',
               fontWeight: 700,
               fontSize: 13,

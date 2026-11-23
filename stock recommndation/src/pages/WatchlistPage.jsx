@@ -146,7 +146,7 @@ export default function WatchlistPage() {
       {/* Header */}
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
         <div>
-          <h1>Smart Watchlist 👁️</h1>
+          <h1>Watchlist</h1>
           <p>Monitor your favorite Indian stocks, set target buy prices, notes, and track 5-year returns</p>
         </div>
         <button
@@ -170,7 +170,7 @@ export default function WatchlistPage() {
         flexWrap: 'wrap',
         gap: 10,
       }}>
-        <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase' }}>
+        <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--clr-text-3)' }}>
           Quick Add:
         </span>
         {QUICK_SUGGESTIONS.map(s => {

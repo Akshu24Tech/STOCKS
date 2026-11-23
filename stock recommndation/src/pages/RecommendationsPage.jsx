@@ -10,7 +10,7 @@ import { API } from '../config'
 
 const RATING_COLOR = {
   'Strong Buy': 'var(--clr-green)',
-  'Buy':        '#10B981',
+  'Buy':        'var(--clr-green)',
   'Hold':       'var(--clr-amber)',
   'Sell':       'var(--clr-red)',
 }
@@ -32,7 +32,7 @@ function WhyPanel({ reasons, fillsGap, gapBonus }) {
   if (!reasons?.length) return null
   return (
     <div style={{ marginTop: 10 }}>
-      <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase', marginBottom: 6 }}>
+      <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', marginBottom: 6 }}>
         Why Recommended
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
@@ -71,7 +71,7 @@ function StockCard({ rec, onSelect }) {
               <span className="badge badge-purple" style={{ fontSize: 9 }}>🧩 Gap Fill</span>
             )}
             {rec.ai_agent_consensus && (
-              <span className="badge badge-green" style={{ fontSize: 9, background: '#E0F2FE', color: '#0369A1', borderColor: '#BAE6FD' }}>
+              <span className="badge badge-green" style={{ fontSize: 9, background: 'var(--clr-primary-lt)', color: 'var(--clr-primary)', borderColor: 'var(--clr-primary-lt)' }}>
                 🤖 AI {rec.ai_agent_consensus.trader_decision} Verdict
               </span>
             )}
@@ -102,13 +102,13 @@ function StockCard({ rec, onSelect }) {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6, marginTop: 8 }}>
         <div style={{ background: 'var(--clr-primary-lt)', borderRadius: 6, padding: '5px 8px', textAlign: 'center' }}>
-          <div style={{ fontSize: 9, color: 'var(--clr-text-3)', fontWeight: 700, textTransform: 'uppercase' }}>Technical</div>
+          <div style={{ fontSize: 9, color: 'var(--clr-text-3)', fontWeight: 700 }}>Technical</div>
           <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--clr-primary)', fontFamily: 'var(--font-mono)' }}>
             {rec.technical?.score}/100
           </div>
         </div>
-        <div style={{ background: '#F5F3FF', borderRadius: 6, padding: '5px 8px', textAlign: 'center' }}>
-          <div style={{ fontSize: 9, color: 'var(--clr-text-3)', fontWeight: 700, textTransform: 'uppercase' }}>Fundamental</div>
+        <div style={{ background: 'var(--clr-accent-lt)', borderRadius: 6, padding: '5px 8px', textAlign: 'center' }}>
+          <div style={{ fontSize: 9, color: 'var(--clr-text-3)', fontWeight: 700 }}>Fundamental</div>
           <div style={{ fontSize: 14, fontWeight: 800, color: 'var(--clr-accent)', fontFamily: 'var(--font-mono)' }}>
             {rec.fundamental?.score}/100
           </div>
@@ -128,7 +128,7 @@ function StockCard({ rec, onSelect }) {
           )
         })}
         {rec.expected_returns?.max_drawdown_5y != null && (
-          <div className="return-chip" style={{ background: 'var(--clr-red-lt)', borderColor: '#FECACA' }}>
+          <div className="return-chip" style={{ background: 'var(--clr-red-lt)', borderColor: 'var(--clr-red-lt)' }}>
             <div className="return-chip-label" style={{ color: 'var(--clr-red)' }}>5Y Max DD</div>
             <div className="return-chip-val neg" style={{ color: 'var(--clr-red)' }}>
               {rec.expected_returns.max_drawdown_5y}%
@@ -210,11 +210,11 @@ function StockDetail({ rec, onClose }) {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 12, marginBottom: 20 }}>
           {[
             { label: 'AI Score (Combined)', value: `${rec.combined_score}/100`, color: 'var(--clr-primary)', sub: '60% TA + 40% FA' },
-            { label: 'Technical Score', value: `${rec.technical?.score}/100`, color: '#0891B2', sub: rec.technical?.rating },
-            { label: 'Fundamental Score', value: `${rec.fundamental?.score}/100`, color: '#D97706', sub: rec.fundamental?.rating },
+            { label: 'Technical Score', value: `${rec.technical?.score}/100`, color: 'var(--clr-primary)', sub: rec.technical?.rating },
+            { label: 'Fundamental Score', value: `${rec.fundamental?.score}/100`, color: 'var(--clr-amber)', sub: rec.fundamental?.rating },
           ].map(s => (
             <div key={s.label} style={{ background: 'var(--clr-surface-2)', borderRadius: 'var(--r-md)', padding: '12px 16px', textAlign: 'center' }}>
-              <div style={{ fontSize: 11, color: 'var(--clr-text-3)', fontWeight: 600, textTransform: 'uppercase' }}>{s.label}</div>
+              <div style={{ fontSize: 11, color: 'var(--clr-text-3)', fontWeight: 600 }}>{s.label}</div>
               <div style={{ fontSize: 26, fontWeight: 800, color: s.color, fontFamily: 'var(--font-mono)' }}>{s.value}</div>
               {s.sub && <div style={{ fontSize: 11, color: s.color, fontWeight: 600 }}>{s.sub}</div>}
             </div>
@@ -223,7 +223,7 @@ function StockDetail({ rec, onClose }) {
 
         {/* Why recommended */}
         {rec.why_recommended?.length > 0 && (
-          <div style={{ background: 'linear-gradient(135deg, var(--clr-primary-lt), #F5F3FF)', border: '1px solid #C7D2FE',
+          <div style={{ background: 'linear-gradient(135deg, var(--clr-primary-lt), var(--clr-accent-lt))', border: '1px solid var(--clr-primary-lt)',
             borderRadius: 'var(--r-lg)', padding: '14px 18px', marginBottom: 20 }}>
             <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 10, color: 'var(--clr-primary)' }}>
               🎯 Why This Stock is Recommended For You
@@ -289,7 +289,7 @@ function StockDetail({ rec, onClose }) {
             { label: 'EPS Growth', value: rec.fundamental?.eps_growth ? `${rec.fundamental.eps_growth}%` : 'N/A' },
           ].map(m => (
             <div key={m.label} style={{ background: 'var(--clr-surface-2)', borderRadius: 'var(--r-sm)', padding: '8px 12px' }}>
-              <div style={{ fontSize: 10, color: 'var(--clr-text-3)', fontWeight: 600, textTransform: 'uppercase' }}>{m.label}</div>
+              <div style={{ fontSize: 10, color: 'var(--clr-text-3)', fontWeight: 600 }}>{m.label}</div>
               <div style={{ fontSize: 14, fontWeight: 700, fontFamily: 'var(--font-mono)', marginTop: 2 }}>{String(m.value)}</div>
             </div>
           ))}
@@ -301,8 +301,8 @@ function StockDetail({ rec, onClose }) {
             const v = rec.expected_returns?.[key] || 0
             return (
               <div key={key} style={{ flex: 1, background: v >= 0 ? 'var(--clr-green-lt)' : 'var(--clr-red-lt)',
-                border: `1px solid ${v >= 0 ? '#A7F3D0' : '#FECACA'}`, borderRadius: 'var(--r-md)', padding: '10px 14px', textAlign: 'center' }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase' }}>{label}</div>
+                border: `1px solid ${v >= 0 ? 'var(--clr-green-lt)' : 'var(--clr-red-lt)'}`, borderRadius: 'var(--r-md)', padding: '10px 14px', textAlign: 'center' }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)' }}>{label}</div>
                 <div style={{ fontSize: 22, fontWeight: 800, fontFamily: 'var(--font-mono)', color: v >= 0 ? 'var(--clr-green)' : 'var(--clr-red)' }}>
                   {v >= 0 ? '+' : ''}{v}%
                 </div>
@@ -322,7 +322,7 @@ function StockDetail({ rec, onClose }) {
 function PortfolioGapsPanel({ portfolioAnalysis, riskLabel }) {
   if (!portfolioAnalysis || !portfolioAnalysis.underweight_sectors?.length) return null
   return (
-    <div style={{ background: 'var(--clr-amber-lt)', border: '1px solid #FDE68A', borderRadius: 'var(--r-lg)',
+    <div style={{ background: 'var(--clr-amber-lt)', border: '1px solid var(--clr-amber-lt)', borderRadius: 'var(--r-lg)',
       padding: '14px 18px', marginBottom: 20 }}>
       <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--clr-amber)', marginBottom: 10 }}>
         🧩 Portfolio Gaps Detected ({portfolioAnalysis.underweight_sectors.length} sectors underweight)
@@ -336,7 +336,7 @@ function PortfolioGapsPanel({ portfolioAnalysis, riskLabel }) {
           const target = portfolioAnalysis.desired_sectors?.[s] || 0
           return (
             <div key={s} style={{ background: 'white', borderRadius: 8, padding: '6px 12px',
-              border: '1px solid #FDE68A', fontSize: 12 }}>
+              border: '1px solid var(--clr-amber-lt)', fontSize: 12 }}>
               <strong>{s}</strong>
               <span style={{ color: 'var(--clr-text-3)', marginLeft: 6 }}>
                 {curr}% → target {target}%
@@ -350,11 +350,11 @@ function PortfolioGapsPanel({ portfolioAnalysis, riskLabel }) {
 }
 
 const getRiskTier = (score) => {
-  if (score <= 20) return { label: 'Very Conservative', color: '#0284C7', badge: 'badge-blue', desc: 'Focus on sovereign debt, gold ETFs, liquid funds & ultra-stable dividend assets.' }
-  if (score <= 40) return { label: 'Conservative', color: '#0D9488', badge: 'badge-teal', desc: 'Low-volatility mega caps, Nifty 50 index ETFs, FMCG & IT leaders.' }
-  if (score <= 60) return { label: 'Moderate Balanced', color: '#4F46E5', badge: 'badge-purple', desc: 'Balanced core compounders: Reliance, Infosys, ICICI Bank, Bharti Airtel, Bank BeES.' }
-  if (score <= 80) return { label: 'Growth / Aggressive', color: '#D97706', badge: 'badge-amber', desc: 'High-growth midcaps, capital goods, defence, auto & electronics expansion.' }
-  return { label: 'Very Aggressive / Speculative', color: '#DC2626', badge: 'badge-red', desc: 'High beta disruptors, quick-commerce, fintech, turnaround & renewable energy.' }
+  if (score <= 20) return { label: 'Very Conservative', color: 'var(--clr-primary)', badge: 'badge-blue', desc: 'Focus on sovereign debt, gold ETFs, liquid funds & ultra-stable dividend assets.' }
+  if (score <= 40) return { label: 'Conservative', color: 'var(--clr-primary)', badge: 'badge-teal', desc: 'Low-volatility mega caps, Nifty 50 index ETFs, FMCG & IT leaders.' }
+  if (score <= 60) return { label: 'Moderate Balanced', color: 'var(--clr-primary)', badge: 'badge-purple', desc: 'Balanced core compounders: Reliance, Infosys, ICICI Bank, Bharti Airtel, Bank BeES.' }
+  if (score <= 80) return { label: 'Growth / Aggressive', color: 'var(--clr-amber)', badge: 'badge-amber', desc: 'High-growth midcaps, capital goods, defence, auto & electronics expansion.' }
+  return { label: 'Very Aggressive / Speculative', color: 'var(--clr-red)', badge: 'badge-red', desc: 'High beta disruptors, quick-commerce, fintech, turnaround & renewable energy.' }
 }
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
@@ -418,7 +418,7 @@ export default function RecommendationsPage() {
       <div className="page-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: 12 }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <h1>AI Stock Recommendations 🎯</h1>
+            <h1>AI picks for you</h1>
             <span className="badge badge-purple" style={{ fontSize: 11 }}>
               NIFTY 500 Universe · 5-Year Deep Analysis
             </span>
@@ -544,7 +544,7 @@ export default function RecommendationsPage() {
           <PortfolioGapsPanel portfolioAnalysis={portfolioAnalysis} riskLabel={riskLabel} />
 
           {error && (
-            <div style={{ background: 'var(--clr-red-lt)', border: '1px solid #FECACA', borderRadius: 'var(--r-md)',
+            <div style={{ background: 'var(--clr-red-lt)', border: '1px solid var(--clr-red-lt)', borderRadius: 'var(--r-md)',
               padding: '12px 16px', marginBottom: 16, color: 'var(--clr-red)', fontSize: 13 }}>
               ⚠️ {error}
             </div>
@@ -553,7 +553,7 @@ export default function RecommendationsPage() {
           {/* Filters */}
           <div style={{ display: 'flex', gap: 12, marginBottom: 20, flexWrap: 'wrap', alignItems: 'center' }}>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase', marginBottom: 4 }}>Type</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', marginBottom: 4 }}>Type</div>
               <div className="tabs" style={{ marginBottom: 0 }}>
                 {types.map(t => (
                   <button key={t} className={`tab-btn ${filter === t ? 'active' : ''}`} onClick={() => setFilter(t)}>{t}</button>
@@ -561,7 +561,7 @@ export default function RecommendationsPage() {
               </div>
             </div>
             <div>
-              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', textTransform: 'uppercase', marginBottom: 4 }}>Rating</div>
+              <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--clr-text-3)', marginBottom: 4 }}>Rating</div>
               <div className="tabs" style={{ marginBottom: 0 }}>
                 {ratings.map(r => (
                   <button key={r} className={`tab-btn ${ratingFilter === r ? 'active' : ''}`} onClick={() => setRatingFilter(r)}>{r}</button>

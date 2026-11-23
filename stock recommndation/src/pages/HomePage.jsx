@@ -1,32 +1,155 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ChevronRight, Check } from 'lucide-react'
 import { useApp } from '../App'
-import {
-  AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis,
-} from 'recharts'
-
 import { API } from '../config'
 
-function IndexCard({ name, data }) {
-  if (!data) return (
-    <div className="stat-card">
-      <div className="stat-label">{name}</div>
-      <div className="skeleton" style={{ height: 32, margin: '8px 0 4px' }} />
-    </div>
-  )
-  const up = data.change_pct >= 0
+const INDEX_NAMES = { NSEI: 'NIFTY 50', BSESN: 'SENSEX', NSEBANK: 'NIFTY Bank' }
+const cleanSym = (s = '') => s.replace('^', '')
+
+function fmt(n, d = 2) {
+  if (n === undefined || n === null || Number.isNaN(n)) return '—'
+  return Number(n).toLocaleString('en-IN', { minimumFractionDigits: d, maximumFractionDigits: d })
+}
+
+function getTier(s) {
+  if (s <= 20) return 'Very conservative'
+  if (s <= 40) return 'Conservative'
+  if (s <= 60) return 'Balanced'
+  if (s <= 80) return 'Growth'
+  return 'Aggressive'
+}
+
+function moodFor(pct) {
+  if (pct === undefined || pct === null) return { title: 'Getting today’s market ready', cls: '' }
+  if (pct >= 1) return { title: 'A strong day on Dalal Street', cls: 'up' }
+  if (pct >= 0.15) return { title: 'Markets are climbing today', cls: 'up' }
+  if (pct > -0.15) return { title: 'Markets are holding steady', cls: '' }
+  if (pct > -1) return { title: 'Markets are slipping today', cls: 'dn' }
+  return { title: 'A rough day for the market', cls: 'dn' }
+}
+
+function MoodHero({ indices, ticksLive }) {
+  const nifty = indices.find(i => cleanSym(i.symbol) === 'NSEI')
+  const mood = moodFor(nifty?.change_pct)
+  const today = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' })
+  const up = (nifty?.change_pct ?? 0) >= 0
+
   return (
-    <div className="stat-card">
-      <div className="stat-label">{name}</div>
-      <div className={`stat-value ${up ? 'up' : 'dn'}`}>
-        {data.price?.toLocaleString('en-IN', { maximumFractionDigits: 2 })}
+    <section className="mood-hero" aria-live="polite">
+      <div className="mood-date">
+        {ticksLive && <span className="live-dot" style={{ background: '#6CDB9C' }} />}
+        {today}
       </div>
-      <div className="stat-change">
-        <span className={up ? 'up' : 'dn'}>
-          {up ? '▲' : '▼'} {Math.abs(data.change_pct).toFixed(2)}%
-        </span>
-        &nbsp;({up ? '+' : ''}{data.change?.toFixed(2)})
+      <h1 className="mood-headline">{mood.title}</h1>
+      <p className="mood-sub">
+        {nifty
+          ? <>NIFTY 50 is {up ? 'up' : 'down'} <strong className={`pct ${up ? 'up' : 'dn'}`} style={{ color: up ? '#6CDB9C' : '#FF8B9B' }}>{Math.abs(nifty.change_pct).toFixed(2)}%</strong> at {fmt(nifty.price)}. Tap any stock to see its scorecard, forecast and AI verdict.</>
+          : 'Index levels load from the live NSE feed. Start the backend to see today’s numbers.'}
+      </p>
+      <div className="mood-indices">
+        {(indices.length ? indices : [{ symbol: 'NSEI' }, { symbol: 'BSESN' }, { symbol: 'NSEBANK' }]).map(idx => {
+          const sym = cleanSym(idx.symbol)
+          const iu = (idx.change_pct ?? 0) >= 0
+          return (
+            <div className="mood-index" key={sym}>
+              <div className="name">{INDEX_NAMES[sym] || sym}</div>
+              <div>
+                <span className="val">{idx.price ? fmt(idx.price) : '—'}</span>
+                {idx.change_pct !== undefined && (
+                  <span className={`chg ${iu ? 'up' : 'dn'}`}>{iu ? '+' : '−'}{Math.abs(idx.change_pct).toFixed(2)}%</span>
+                )}
+              </div>
+            </div>
+          )
+        })}
       </div>
+    </section>
+  )
+}
+
+function Journey({ riskScore, holdings }) {
+  const navigate = useNavigate()
+  const steps = [
+    {
+      done: riskScore !== null,
+      title: riskScore !== null ? `Risk profile: ${getTier(riskScore)}` : 'Find your risk profile',
+      desc: riskScore !== null ? `Score ${riskScore}/100 · retake anytime` : '10 quick questions, about 2 minutes',
+      path: '/quiz',
+    },
+    {
+      done: holdings > 0,
+      title: holdings > 0 ? `${holdings} holding${holdings > 1 ? 's' : ''} in your portfolio` : 'Add what you already own',
+      desc: holdings > 0 ? 'See live P&L and sector exposure' : 'Type them in or connect your broker',
+      path: '/portfolio',
+    },
+    {
+      done: false,
+      title: 'Get your AI picks',
+      desc: 'Stocks and ETFs ranked for your profile',
+      path: '/recommendations',
+    },
+  ]
+  const nextIdx = steps.findIndex(s => !s.done)
+
+  return (
+    <section className="journey" aria-label="Getting started">
+      <div className="journey-head">Your next step</div>
+      {steps.map((s, i) => (
+        <button
+          key={s.path}
+          className={`journey-step ${s.done ? 'done' : ''} ${i === nextIdx ? 'next' : ''}`}
+          onClick={() => navigate(s.path)}
+        >
+          <span className="num">{s.done ? <Check size={15} strokeWidth={3} /> : i + 1}</span>
+          <span>
+            <div className="t">{s.title}</div>
+            <div className="d">{s.desc}</div>
+          </span>
+          <ChevronRight className="go" size={18} />
+        </button>
+      ))}
+    </section>
+  )
+}
+
+function MoversTable({ rows, onSelect }) {
+  if (!rows.length) {
+    return (
+      <div className="empty-state" style={{ padding: '36px 16px' }}>
+        <h3>No movers yet</h3>
+        <p>Top gainers and losers show up here once live market data is flowing.</p>
+      </div>
+    )
+  }
+  return (
+    <div className="table-scroll">
+      <table className="data-table">
+        <thead>
+          <tr><th>Stock</th><th style={{ textAlign: 'right' }}>Price</th><th style={{ textAlign: 'right' }}>Change</th></tr>
+        </thead>
+        <tbody>
+          {rows.slice(0, 7).map(s => {
+            const up = s.change_pct >= 0
+            return (
+              <tr key={s.symbol} onClick={() => onSelect(s.symbol)}>
+                <td>
+                  <div className="sym-cell">
+                    <span className="sym-avatar">{s.symbol.slice(0, 2)}</span>
+                    <span style={{ fontWeight: 600 }}>{s.symbol}</span>
+                  </div>
+                </td>
+                <td style={{ textAlign: 'right' }}>₹{fmt(s.price)}</td>
+                <td style={{ textAlign: 'right' }}>
+                  <span className={`badge ${up ? 'badge-green' : 'badge-red'}`}>
+                    {up ? '+' : '−'}{Math.abs(s.change_pct).toFixed(2)}%
+                  </span>
+                </td>
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
     </div>
   )
 }
@@ -36,145 +159,72 @@ export default function HomePage() {
   const navigate = useNavigate()
   const [snapshot, setSnapshot] = useState(null)
   const [gainers, setGainers] = useState([])
+  const [losers, setLosers] = useState([])
+  const [tab, setTab] = useState('gainers')
 
   useEffect(() => {
-    fetch(`${API}/api/market/snapshot`)
-      .then(r => r.json())
-      .then(setSnapshot)
-      .catch(() => {})
-    fetch(`${API}/api/market/gainers`)
-      .then(r => r.json())
-      .then(setGainers)
-      .catch(() => {})
+    const get = (path, set) => fetch(`${API}${path}`).then(r => r.json()).then(d => Array.isArray(d) || d ? set(d) : null).catch(() => {})
+    get('/api/market/snapshot', setSnapshot)
+    get('/api/market/gainers', d => setGainers(Array.isArray(d) ? d : []))
+    get('/api/market/losers', d => setLosers(Array.isArray(d) ? d : []))
   }, [])
 
   const indices = snapshot?.indices || []
-  const nifty = indices.find(i => i.symbol === '^NSEI' || i.symbol === 'NSEI')
-  const sensex = indices.find(i => i.symbol === '^BSESN' || i.symbol === 'BSESN')
-  const bank  = indices.find(i => i.symbol === '^NSEBANK' || i.symbol === 'NSEBANK')
-
-  const getTier = (s) => {
-    if (s <= 20) return { label: 'Very Conservative', color: '#0284C7' }
-    if (s <= 40) return { label: 'Conservative', color: '#0D9488' }
-    if (s <= 60) return { label: 'Moderate Balanced', color: '#4F46E5' }
-    if (s <= 80) return { label: 'Growth / Aggressive', color: '#D97706' }
-    return { label: 'Very Aggressive / Speculative', color: '#DC2626' }
-  }
-
-  const riskTier = riskScore !== null ? getTier(riskScore) : null
-  const riskLabel = riskTier?.label || null
-  const riskColor = riskTier?.color || 'var(--clr-text-3)'
+  const tickArr = Object.values(ticks)
+  const adv = tickArr.filter(t => t.change_pct > 0).length
+  const dec = tickArr.filter(t => t.change_pct < 0).length
+  const total = Math.max(adv + dec, 1)
+  const best = [...tickArr].sort((a, b) => b.change_pct - a.change_pct)[0]
+  const worst = [...tickArr].sort((a, b) => a.change_pct - b.change_pct)[0]
 
   return (
     <div>
-      <div className="page-header">
-        <h1>Dashboard</h1>
-        <p>Indian stock market intelligence, powered by AI analysis</p>
+      <div className="mood">
+        <MoodHero indices={indices} ticksLive={tickArr.length > 0} />
+        <Journey riskScore={riskScore} holdings={portfolio.length} />
       </div>
 
-      {/* Indices */}
-      <div className="stat-grid">
-        <IndexCard name="NIFTY 50" data={nifty} />
-        <IndexCard name="SENSEX" data={sensex} />
-        <IndexCard name="NIFTY BANK" data={bank} />
-        <div className="stat-card">
-          <div className="stat-label">Your Risk Profile</div>
-          {riskScore !== null ? (
-            <>
-              <div className="stat-value" style={{ color: riskColor, fontSize: 20, marginTop: 6 }}>{riskLabel}</div>
-              <div className="stat-change">Score: {riskScore}/100</div>
-            </>
-          ) : (
-            <div style={{ marginTop: 8 }}>
-              <button className="btn btn-primary btn-sm" onClick={() => navigate('/quiz')}>Take Quiz →</button>
-            </div>
-          )}
-        </div>
-        <div className="stat-card">
-          <div className="stat-label">Portfolio Holdings</div>
-          <div className="stat-value">{portfolio.length}</div>
-          <div className="stat-change">
-            {portfolio.length === 0
-              ? <button className="btn btn-secondary btn-sm" onClick={() => navigate('/portfolio')}>Add Holdings</button>
-              : <button className="btn btn-ghost btn-sm" onClick={() => navigate('/portfolio')}>View Portfolio</button>
-            }
-          </div>
-        </div>
-        <div className="stat-card">
-          <div className="stat-label">Live Stocks Tracked</div>
-          <div className="stat-value">{Object.keys(ticks).length}</div>
-          <div className="stat-change">WebSocket — tick data</div>
-        </div>
-      </div>
-
-      {/* Quick Action Cards */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 18, marginBottom: 28 }}>
-        <div className="card" style={{ borderLeft: '4px solid var(--clr-primary)', cursor: 'pointer' }} onClick={() => navigate('/quiz')}>
-          <div style={{ fontSize: 28, marginBottom: 8 }}>🧠</div>
-          <div className="card-title">Risk Appetite Quiz</div>
-          <p style={{ fontSize: 13, color: 'var(--clr-text-3)', marginTop: 4 }}>
-            Answer 10 questions to get your personalized investment profile and unlock AI recommendations.
-          </p>
-          <button className="btn btn-primary btn-sm" style={{ marginTop: 12 }}>
-            {riskScore !== null ? 'Retake Quiz' : 'Start Quiz'} →
-          </button>
-        </div>
-
-        <div className="card" style={{ borderLeft: '4px solid var(--clr-accent)', cursor: 'pointer' }} onClick={() => navigate('/recommendations')}>
-          <div style={{ fontSize: 28, marginBottom: 8 }}>🎯</div>
-          <div className="card-title">AI Stock Picks</div>
-          <p style={{ fontSize: 13, color: 'var(--clr-text-3)', marginTop: 4 }}>
-            Stocks &amp; ETFs recommended based on technical analysis, fundamentals, and your risk profile.
-          </p>
-          <button className="btn btn-secondary btn-sm" style={{ marginTop: 12 }}>
-            View Recommendations →
-          </button>
-        </div>
-
-        <div className="card" style={{ borderLeft: '4px solid var(--clr-green)', cursor: 'pointer' }} onClick={() => navigate('/live')}>
-          <div style={{ fontSize: 28, marginBottom: 8 }}>⚡</div>
-          <div className="card-title">Live Market Feed</div>
-          <p style={{ fontSize: 13, color: 'var(--clr-text-3)', marginTop: 4 }}>
-            Real-time tick-by-tick NSE data. Top gainers, losers, and volume shakers updated every second.
-          </p>
-          <button className="btn btn-sm" style={{ marginTop: 12, background: 'var(--clr-green-lt)', color: 'var(--clr-green)' }}>
-            Open Live Feed →
-          </button>
-        </div>
-      </div>
-
-      {/* Top Gainers preview */}
-      {gainers.length > 0 && (
-        <div className="card">
-          <div className="card-header">
+      <div className="dash-grid">
+        <section className="card" style={{ padding: 0 }}>
+          <div className="card-header" style={{ padding: '18px 20px 0', marginBottom: 12, flexWrap: 'wrap' }}>
             <div>
-              <div className="card-title">🚀 Top Gainers Today</div>
-              <div className="card-subtitle">Based on live NSE data</div>
+              <div className="card-title">Today’s movers</div>
+              <div className="card-subtitle">Biggest moves on the NSE right now</div>
             </div>
-            <button className="btn btn-ghost btn-sm" onClick={() => navigate('/live')}>See All</button>
+            <div className="tabs" style={{ marginBottom: 0 }} role="tablist">
+              <button role="tab" aria-selected={tab === 'gainers'} className={`tab-btn ${tab === 'gainers' ? 'active' : ''}`} onClick={() => setTab('gainers')}>Gainers</button>
+              <button role="tab" aria-selected={tab === 'losers'} className={`tab-btn ${tab === 'losers' ? 'active' : ''}`} onClick={() => setTab('losers')}>Losers</button>
+            </div>
           </div>
-          <table className="data-table">
-            <thead>
-              <tr>
-                <th>Symbol</th>
-                <th>Price</th>
-                <th>Change</th>
-                <th>% Change</th>
-              </tr>
-            </thead>
-            <tbody>
-              {gainers.slice(0, 6).map(s => (
-                <tr key={s.symbol} style={{ cursor: 'pointer' }} onClick={() => openStockModal(s.symbol)}>
-                  <td><span className="mono" style={{ fontWeight: 700 }}>{s.symbol}</span></td>
-                  <td className="mono">₹{s.price?.toFixed(2)}</td>
-                  <td><span className="badge badge-green">+{s.change?.toFixed(2)}</span></td>
-                  <td><span className="badge badge-green">+{s.change_pct?.toFixed(2)}%</span></td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <MoversTable rows={tab === 'gainers' ? gainers : losers} onSelect={openStockModal} />
+          <div style={{ padding: '12px 20px 16px', borderTop: '1px solid var(--clr-border)' }}>
+            <button className="btn btn-ghost btn-sm" onClick={() => navigate('/live')}>Open the live market</button>
+          </div>
+        </section>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+          <section className="card">
+            <div className="card-title">Market breadth</div>
+            <div className="card-subtitle">Across the {tickArr.length || 0} stocks you’re watching</div>
+            <div className="breadth" role="img" aria-label={`${adv} advancing, ${dec} declining`} style={{ marginTop: 14 }}>
+              <div className="adv" style={{ width: `${(adv / total) * 100}%` }} />
+              <div className="dec" style={{ width: `${(dec / total) * 100}%` }} />
+            </div>
+            <div className="breadth-legend">
+              <span><strong style={{ color: 'var(--clr-green)' }}>{adv}</strong> advancing</span>
+              <span><strong style={{ color: 'var(--clr-red)' }}>{dec}</strong> declining</span>
+            </div>
+          </section>
+
+          <section className="card">
+            <div className="card-title" style={{ marginBottom: 6 }}>At a glance</div>
+            <div className="kv"><span>Best on your list</span><span style={{ color: 'var(--clr-green)' }}>{best ? `${best.symbol} +${best.change_pct.toFixed(2)}%` : '—'}</span></div>
+            <div className="kv"><span>Weakest on your list</span><span style={{ color: 'var(--clr-red)' }}>{worst ? `${worst.symbol} ${worst.change_pct.toFixed(2)}%` : '—'}</span></div>
+            <div className="kv"><span>Your risk profile</span><span>{riskScore !== null ? getTier(riskScore) : <button className="btn btn-secondary btn-sm" onClick={() => navigate('/quiz')}>Take the quiz</button>}</span></div>
+            <div className="kv"><span>Holdings tracked</span><span>{portfolio.length}</span></div>
+          </section>
         </div>
-      )}
+      </div>
     </div>
   )
 }
